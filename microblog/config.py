@@ -4,6 +4,9 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 CSRF_ENABLED = True
 SECRET_KEY = 'you-will-never-guess'
 SQLALCHEMY_TRACK_MODIFICATIONS = False
+SQLALCHEMY_RECORD_QUERIES = True #数据库性能分析
+# slow database query threshold (in seconds)
+DATABASE_QUERY_TIMEOUT = 0.5
 OPENID_PROVIDERS = [
     { 'name': 'Google', 'url': 'https://www.google.com/accounts/o8/id' },
     { 'name': 'Yahoo', 'url': 'https://me.yahoo.com' },
@@ -18,6 +21,8 @@ SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
 # mail server settings
 MAIL_SERVER = 'smtp.163.com'
 MAIL_PORT = 25
+#MAIL_USE_TLS = False
+#MAIL_USE_SSL = True
 MAIL_USERNAME = 'xiaoli3007'
 MAIL_PASSWORD = 'sunli83021726'
 

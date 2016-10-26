@@ -1,5 +1,6 @@
 from app import db
 from hashlib import md5
+import re
 ROLE_USER = 0
 ROLE_ADMIN = 1
 
@@ -55,6 +56,9 @@ class User(db.Model):
             version += 1
         return new_nickname
 
+    @staticmethod
+    def make_valid_nickname(nickname):
+        return re.sub('[^a-zA-Z0-9_\.]', '', nickname)
     # ...
     def __repr__(self):
         return '<User %r>' % (self.nickname)

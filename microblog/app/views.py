@@ -5,6 +5,9 @@ from app.forms import LoginForm, EditForm,PostForm
 
 from app.models import User, ROLE_USER, ROLE_ADMIN,Post
 from datetime import datetime
+from app.emails import follower_notification
+from flask_sqlalchemy import get_debug_queries
+from config import DATABASE_QUERY_TIMEOUT
 # pagination
 POSTS_PER_PAGE = 3
 
@@ -19,6 +22,14 @@ def before_request():
         g.user.last_seen = datetime.utcnow()
         db.session.add(g.user)
         db.session.commit()
+
+#请求后的数据库分析
+@app.after_request
+def after_request(response):
+    for query in get_debug_queries():
+        if query.duration >= DATABASE_QUERY_TIMEOUT:
+            app.logger.warning("SLOW QUERY: %s\nParameters: %s\nDuration: %fs\nContext: %s\n" % (query.statement, query.parameters, query.duration, query.context))
+    return response
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
@@ -64,6 +75,7 @@ def after_login_me(respemail):
         nickname = ""
         if nickname is None or nickname == "":
             nickname = respemail.split('@')[0]
+        nickname = User.make_valid_nickname(nickname)
         nickname = User.make_unique_nickname(nickname)
         user = User(nickname = nickname, email = respemail)
         db.session.add(user)
@@ -130,6 +142,8 @@ def follow(nickname):
     db.session.add(u)
     db.session.commit()
     flash('You are now following ' + nickname + '!')
+    # ...
+    follower_notification(user, g.user)
     return redirect(url_for('user', nickname=nickname))
 
 @app.route('/unfollow/<nickname>')
