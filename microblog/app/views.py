@@ -5,7 +5,7 @@ from app.forms import LoginForm, EditForm,PostForm,RegForm
 
 from app.models import User, ROLE_USER, ROLE_ADMIN,Post
 from datetime import datetime
-from app.emails import follower_notification
+from app.emails import follower_notification,send_email
 from flask_sqlalchemy import get_debug_queries
 from config import DATABASE_QUERY_TIMEOUT
 from app.security import ts
@@ -37,18 +37,10 @@ def after_request(response):
 @app.route('/index/<int:page>', methods = ['GET', 'POST'])
 @login_required
 def index(page = 1):
-    form = PostForm()
-    if form.validate_on_submit():
-        post = Post(body = form.post.data, timestamp = datetime.utcnow(), author = g.user)
-        db.session.add(post)
-        db.session.commit()
-        flash('Your post is now live!')
-        return redirect(url_for('index'))
     #posts = g.user.followed_posts().paginate(page, POSTS_PER_PAGE, False).items
     posts = g.user.followed_posts().paginate(page, POSTS_PER_PAGE, False)
     return render_template('index.html',
                            title = 'Home',
-                           form = form,
                            posts = posts)
 
 @app.route('/login', methods = ['GET', 'POST'])
@@ -63,8 +55,9 @@ def login():
 
         if user.is_correct_password(form.password.data):
             login_user(user)
-            return  redirect(url_for('user',nickname=user.nickname))
+            return  redirect(url_for('member_center',nickname=user.nickname))
         else:
+            flash('登录失败！')
             return  redirect(url_for('login'))
 
     return render_template('login.html',
@@ -73,56 +66,54 @@ def login():
                            providers = app.config['OPENID_PROVIDERS'])
 
 @app.route('/reg', methods = ['GET', 'POST'])
-@oid.loginhandler
 def reg():
     if g.user is not None and g.user.is_authenticated:
         return redirect(url_for('index'))
     form = RegForm()
     if form.validate_on_submit():
-        respemail =form.email.data
-        respepassword =form.password.data
-        if respemail is None or respemail == "":
-            flash('Invalid login. Please try again.')
-            return redirect(url_for('login'))
-        user = User.query.filter_by(email=respemail).first()
-        if user is None:
-            nickname = ""
-            if nickname is None or nickname == "":
-                nickname = respemail.split('@')[0]
-            nickname = User.make_valid_nickname(nickname)
-            nickname = User.make_unique_nickname(nickname)
-            user = User(nickname=nickname, email=respemail, password=respepassword)
-            db.session.add(user)
-            db.session.commit()
-            db.session.add(user.follow(user))  # 关注自己
-            db.session.commit()
-            # 发送邮件
-            subject = "Confirm your email"
+        respemail = form.email.data
+        respepassword = form.password.data
 
-            token = ts.dumps(self.email, salt='email-confirm-key')
+        nickname = ""
+        if nickname is None or nickname == "":
+            nickname = respemail.split('@')[0]
+        nickname = User.make_valid_nickname(nickname)
+        nickname = User.make_unique_nickname(nickname)
+        user = User(nickname=nickname, email=respemail, password=respepassword)
+        db.session.add(user)
+        db.session.commit()
+        newuser = User.query.filter_by(email=respemail).first_or_404()
+        db.session.add(newuser.follow(newuser))  # 关注自己
+        db.session.commit()
+        # 发送邮件
+        subject = "确认你的邮箱"
 
-            confirm_url = url_for(
-                    'confirm_email',
-                    token=token,
-                    _external=True)
+        token = ts.dumps(newuser.email, salt='email-confirm-key')
 
-            html = render_template(
-                    'email/activate.html',
-                    confirm_url=confirm_url)
+        confirm_url = url_for(
+                'confirm_email',
+                token=token,
+                _external=True)
 
-            # We'll assume that send_email has been defined in myapp/util.py
-            send_email(user.email, subject, html)
+        html = render_template(
+                'email_confirm.html',
+                confirm_url=confirm_url)
+
+        send_email(subject, '', newuser.email, '', html)
 
         remember_me = False
         if 'remember_me' in session:
             remember_me = session['remember_me']
             session.pop('remember_me', None)
         login_user(user, remember=remember_me)
+
         return redirect(request.args.get('next') or url_for('index'))
+
     return render_template('reg.html',
-        title = 'Sign In',
-        form = form,
-        providers = app.config['OPENID_PROVIDERS'])
+                           title = '注册',
+                           form = form,
+                           providers = app.config['OPENID_PROVIDERS'])
+
 
 #邮箱确认
 @app.route('/confirm/<token>')
@@ -158,6 +149,47 @@ def user(nickname, page=1):
     return render_template('user.html',
                            user=user,
                            posts=posts)
+
+@app.route('/member_center', methods=['GET', 'POST'])
+@login_required
+def member_center():
+    user = User.query.filter_by(nickname=g.user.nickname).first()
+    if user is None:
+        flash('User %s not found.' % g.user.nickname)
+        return redirect(url_for('index'))
+    return render_template('member_center.html',
+                           user=user
+                           )
+
+@app.route('/member_post_list', methods=['GET', 'POST'])
+@app.route('/member_post_list/<int:page>')
+@login_required
+def member_post_list(page=1):
+    user = User.query.filter_by(nickname=g.user.nickname).first()
+    if user is None:
+        flash('User %s not found.' % g.user.nickname)
+        return redirect(url_for('index'))
+    posts = user.posts.paginate(page, POSTS_PER_PAGE, False)
+    return render_template('member_post_list.html',
+                           user=user,
+                           posts=posts
+                           )
+
+@app.route('/member_post', methods=['GET', 'POST'])
+@login_required
+def member_post():
+    user = User.query.filter_by(nickname=g.user.nickname).first()
+    if user is None:
+        flash('User %s not found.' % g.user.nickname)
+        return redirect(url_for('index'))
+    form = PostForm()
+    if form.validate_on_submit():
+        post = Post(body=form.post.data, timestamp=datetime.utcnow(), author=g.user)
+        db.session.add(post)
+        db.session.commit()
+        flash('Your post is now live!')
+        return redirect(url_for('member_post_list'))
+    return render_template('member_post.html', user=user, form = form)
 
 @app.route('/edit', methods=['GET', 'POST'])
 @login_required

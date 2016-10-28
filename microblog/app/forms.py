@@ -9,7 +9,7 @@ class RegForm(FlaskForm):
                                                Unique(
                                                        User,
                                                        User.email,
-                                                       message='There is already an account with that nickname.')
+                                                       message='重复的邮箱地址')
                                                ])
     #password = StringField('password', validators = [DataRequired()])
     password = PasswordField('password', [
@@ -17,12 +17,12 @@ class RegForm(FlaskForm):
         EqualTo('confirm', message='Passwords must match')
     ])
     confirm = PasswordField('confirmpassword')
-    accept_tos = BooleanField('I accept the TOS', [DataRequired()])
 
 
 class LoginForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
-    password = StringField('password', validators=[DataRequired()])
+    password = PasswordField('password', validators=[DataRequired()])
+    remember_me = BooleanField('记住')
 
 class EditForm(FlaskForm):
     about_me = TextAreaField('about_me', validators = [Length(min = 0, max = 140)])
@@ -30,7 +30,7 @@ class EditForm(FlaskForm):
                                              Unique(
                                                      User,
                                                      User.nickname,
-                                                     message='There is already an account with that nickname.')])
+                                                     message='重复的昵称')])
 '''
     def __init__(self, original_nickname, *args, **kwargs):
         FlaskForm.__init__(self, *args, **kwargs)

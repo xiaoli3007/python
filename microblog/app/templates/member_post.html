@@ -1,0 +1,24 @@
+<!-- extend base layout -->
+{% extends "member_center.html" %}
+
+{% block member_content %}
+
+
+<form action="" method="post" name="post"  role="form">
+    {{form.hidden_tag()}}
+
+    <div class="form-group">
+        <label >Say something:</label>
+        {{ form.post(class="form-control") }}
+
+        {% for error in form.errors.post %}
+        <span style="color: red;">[{{error}}]</span>
+        {% endfor %}<br>
+
+    </div>
+    <p><input type="submit" value="发布" class="btn btn-success"></p>
+
+</form>
+
+
+{% endblock %}

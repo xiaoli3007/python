@@ -1,0 +1,43 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row list-main">
+    <div class="col-md-2">
+        <div class="list-group">
+            <a href="{{url_for('member_center')}}" class="list-group-item {% if request.endpoint.endswith('member_center') %}active{% endif %} text-center">个人中心</a>
+            <a href="{{url_for('member_post_list')}}" class="list-group-item {% if request.endpoint.endswith('member_post_list') %}active{% endif %} text-center">博客列表</a>
+            <a href="{{url_for('member_post')}}" class="list-group-item {% if request.endpoint.endswith('member_post') %}active{% endif %} text-center">发布博客</a>
+        </div>
+
+    </div>
+
+    <div class="col-md-10">
+    {% block member_content %}
+    <table  class="table">
+        <tr>
+            <td><img src="{{user.avatar(128)}}"></td>
+            <td>
+                <h1>用户名: {{user.nickname}}</h1>
+                {% if user.about_me %}<p>{{user.about_me}}</p>{% endif %}
+                {% if user.last_seen %}<p><i>Last seen on: {{user.last_seen}}</i></p>{% endif %}
+                <p>{{user.followers.count()}} 关注者 |
+                    {% if user.id == g.user.id %}
+                    <a href="{{url_for('edit')}}">编辑资料</a>
+                    {% endif %}
+                </p>
+            </td>
+        </tr>
+    </table>
+    <hr>
+
+    {% endblock %}
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}

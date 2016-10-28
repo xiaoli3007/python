@@ -22,17 +22,13 @@
         <div class="container-fluid">
 
           <div class="navbar-header">
-            <a class="navbar-brand" href="{{ url_for('index') }}">Microblog</a>
+            <a class="navbar-brand" href="{{ url_for('index') }}">博客</a>
           </div>
 
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
 
               {{ nav_link('index', '首页') }}
-              {% if g.user.is_authenticated %}
-              {{ nav_link('user', '我的',['nickname = g.user.nickname']) }}
-              {{ nav_link('logout', '退出') }}
-              {% endif %}
 
             </ul>
             <form class="navbar-form navbar-left" role="search">
@@ -43,8 +39,16 @@
             </form>
 
             <ul class="nav navbar-nav navbar-right">
+
+              {% if g.user.is_authenticated %}
+              {{ nav_link('member_center', '个人中心') }}
+              {{ nav_link('logout', '退出') }}
+              <li><a href="{{ url_for('user', nickname = g.user.nickname) }}">主页</a></li>
+              {% else %}
               {{ nav_link('login', '登录') }}
               {{ nav_link('reg', '注册') }}
+              {% endif %}
+
 
             </ul>
 

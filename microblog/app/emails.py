@@ -12,6 +12,8 @@ def send_async_email(app, msg):
         mail.send(msg)
 
 def send_email(subject, sender, recipients, text_body, html_body):
+    if sender == '':
+        sender = ADMINS[0]
     msg = Message(subject, sender=sender, recipients=recipients)
     msg.body = text_body
     msg.html = html_body

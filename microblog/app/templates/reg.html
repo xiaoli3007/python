@@ -2,25 +2,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-<script type="text/javascript">
-    function set_openid(openid, pr)
-    {
-        u = openid.search('<username>');
-        if (u != -1) {
-            // openid requires username
-            user = prompt('Enter your ' + pr + ' username:');
-            openid = openid.substr(0, u) + user;
-        }
-        form = document.forms['login'];
-        form.elements['openid'].value = openid;
-    }
-</script>
+
 <h1>注册</h1>
 <form action="" method="post" name="reg"  role="form">
     {{form.hidden_tag()}}
 
     <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
+        <label >Email address</label>
         {{form.email(class="form-control")}}
 
         {% for error in form.errors.email %}
@@ -29,7 +17,7 @@
 
     </div>
     <div class="form-group">
-    <label for="exampleInputPassword1">密码</label>
+    <label >密码</label>
     {{form.password(class="form-control")}}
 
     {% for error in form.errors.password %}
@@ -37,7 +25,7 @@
     {% endfor %}<br>
     </div>
     <div class="form-group">
-        <label for="exampleInputPassword1">确认密码</label>
+        <label >确认密码</label>
         {{form.confirm(class="form-control")}}
 
         {% for error in form.errors.confirm %}
@@ -45,7 +33,6 @@
         {% endfor %}<br>
     </div>
 
-    {{form.accept_tos()}}
     <p><input type="submit" value="注册" class="btn btn-success"></p>
 </form>
 {% endblock %}
