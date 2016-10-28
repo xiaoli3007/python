@@ -1,13 +1,14 @@
 from flask import render_template, flash, redirect, session, url_for, request, g
 from flask_login import login_user, logout_user, current_user, login_required
 from app import app, db, lm, oid
-from app.forms import LoginForm, EditForm,PostForm
+from app.forms import LoginForm, EditForm,PostForm,RegForm
 
 from app.models import User, ROLE_USER, ROLE_ADMIN,Post
 from datetime import datetime
 from app.emails import follower_notification
 from flask_sqlalchemy import get_debug_queries
 from config import DATABASE_QUERY_TIMEOUT
+from app.security import ts
 # pagination
 POSTS_PER_PAGE = 3
 
@@ -57,37 +58,88 @@ def login():
         return redirect(url_for('index'))
     form = LoginForm()
     if form.validate_on_submit():
-
+        user = User.query.filter_by(email=form.email.data).first_or_404()
         session['remember_me'] = form.remember_me.data
-        #return oid.try_login(form.openid.data, ask_for = ['nickname', 'email'])
-        return after_login_me(form.openid.data)
+
+        if user.is_correct_password(form.password.data):
+            login_user(user)
+            return  redirect(url_for('user',nickname=user.nickname))
+        else:
+            return  redirect(url_for('login'))
+
     return render_template('login.html',
+                           title = '登录',
+                           form = form,
+                           providers = app.config['OPENID_PROVIDERS'])
+
+@app.route('/reg', methods = ['GET', 'POST'])
+@oid.loginhandler
+def reg():
+    if g.user is not None and g.user.is_authenticated:
+        return redirect(url_for('index'))
+    form = RegForm()
+    if form.validate_on_submit():
+        respemail =form.email.data
+        respepassword =form.password.data
+        if respemail is None or respemail == "":
+            flash('Invalid login. Please try again.')
+            return redirect(url_for('login'))
+        user = User.query.filter_by(email=respemail).first()
+        if user is None:
+            nickname = ""
+            if nickname is None or nickname == "":
+                nickname = respemail.split('@')[0]
+            nickname = User.make_valid_nickname(nickname)
+            nickname = User.make_unique_nickname(nickname)
+            user = User(nickname=nickname, email=respemail, password=respepassword)
+            db.session.add(user)
+            db.session.commit()
+            db.session.add(user.follow(user))  # 关注自己
+            db.session.commit()
+            # 发送邮件
+            subject = "Confirm your email"
+
+            token = ts.dumps(self.email, salt='email-confirm-key')
+
+            confirm_url = url_for(
+                    'confirm_email',
+                    token=token,
+                    _external=True)
+
+            html = render_template(
+                    'email/activate.html',
+                    confirm_url=confirm_url)
+
+            # We'll assume that send_email has been defined in myapp/util.py
+            send_email(user.email, subject, html)
+
+        remember_me = False
+        if 'remember_me' in session:
+            remember_me = session['remember_me']
+            session.pop('remember_me', None)
+        login_user(user, remember=remember_me)
+        return redirect(request.args.get('next') or url_for('index'))
+    return render_template('reg.html',
         title = 'Sign In',
         form = form,
         providers = app.config['OPENID_PROVIDERS'])
 
-def after_login_me(respemail):
-    if respemail is None or respemail == "":
-        flash('Invalid login. Please try again.')
-        return redirect(url_for('login'))
-    user = User.query.filter_by(email = respemail).first()
-    if user is None:
-        nickname = ""
-        if nickname is None or nickname == "":
-            nickname = respemail.split('@')[0]
-        nickname = User.make_valid_nickname(nickname)
-        nickname = User.make_unique_nickname(nickname)
-        user = User(nickname = nickname, email = respemail)
-        db.session.add(user)
-        db.session.commit()
-        db.session.add(user.follow(user))  # 关注自己
-        db.session.commit()
-    remember_me = False
-    if 'remember_me' in session:
-        remember_me = session['remember_me']
-        session.pop('remember_me', None)
-    login_user(user, remember = remember_me)
-    return redirect(request.args.get('next') or url_for('index'))
+#邮箱确认
+@app.route('/confirm/<token>')
+def confirm_email(token):
+    try:
+        email = ts.loads(token, salt="email-confirm-key", max_age=86400)
+    except:
+        return render_template('404.html')
+
+    user = User.query.filter_by(email=email).first_or_404()
+
+    user.email_confirmed = True
+
+    db.session.add(user)
+    db.session.commit()
+
+    return redirect(url_for('signin'))
 
 @app.route('/logout')
 def logout():

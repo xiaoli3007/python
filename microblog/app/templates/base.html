@@ -1,4 +1,4 @@
-<html>
+<html xmlns="http://www.w3.org/1999/html">
   <head>
     {% if title %}
     <title>{{title}} - microblog</title>
@@ -6,20 +6,54 @@
     <title>microblog</title>
     {% endif %}
     <link href="/static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/static/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
     <link href="/static/css/bootstrap-responsive.min.css" rel="stylesheet">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
-    <div>Microblog:
-        <a href="{{ url_for('index') }}">Home</a>
-      {% if g.user.is_authenticated %}
-      | <a href="{{ url_for('user', nickname = g.user.nickname) }}">Your Profile</a>
-      | <a href="{{ url_for('logout') }}">Logout</a>
-      {% endif %}
 
-    </div>
+    <div  class="container">
+
+      {% from "macros.html" import nav_link with context %}
+
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+
+          <div class="navbar-header">
+            <a class="navbar-brand" href="{{ url_for('index') }}">Microblog</a>
+          </div>
+
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+
+              {{ nav_link('index', '首页') }}
+              {% if g.user.is_authenticated %}
+              {{ nav_link('user', '我的',['nickname = g.user.nickname']) }}
+              {{ nav_link('logout', '退出') }}
+              {% endif %}
+
+            </ul>
+            <form class="navbar-form navbar-left" role="search">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+              </div>
+              <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+
+            <ul class="nav navbar-nav navbar-right">
+              {{ nav_link('login', '登录') }}
+              {{ nav_link('reg', '注册') }}
+
+            </ul>
+
+
+
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+
     <hr>
     {% with messages = get_flashed_messages() %}
     {% if messages %}
@@ -31,5 +65,7 @@
     {% endif %}
     {% endwith %}
     {% block content %}{% endblock %}
+
+      </div>
   </body>
 </html>

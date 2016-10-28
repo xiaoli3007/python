@@ -1,12 +1,28 @@
-#from flask_wtf import Form
 from flask_wtf import FlaskForm
 from wtforms import TextField, BooleanField, TextAreaField,StringField,PasswordField
-from wtforms.validators import Required, Length,DataRequired, Email
+from wtforms.validators import Required, Length,DataRequired, Email,EqualTo
 from app.models import User
 from app.util import Unique
+
+class RegForm(FlaskForm):
+    email = StringField('email', validators = [DataRequired(), Email('邮箱格式不对！'),
+                                               Unique(
+                                                       User,
+                                                       User.email,
+                                                       message='There is already an account with that nickname.')
+                                               ])
+    #password = StringField('password', validators = [DataRequired()])
+    password = PasswordField('password', [
+        DataRequired(),
+        EqualTo('confirm', message='Passwords must match')
+    ])
+    confirm = PasswordField('confirmpassword')
+    accept_tos = BooleanField('I accept the TOS', [DataRequired()])
+
+
 class LoginForm(FlaskForm):
-    openid = StringField('openid', validators = [DataRequired()])
-    remember_me = BooleanField('remember_me', default = False)
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    password = StringField('password', validators=[DataRequired()])
 
 class EditForm(FlaskForm):
     about_me = TextAreaField('about_me', validators = [Length(min = 0, max = 140)])

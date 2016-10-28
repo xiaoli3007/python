@@ -13,6 +13,9 @@ lm.init_app(app)
 lm.login_view = 'login'
 oid = OpenID(app, os.path.join(basedir, 'tmp'))
 
+from flask_bcrypt import Bcrypt
+
+bcrypt = Bcrypt(app)        #加密类
 
 from flask_mail import Mail
 mail = Mail(app)

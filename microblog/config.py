@@ -2,7 +2,7 @@ import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 CSRF_ENABLED = True
-SECRET_KEY = 'you-will-never-guess'
+SECRET_KEY = 'sunli3007'
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 SQLALCHEMY_RECORD_QUERIES = True #数据库性能分析
 # slow database query threshold (in seconds)

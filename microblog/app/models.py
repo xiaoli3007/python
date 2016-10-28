@@ -1,6 +1,8 @@
-from app import db
+from app import bcrypt, db
 from hashlib import md5
 import re
+from sqlalchemy.ext.hybrid import hybrid_property
+
 ROLE_USER = 0
 ROLE_ADMIN = 1
 
@@ -21,12 +23,27 @@ class User(db.Model):
     posts = db.relationship('Post', backref='author', lazy='dynamic')
     about_me = db.Column(db.String(140))
     last_seen = db.Column(db.DateTime)
+    _password = db.Column(db.String(128))
+    email_confirmed = db.Column(db.BOOLEAN, default=False)
+    @hybrid_property
+    def password(self):
+        return self._password
+
+    @password.setter
+    def _set_password(self, plaintext):
+        self._password = bcrypt.generate_password_hash(plaintext)
+
     followed = db.relationship('User',
                                secondary=followers,
                                primaryjoin=(followers.c.follower_id == id),
                                secondaryjoin=(followers.c.followed_id == id),
                                backref=db.backref('followers', lazy='dynamic'),
                                lazy='dynamic')
+
+
+    # 验证密码
+    def is_correct_password(self, plaintext):
+        return bcrypt.check_password_hash(self._password, plaintext)
 
     def is_authenticated(self):
         return True
