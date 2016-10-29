@@ -1,3 +1,4 @@
+#coding=utf-8
 from flask import render_template, flash, redirect, session, url_for, request, g
 from flask_login import login_user, logout_user, current_user, login_required
 from app import app, db, lm, oid
@@ -9,8 +10,9 @@ from app.emails import follower_notification,send_email
 from flask_sqlalchemy import get_debug_queries
 from config import DATABASE_QUERY_TIMEOUT
 from app.security import ts
+from string import sting_utf8
 # pagination
-POSTS_PER_PAGE = 3
+POSTS_PER_PAGE = 5
 
 @lm.user_loader
 def load_user(id):
@@ -38,10 +40,10 @@ def after_request(response):
 @login_required
 def index(page = 1):
     #posts = g.user.followed_posts().paginate(page, POSTS_PER_PAGE, False).items
-    posts = g.user.followed_posts().paginate(page, POSTS_PER_PAGE, False)
+    pagination = Post.query.order_by(Post.timestamp.desc()).paginate(page, POSTS_PER_PAGE, False)
     return render_template('index.html',
                            title = 'Home',
-                           posts = posts)
+                           pagination = pagination)
 
 @app.route('/login', methods = ['GET', 'POST'])
 @oid.loginhandler
@@ -57,11 +59,11 @@ def login():
             login_user(user)
             return  redirect(url_for('member_center',nickname=user.nickname))
         else:
-            flash('登录失败！')
+            flash(sting_utf8('登录失败！'))
             return  redirect(url_for('login'))
 
     return render_template('login.html',
-                           title = '登录',
+                           title = sting_utf8('登录'),
                            form = form,
                            providers = app.config['OPENID_PROVIDERS'])
 
@@ -86,7 +88,7 @@ def reg():
         db.session.add(newuser.follow(newuser))  # 关注自己
         db.session.commit()
         # 发送邮件
-        subject = "确认你的邮箱"
+        subject = sting_utf8("确认你的邮箱")
 
         token = ts.dumps(newuser.email, salt='email-confirm-key')
 
@@ -95,11 +97,15 @@ def reg():
                 token=token,
                 _external=True)
 
+        txt = render_template(
+                'email_confirm.txt',
+                confirm_url=confirm_url)
+
         html = render_template(
                 'email_confirm.html',
                 confirm_url=confirm_url)
 
-        send_email(subject, '', newuser.email, '', html)
+        send_email(subject, '', [newuser.email], txt, html)
 
         remember_me = False
         if 'remember_me' in session:
@@ -110,10 +116,17 @@ def reg():
         return redirect(request.args.get('next') or url_for('index'))
 
     return render_template('reg.html',
-                           title = '注册',
+                           title = sting_utf8('注册'),
                            form = form,
                            providers = app.config['OPENID_PROVIDERS'])
 
+#url_for的使用  是用def 的名字 解析出来是路由
+@app.route('/test')
+def test():
+    #pagination = user.posts.order_by(Post.timestamp.desc()).paginate(page, POSTS_PER_PAGE, False)
+    kwargs = {"nickname": "dddd","aaa": "ffff"}
+    flash(request.path)
+    return render_template('test.html', kwargs=kwargs)
 
 #邮箱确认
 @app.route('/confirm/<token>')
@@ -130,7 +143,7 @@ def confirm_email(token):
     db.session.add(user)
     db.session.commit()
 
-    return redirect(url_for('signin'))
+    return redirect(url_for('login'))
 
 @app.route('/logout')
 def logout():
@@ -145,10 +158,13 @@ def user(nickname, page=1):
     if user is None:
         flash('User %s not found.' % nickname)
         return redirect(url_for('index'))
-    posts = user.posts.paginate(page, POSTS_PER_PAGE, False)
+    flash(request.path)
+    path = "nickname = "+user.nickname
+    pagination = user.posts.order_by(Post.timestamp.desc()).paginate(page, POSTS_PER_PAGE, False)
     return render_template('user.html',
                            user=user,
-                           posts=posts)
+                           pagination=pagination,path=path
+                           )
 
 @app.route('/member_center', methods=['GET', 'POST'])
 @login_required
@@ -169,10 +185,15 @@ def member_post_list(page=1):
     if user is None:
         flash('User %s not found.' % g.user.nickname)
         return redirect(url_for('index'))
-    posts = user.posts.paginate(page, POSTS_PER_PAGE, False)
+    # 从get方法中取得页码
+    #page = request.args.get('page', 1, type=int)
+    #flash(page)
+    pagination = user.posts.paginate(page, POSTS_PER_PAGE, False)
+    # 获取pagination对象
+    #pagination = Post.query.order_by(Post.timestamp.desc()).paginate(page, per_page=5, error_out=False)
     return render_template('member_post_list.html',
                            user=user,
-                           posts=posts
+                           pagination=pagination
                            )
 
 @app.route('/member_post', methods=['GET', 'POST'])
@@ -184,7 +205,7 @@ def member_post():
         return redirect(url_for('index'))
     form = PostForm()
     if form.validate_on_submit():
-        post = Post(body=form.post.data, timestamp=datetime.utcnow(), author=g.user)
+        post = Post(title=form.title.data, body=form.body.data, timestamp=datetime.utcnow(), author=g.user)
         db.session.add(post)
         db.session.commit()
         flash('Your post is now live!')

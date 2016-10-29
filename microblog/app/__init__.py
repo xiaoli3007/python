@@ -1,3 +1,4 @@
+#coding=utf-8
 import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
@@ -7,7 +8,7 @@ from config import basedir, ADMINS, MAIL_SERVER, MAIL_PORT, MAIL_USERNAME, MAIL_
 
 app = Flask(__name__)
 app.config.from_object('config')
-db = SQLAlchemy(app)
+db = SQLAlchemy(app, use_native_unicode="utf8")
 lm = LoginManager()
 lm.init_app(app)
 lm.login_view = 'login'

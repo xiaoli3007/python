@@ -1,10 +1,12 @@
 
+import MySQLdb
+'''
 fruits = ['banana', 'apple',  'mango']
 for index in range(len(fruits)):
-    print ('当前水果 :', fruits[index])
+    print ('aaaa :', fruits[index])
 
 print ("Good bye!")
-'''
+
 year = int(input('year:\n'))
 month = int(input('month:\n'))
 day = int(input('day:\n'))

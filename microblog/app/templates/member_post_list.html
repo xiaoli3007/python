@@ -10,46 +10,21 @@
         <tr>
             <th>ID</th>
             <th>标题</th>
-            <th>作者</th>
             <th>时间</th>
+            <th>操作</th>
         </tr>
         </thead>
         <tbody>
 
-        {% for post in posts.items %}
+        {% for post in pagination.items %}
         {% include 'post.html' %}
         {% endfor %}
 
         </tbody>
     </table>
+{% from "page.html" import render_pagination with context %}
 
-<div class="row">
-    <div class="col-md-6 col-md-offset-3 text-center">
-        <nav>
-            <ul class="pagination">
-                <li class="disabled"><a href="#">«</a></li>
-                <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">»</a></li>
-            </ul>
-        </nav>
-    </div>
-</div>
+{{ render_pagination(pagination, 'member_post_list') }}
 
-<!-- posts is a Paginate object -->
-
-{% if posts.has_prev %}
-<a href="{{ url_for('user', nickname = user.nickname, page = posts.prev_num) }}">上一页</a>
-{% else %}
-<span>上一页</span>
-{% endif %} |
-{% if posts.has_next %}
-<a href="{{ url_for('user', nickname = user.nickname, page = posts.next_num) }}">下一页</a>
-{% else %}
-<span>下一页</span>
-{% endif %}
 
 {% endblock %}

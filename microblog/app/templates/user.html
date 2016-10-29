@@ -22,10 +22,21 @@
     </tr>
 </table>
 <hr>
-<!-- posts is a Paginate object -->
-{% for post in posts.items %}
-{% include 'post.html' %}
+
+{% for post in pagination.items %}
+
+<div class="jumbotron">
+    <h1>{{post.title}}</h1>
+    <p>{{post.body}}</p>
+    <p><a class="btn btn-primary btn-lg" href="#" role="button">more</a></p>
+</div>
+
 {% endfor %}
-{% if posts.has_prev %}<a href="{{ url_for('user', nickname = user.nickname, page = posts.prev_num) }}"><< Newer posts</a>{% else %}<< Newer posts{% endif %} |
-{% if posts.has_next %}<a href="{{ url_for('user', nickname = user.nickname, page = posts.next_num) }}">Older posts >></a>{% else %}Older posts >>{% endif %}
+
+{% from "page.html" import render_pagination with context %}
+
+{{ render_pagination(pagination, 'user',path) }}
+
+
+
 {% endblock %}

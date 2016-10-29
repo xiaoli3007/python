@@ -2,12 +2,21 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Hi, {{g.user.nickname}}!</h1>
 
-<!-- posts is a Paginate object -->
-{% for post in posts.items %}
-{% include 'post.html' %}
+{% for post in pagination.items %}
+
+<div class="jumbotron">
+    <h1>{{post.title}}</h1>
+    <p>{{post.body}}</p>
+    <p><a class="btn btn-primary btn-lg" href="#" role="button">more</a></p>
+</div>
+
 {% endfor %}
-{% if posts.has_prev %}<a href="{{ url_for('index', page = posts.prev_num) }}"><< Newer posts</a>{% else %}<< Newer posts{% endif %} |
-{% if posts.has_next %}<a href="{{ url_for('index', page = posts.next_num) }}">Older posts >></a>{% else %}Older posts >>{% endif %}
+
+{% from "page.html" import render_pagination with context %}
+
+{{ render_pagination(pagination, 'index') }}
+
+
+
 {% endblock %}

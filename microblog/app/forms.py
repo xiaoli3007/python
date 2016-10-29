@@ -1,15 +1,16 @@
+#coding=utf-8
 from flask_wtf import FlaskForm
 from wtforms import TextField, BooleanField, TextAreaField,StringField,PasswordField
 from wtforms.validators import Required, Length,DataRequired, Email,EqualTo
 from app.models import User
 from app.util import Unique
-
+from string import sting_utf8
 class RegForm(FlaskForm):
-    email = StringField('email', validators = [DataRequired(), Email('邮箱格式不对！'),
+    email = StringField('email', validators = [DataRequired(), Email(sting_utf8('邮箱格式不对！')),
                                                Unique(
                                                        User,
                                                        User.email,
-                                                       message='重复的邮箱地址')
+                                                       message=sting_utf8('重复的邮箱地址'))
                                                ])
     #password = StringField('password', validators = [DataRequired()])
     password = PasswordField('password', [
@@ -30,7 +31,7 @@ class EditForm(FlaskForm):
                                              Unique(
                                                      User,
                                                      User.nickname,
-                                                     message='重复的昵称')])
+                                                     message=sting_utf8('重复的昵称'))])
 '''
     def __init__(self, original_nickname, *args, **kwargs):
         FlaskForm.__init__(self, *args, **kwargs)
@@ -58,4 +59,6 @@ class EditForm(FlaskForm):
                     return False
  '''
 class PostForm(FlaskForm):
-    post = StringField('post', validators=[DataRequired()])
+
+    title = StringField('title', validators=[DataRequired()])
+    body = TextAreaField('body', validators=[DataRequired()])
