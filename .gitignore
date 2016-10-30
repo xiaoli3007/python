@@ -1,3 +1,5 @@
 microblog/flask
 microblog/app/static/ueditor/php/upload
 microblog/uploads
+microblog/app/static/uploads/
+microblog/tmp/
