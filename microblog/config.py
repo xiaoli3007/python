@@ -20,6 +20,10 @@ SQLALCHEMY_DATABASE_URI = 'mysql://root:123123@localhost/mircoblog'
 SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
 
 
+UPLOAD_FOLDER = 'E:\python_project\microblog\uploads\/'
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+
+
 # mail server settings
 MAIL_SERVER = 'smtp.163.com'
 MAIL_PORT = 25

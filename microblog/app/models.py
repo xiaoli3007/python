@@ -1,8 +1,9 @@
 #coding=utf-8
-from app import bcrypt, db
+from app import  bcrypt, db
 from hashlib import md5
 import re
 from sqlalchemy.ext.hybrid import hybrid_property
+
 
 ROLE_USER = 0
 ROLE_ADMIN = 1
@@ -23,6 +24,7 @@ class User(db.Model):
     email = db.Column(db.String(120), index=True, unique=True)
     posts = db.relationship('Post', backref='author', lazy='dynamic')
     about_me = db.Column(db.String(140))
+    avatar = db.Column(db.String(120))
     last_seen = db.Column(db.DateTime)
     _password = db.Column(db.String(128))
     email_confirmed = db.Column(db.BOOLEAN, default=False)
@@ -58,8 +60,8 @@ class User(db.Model):
     def get_id(self):
         return str(self.id)
 
-    def avatar(self, size):
-        return 'http://www.gravatar.com/avatar/' + md5(self.email.encode('utf-8')).hexdigest() + '?d=mm&s=' + str(size)
+    def avatars(self):
+        return 'uploads/' + self.avatar.encode('utf-8')
 
     # ...用户昵称的重复处理
     @staticmethod
@@ -106,4 +108,3 @@ class Post(db.Model):
     body = db.Column(db.Text)
     timestamp = db.Column(db.DateTime)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-

@@ -1,26 +1,19 @@
 #coding=utf-8
-import os
-import unittest
-from datetime import datetime, timedelta
-from config import basedir
+from app import app, db
+from flask_script import Manager
+from flask_migrate import Migrate, MigrateCommand
 
-basedir = os.path.abspath(os.path.dirname(__file__))
 
-print 'sqlite:///' + os.path.join(basedir, 'app.db')
+migrate = Migrate(app, db)
+manager = Manager(app)
+manager.add_command('db', MigrateCommand)
 
-'''
-class TestCase(unittest.TestCase):
-    def setUp(self):
-        pass
 
-    def tearDown(self):
-        pass
 
-    def mysql_test(self):
-
-        assert 1 == 1
-
+class Post44(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(255))
+    description = db.Column(db.String(255))
 
 if __name__ == '__main__':
-    unittest.main()
-'''
+    manager.run()

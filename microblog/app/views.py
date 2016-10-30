@@ -1,5 +1,5 @@
 #coding=utf-8
-from flask import render_template, flash, redirect, session, url_for, request, g, make_response
+from flask import render_template, flash, redirect, session, url_for, request, g, make_response ,send_from_directory
 from flask_login import login_user, logout_user, current_user, login_required
 from app import app, db, lm, oid
 from app.forms import LoginForm, EditForm,PostForm,RegForm
@@ -13,6 +13,8 @@ from app.security import ts
 from string import sting_utf8
 import os, json, re
 from uploader import Uploader
+
+from werkzeug.utils import secure_filename
 
 # pagination
 POSTS_PER_PAGE = 5
@@ -225,14 +227,54 @@ def member_post():
         return redirect(url_for('member_post_list'))
     return render_template('member_post.html', user=user, form = form)
 
+
+@app.route('/post_edit/<int:id>', methods=['GET', 'POST'])
+@login_required
+def post_edit(id):
+    form = PostForm()
+    detail = Post.query.filter_by(id=id).first_or_404()
+    if form.validate_on_submit():
+        #post = Post( title=form.title.data, body=form.body.data, timestamp=datetime.utcnow(), author=g.user)
+        #Post.query.filter(Post.id == detail.id).update(post)
+        detail.title = form.title.data
+        detail.body = form.body.data
+        detail.author = g.user
+        db.session.add(detail)
+        db.session.commit()
+        flash('Your post is now live!')
+        return redirect(url_for('member_post_list'))
+    else:
+        form.title.data = detail.title
+        form.body.data = detail.body
+    return render_template('member_post_edit.html', user=user, form = form)
+
+
+@app.route('/post_delete/<int:id>', methods=['GET'])
+@login_required
+def post_delete(id):
+    detail = Post.query.filter_by(id=id).first_or_404()
+    if detail is None:
+        redirect(url_for('member_post_list'))
+    else:
+        db.session.delete(detail)
+        db.session.commit()
+    flash(detail.title+'delete success!')
+    return redirect(url_for('member_post_list'))
+
+
 @app.route('/edit', methods=['GET', 'POST'])
 @login_required
 def edit():
     #form = EditForm(g.user.nickname)
     form = EditForm()
     if form.validate_on_submit():
+
+        filename = secure_filename(form.avatar.data.filename)
+        form.avatar.data.save(app.config['UPLOAD_FOLDER'] + filename)
+
         g.user.nickname = form.nickname.data
         g.user.about_me = form.about_me.data
+        g.user.avatar = filename
         # g.user.nickname = User.make_unique_nickname(form.nickname.data)
         db.session.add(g.user)
         db.session.commit()
@@ -402,6 +444,11 @@ def upload():
     res.headers['Access-Control-Allow-Origin'] = '*'
     res.headers['Access-Control-Allow-Headers'] = 'X-Requested-With,X_Requested_With'
     return res
+
+@app.route('/uploads/<filename>', methods=['GET', 'POST'])
+def uploads(filename):
+    # flash(send_from_directory(app.config['UPLOAD_FOLDER'],filename))
+    return send_from_directory(app.config['UPLOAD_FOLDER'],filename, as_attachment=True)
 
 @app.errorhandler(404)
 def internal_error(error):
