@@ -2,7 +2,7 @@
 from flask import render_template, flash, redirect, session, url_for, request, g, make_response ,send_from_directory
 from flask_login import login_user, logout_user, current_user, login_required
 from app import app, db, lm, oid
-from app.forms import LoginForm, EditForm,PostForm,RegForm
+from app.forms import LoginForm, EditForm,PostForm,RegForm,SearchForm
 
 from app.models import User, ROLE_USER, ROLE_ADMIN,Post
 from datetime import datetime
@@ -30,6 +30,7 @@ def before_request():
         g.user.last_seen = datetime.utcnow()
         db.session.add(g.user)
         db.session.commit()
+        g.search_form = SearchForm()
 
 #请求后的数据库分析
 @app.after_request
@@ -44,11 +45,28 @@ def after_request(response):
 @app.route('/index/<int:page>', methods = ['GET', 'POST'])
 @login_required
 def index(page = 1):
-    #posts = g.user.followed_posts().paginate(page, POSTS_PER_PAGE, False).items
-    pagination = Post.query.order_by(Post.timestamp.desc()).paginate(page, POSTS_PER_PAGE, False)
+    pagination = g.user.followed_posts().paginate(page, POSTS_PER_PAGE, False)
+    #pagination = Post.query.order_by(Post.timestamp.desc()).paginate(page, POSTS_PER_PAGE, False)
     return render_template('index.html',
                            title = 'Home',
                            pagination = pagination)
+
+@app.route('/search', methods = ['POST'])
+@login_required
+def search():
+    if not g.search_form.validate_on_submit():
+        return redirect(url_for('index'))
+    return redirect(url_for('search_results', query = g.search_form.search.data))
+
+@app.route('/search_results/<query>', methods=['GET'])
+@login_required
+def search_results(query):
+    flash(query)
+    results = Post.query.whoosh_search(query, 50).all()
+    flash(results)
+    return render_template('search_results.html',
+                           query = query,
+                           results = results)
 
 @app.route('/login', methods = ['GET', 'POST'])
 @oid.loginhandler
@@ -246,7 +264,7 @@ def post_edit(id):
     else:
         form.title.data = detail.title
         form.body.data = detail.body
-    return render_template('member_post_edit.html', user=user, form = form)
+    return render_template('member_post.html', user=user, form = form)
 
 
 @app.route('/post_delete/<int:id>', methods=['GET'])
@@ -303,7 +321,7 @@ def follow(nickname):
     db.session.commit()
     flash('You are now following ' + nickname + '!')
     # ...
-    follower_notification(user, g.user)
+    #follower_notification(user, g.user)
     return redirect(url_for('user', nickname=nickname))
 
 @app.route('/unfollow/<nickname>')

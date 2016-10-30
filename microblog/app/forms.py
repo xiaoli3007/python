@@ -6,6 +6,9 @@ from app.models import User
 from app.util import Unique
 from string import sting_utf8
 
+class SearchForm(FlaskForm):
+    search = StringField('search', validators=[DataRequired()])
+
 class RegForm(FlaskForm):
     email = StringField('email', validators = [DataRequired(), Email(sting_utf8('邮箱格式不对！')),
                                                Unique(

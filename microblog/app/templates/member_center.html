@@ -16,7 +16,7 @@
     <div class="col-md-10">
     {% block member_content %}
 
-        <div class="col-md-2"> <img src="{{user.avatars()}}" width="100"> </div>
+        <div class="col-md-2"> <img src="{{user.get_avatar()}}" width="100"> </div>
         <div class="col-md-10">
         <h1>用户名: {{user.nickname}}</h1>
                 {% if user.about_me %}<p>{{user.about_me}}</p>{% endif %}

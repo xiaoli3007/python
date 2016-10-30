@@ -1,9 +1,11 @@
 #coding=utf-8
-from app import  bcrypt, db
+from app import app, bcrypt, db
 from hashlib import md5
 import re
 from sqlalchemy.ext.hybrid import hybrid_property
 
+enable_search = True
+import flask_whooshalchemy as whooshalchemy
 
 ROLE_USER = 0
 ROLE_ADMIN = 1
@@ -60,8 +62,11 @@ class User(db.Model):
     def get_id(self):
         return str(self.id)
 
-    def avatars(self):
-        return 'uploads/' + self.avatar.encode('utf-8')
+    def get_avatar(self):
+        if self.avatar is None:
+            return  ''
+        else:
+            return '/uploads/' + self.avatar.encode('utf-8')
 
     # ...用户昵称的重复处理
     @staticmethod
@@ -102,9 +107,14 @@ class User(db.Model):
 
 
 class Post(db.Model):
+    __tablename__ = 'post'
+    __searchable__ = ['title', 'body']
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(255))
     description = db.Column(db.String(255))
     body = db.Column(db.Text)
     timestamp = db.Column(db.DateTime)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+if enable_search:
+    whooshalchemy.whoosh_index(app, Post)
