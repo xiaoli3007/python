@@ -1,5 +1,5 @@
 #coding=utf-8
-from flask import render_template, flash, redirect, session, url_for, request, g
+from flask import render_template, flash, redirect, session, url_for, request, g, make_response
 from flask_login import login_user, logout_user, current_user, login_required
 from app import app, db, lm, oid
 from app.forms import LoginForm, EditForm,PostForm,RegForm
@@ -11,6 +11,9 @@ from flask_sqlalchemy import get_debug_queries
 from config import DATABASE_QUERY_TIMEOUT
 from app.security import ts
 from string import sting_utf8
+import os, json, re
+from uploader import Uploader
+
 # pagination
 POSTS_PER_PAGE = 5
 
@@ -125,8 +128,10 @@ def reg():
 def test():
     #pagination = user.posts.order_by(Post.timestamp.desc()).paginate(page, POSTS_PER_PAGE, False)
     kwargs = {"nickname": "dddd","aaa": "ffff"}
-    flash(request.path)
-    return render_template('test.html', kwargs=kwargs)
+    path = {'nickname': '286895933'};
+    page = 2
+    path['page'] = page
+    return render_template('test.html', kwargs=kwargs, path=path, page=page)
 
 #邮箱确认
 @app.route('/confirm/<token>')
@@ -158,8 +163,7 @@ def user(nickname, page=1):
     if user is None:
         flash('User %s not found.' % nickname)
         return redirect(url_for('index'))
-    flash(request.path)
-    path = "nickname = "+user.nickname
+    path = {'nickname': user.nickname}
     pagination = user.posts.order_by(Post.timestamp.desc()).paginate(page, POSTS_PER_PAGE, False)
     return render_template('user.html',
                            user=user,
@@ -188,12 +192,21 @@ def member_post_list(page=1):
     # 从get方法中取得页码
     #page = request.args.get('page', 1, type=int)
     #flash(page)
-    pagination = user.posts.paginate(page, POSTS_PER_PAGE, False)
+    pagination = user.posts.order_by(Post.timestamp.desc()).paginate(page, POSTS_PER_PAGE, False)
     # 获取pagination对象
     #pagination = Post.query.order_by(Post.timestamp.desc()).paginate(page, per_page=5, error_out=False)
     return render_template('member_post_list.html',
                            user=user,
                            pagination=pagination
+                           )
+
+@app.route('/post_detail', methods=['GET', 'POST'])
+@app.route('/post_detail/<int:id>')
+def post_detail(id):
+    # 从get方法中取得页码
+    detail = Post.query.filter_by(id=id).first_or_404()
+    return render_template('post_detail.html',
+                           detail=detail
                            )
 
 @app.route('/member_post', methods=['GET', 'POST'])
@@ -269,6 +282,126 @@ def unfollow(nickname):
     db.session.commit()
     flash('You have stopped following ' + nickname + '.')
     return redirect(url_for('user', nickname=nickname))
+
+@app.route('/upload/', methods=['GET', 'POST', 'OPTIONS'])
+def upload():
+    """UEditor文件上传接口
+
+    config 配置文件
+    result 返回结果
+    """
+    mimetype = 'application/json'
+    result = {}
+    action = request.args.get('action')
+
+    # 解析JSON格式的配置文件
+    with open(os.path.join(app.static_folder, 'ueditor', 'php',
+                           'config.json')) as fp:
+        try:
+            # 删除 `/**/` 之间的注释
+            CONFIG = json.loads(re.sub(r'\/\*.*\*\/', '', fp.read()))
+        except:
+            CONFIG = {}
+
+    if action == 'config':
+        # 初始化时，返回配置文件给客户端
+        result = CONFIG
+
+    elif action in ('uploadimage', 'uploadfile', 'uploadvideo'):
+        # 图片、文件、视频上传
+        if action == 'uploadimage':
+            fieldName = CONFIG.get('imageFieldName')
+            config = {
+                "pathFormat": CONFIG['imagePathFormat'],
+                "maxSize": CONFIG['imageMaxSize'],
+                "allowFiles": CONFIG['imageAllowFiles']
+            }
+        elif action == 'uploadvideo':
+            fieldName = CONFIG.get('videoFieldName')
+            config = {
+                "pathFormat": CONFIG['videoPathFormat'],
+                "maxSize": CONFIG['videoMaxSize'],
+                "allowFiles": CONFIG['videoAllowFiles']
+            }
+        else:
+            fieldName = CONFIG.get('fileFieldName')
+            config = {
+                "pathFormat": CONFIG['filePathFormat'],
+                "maxSize": CONFIG['fileMaxSize'],
+                "allowFiles": CONFIG['fileAllowFiles']
+            }
+
+        if fieldName in request.files:
+            field = request.files[fieldName]
+            uploader = Uploader(field, config, app.static_folder)
+            result = uploader.getFileInfo()
+        else:
+            result['state'] = '上传接口出错'
+
+    elif action in ('uploadscrawl'):
+        # 涂鸦上传
+        fieldName = CONFIG.get('scrawlFieldName')
+        config = {
+            "pathFormat": CONFIG.get('scrawlPathFormat'),
+            "maxSize": CONFIG.get('scrawlMaxSize'),
+            "allowFiles": CONFIG.get('scrawlAllowFiles'),
+            "oriName": "scrawl.png"
+        }
+        if fieldName in request.form:
+            field = request.form[fieldName]
+            uploader = Uploader(field, config, app.static_folder, 'base64')
+            result = uploader.getFileInfo()
+        else:
+            result['state'] = '上传接口出错'
+
+    elif action in ('catchimage'):
+        config = {
+            "pathFormat": CONFIG['catcherPathFormat'],
+            "maxSize": CONFIG['catcherMaxSize'],
+            "allowFiles": CONFIG['catcherAllowFiles'],
+            "oriName": "remote.png"
+        }
+        fieldName = CONFIG['catcherFieldName']
+
+        if fieldName in request.form:
+            # 这里比较奇怪，远程抓图提交的表单名称不是这个
+            source = []
+        elif '%s[]' % fieldName in request.form:
+            # 而是这个
+            source = request.form.getlist('%s[]' % fieldName)
+
+        _list = []
+        for imgurl in source:
+            uploader = Uploader(imgurl, config, app.static_folder, 'remote')
+            info = uploader.getFileInfo()
+            _list.append({
+                'state': info['state'],
+                'url': info['url'],
+                'original': info['original'],
+                'source': imgurl,
+            })
+
+        result['state'] = 'SUCCESS' if len(_list) > 0 else 'ERROR'
+        result['list'] = _list
+
+    else:
+        result['state'] = '请求地址出错'
+
+    result = json.dumps(result)
+
+    if 'callback' in request.args:
+        callback = request.args.get('callback')
+        if re.match(r'^[\w_]+$', callback):
+            result = '%s(%s)' % (callback, result)
+            mimetype = 'application/javascript'
+        else:
+            result = json.dumps({'state': 'callback参数不合法'})
+
+    res = make_response(result)
+    res.mimetype = mimetype
+    res.headers['Access-Control-Allow-Origin'] = '*'
+    res.headers['Access-Control-Allow-Headers'] = 'X-Requested-With,X_Requested_With'
+    return res
 
 @app.errorhandler(404)
 def internal_error(error):

@@ -6,7 +6,10 @@
                 {% if pagination.has_prev %}
 
                 {% if path!='' %}
-                <li><a href="{{ url_for(endpoint, path, page = pagination.prev_num) }}">«</a></li>
+
+                {% set values = dict({'page': pagination.prev_num}, **path) %}
+
+                <li><a href="{{ url_for(endpoint, **values) }}">«</a></li>
                 {% else %}
                 <li><a href="{{ url_for(endpoint, page = pagination.prev_num) }}">«</a></li>
                 {% endif %}
@@ -20,7 +23,8 @@
     {% if page != pagination.page %}
 
                 {% if path!='' %}
-                <li><a href="{{ url_for(endpoint, path, page=page) }}">{{ page }}</a></li>
+                {% set values = dict({'page': page}, **path) %}
+                <li><a href="{{ url_for(endpoint, **values) }}">{{ page }}</a></li>
                 {% else %}
                 <li><a href="{{ url_for(endpoint, page=page) }}">{{ page }}</a></li>
                 {% endif %}
@@ -36,9 +40,10 @@
                 {% if pagination.has_next %}
 
                 {% if path!='' %}
-                <li><a href="{{ url_for(endpoint, path, page = pagination.has_next) }}">»</a></li>
+                {% set values = dict({'page': pagination.next_num}, **path) %}
+                <li><a href="{{ url_for(endpoint, **values) }}">»</a></li>
                 {% else %}
-                <li><a href="{{ url_for(endpoint, page = pagination.has_next) }}">»</a></li>
+                <li><a href="{{ url_for(endpoint, page = pagination.next_num) }}">»</a></li>
                 {% endif %}
 
 

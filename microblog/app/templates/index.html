@@ -5,11 +5,7 @@
 
 {% for post in pagination.items %}
 
-<div class="jumbotron">
-    <h1>{{post.title}}</h1>
-    <p>{{post.body}}</p>
-    <p><a class="btn btn-primary btn-lg" href="#" role="button">more</a></p>
-</div>
+{% include 'post_index.html' %}
 
 {% endfor %}
 

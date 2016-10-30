@@ -10,9 +10,7 @@
             {% if user.about_me %}<p>{{user.about_me}}</p>{% endif %}
             {% if user.last_seen %}<p><i>Last seen on: {{user.last_seen}}</i></p>{% endif %}
             <p>{{user.followers.count()}} followers |
-                {% if user.id == g.user.id %}
-                <a href="{{url_for('edit')}}">Edit your profile</a>
-                {% elif not g.user.is_following(user) %}
+                {% if not g.user.is_following(user) %}
                 <a href="{{url_for('follow', nickname = user.nickname)}}">Follow</a>
                 {% else %}
                 <a href="{{url_for('unfollow', nickname = user.nickname)}}">Unfollow</a>
@@ -25,11 +23,7 @@
 
 {% for post in pagination.items %}
 
-<div class="jumbotron">
-    <h1>{{post.title}}</h1>
-    <p>{{post.body}}</p>
-    <p><a class="btn btn-primary btn-lg" href="#" role="button">more</a></p>
-</div>
+{% include 'post_index.html' %}
 
 {% endfor %}
 
