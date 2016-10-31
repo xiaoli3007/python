@@ -25,8 +25,8 @@
       <file leaf-file-name="uwsgi.ini" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/uwsgi.ini">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.48152867">
-              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.42802548">
+              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -854,12 +854,12 @@
       <workItem from="1477742056136" duration="10351000" />
       <workItem from="1477790091322" duration="33234000" />
       <workItem from="1477904879404" duration="6271000" />
-      <workItem from="1477917218354" duration="335000" />
+      <workItem from="1477917218354" duration="1021000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="143366000" />
+    <option name="totallyTimeSpent" value="144052000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1270,8 +1270,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/uwsgi.ini">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48152867">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.42802548">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding />
         </state>
       </provider>
