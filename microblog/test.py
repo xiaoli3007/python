@@ -2,14 +2,9 @@
 import os
 import unittest
 from datetime import datetime, timedelta
-
 from config import basedir
-from app import app, db,views
+from app import app, db
 from app.models import User, Post
-from app.security import ts
-from flask import render_template, url_for
-from app.emails import follower_notification,send_email
-
 class TestCase(unittest.TestCase):
     def setUp(self):
         app.config['TESTING'] = True
@@ -25,24 +20,6 @@ class TestCase(unittest.TestCase):
 
         assert 1 == 1
 
-    '''
-    def test_send_email(self):
-        # 发送邮件
-        subject = "确认你的邮箱"
-        u = User(nickname='john', email='286895933@qq.com')
-        token = ts.dumps(u.email, salt='email-confirm-key')
-
-        confirm_url = url_for(
-                'confirm',
-                token=token,
-                _external=True)
-
-        html = render_template(
-                'email_confirm.html',
-                confirm_url=confirm_url)
-
-        assert send_email(subject, '', [u.email], '', html)
-    '''
     def test_avatar(self):
         # create a user
         u = User(nickname = 'john', email = 'john@example.com')

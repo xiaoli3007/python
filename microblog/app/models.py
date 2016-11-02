@@ -29,7 +29,7 @@ class User(db.Model):
     avatar = db.Column(db.String(120))
     last_seen = db.Column(db.DateTime)
     _password = db.Column(db.String(128))
-    email_confirmed = db.Column(db.BOOLEAN, default=False)
+    email_confirmed = db.Column(db.SmallInteger, default=0)
     @hybrid_property
     def password(self):
         return self._password
@@ -115,6 +115,19 @@ class Post(db.Model):
     body = db.Column(db.Text)
     timestamp = db.Column(db.DateTime)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+class Photo(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    title = db.Column(db.String(255))
+    description = db.Column(db.String(255))
+    body = db.Column(db.Text)
+    timestamp = db.Column(db.DateTime)
+    photodatas = db.relationship('PhotoData', backref='author', lazy='dynamic')
+
+class PhotoData(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    thumb = db.Column(db.String(255))
+    photo_id = db.Column(db.Integer, db.ForeignKey('photo.id'))
 
 if enable_search:
     whooshalchemy.whoosh_index(app, Post)
