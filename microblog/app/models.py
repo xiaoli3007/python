@@ -127,6 +127,7 @@ class Photo(db.Model):
 class PhotoData(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     thumb = db.Column(db.String(255))
+    filepath = db.Column(db.String(255))
     photo_id = db.Column(db.Integer, db.ForeignKey('photo.id'))
 
 if enable_search:
