@@ -8,17 +8,21 @@ import xml.dom.minidom
 from app.stringfiler import  fliter_html,replaceCharEntity
 from app.string import  sting_utf82
 import json
+from pillow_image import IsValidImage
 
 class TestCase(unittest.TestCase):
     def setUp(self):
         app.config['TESTING'] = True
         app.config['CSRF_ENABLED'] = False
-        app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:123123@localhost/test'
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:123123@localhost/test2'
         db.create_all()
 
     def tearDown(self):
         db.session.remove()
         #db.drop_all()
+    def imageTest(self):
+        file ="E:\python_project\microblog\uploads2\photo5\\7b6caebf488be798eb483629eb2a11a2.jpg"
+        assert IsValidImage(file)
 
     def mysql_test(self):
         # 使用minidom解析器打开 XML 文档
@@ -64,7 +68,7 @@ class TestCase(unittest.TestCase):
             db.session.commit()
             num = num+1
 
-
+'''
     def test_make_user(self):
         # create a user and write it to the database
         u = Photo(title = '1111', timestamp = datetime.utcnow() + timedelta(seconds=1))
@@ -72,7 +76,7 @@ class TestCase(unittest.TestCase):
         u2 = PhotoData(thumb='aaaaaaaaaaaaaa.jpg', author=u)
         db.session.add(u2)
         db.session.commit()
-
+'''
 
 if __name__ == '__main__':
     unittest.main()
