@@ -11,11 +11,18 @@ Modifications   :
 Description     : 网站爬取图片
 '''
 import os
+import Queue
 import urllib2,cookielib,requests
 import threading
 from bs4 import BeautifulSoup
 import re
 from config import basedir
+from app.stringfiler import  fliter_n_r
+from work_test6 import worker
+from app.string import  sting_utf82
+import sys
+
+
 """
 Description    : 将网页图片保存本地
 @param imgUrl  : 待保存图片URL
@@ -90,6 +97,18 @@ def getfilelist(pageUrl):
     #        filelist.append(photo.get('data-original'))
     return filelist
 
+"""
+Description    : 获取图片标题
+@param pageUrl : 网页URL
+@return : 图片标题
+"""
+
+def getfiletitle(pageUrl):
+    web = requests.get(pageUrl)
+    soup = BeautifulSoup(web.text)
+    title= soup.title.string
+    return fliter_n_r(title)
+
 def getweblist(webUrl):
     web = requests.get(webUrl)
     soup = BeautifulSoup(web.text)
@@ -102,10 +121,33 @@ def getweblist(webUrl):
     return weblist
 
 if __name__ == "__main__":
+    reload(sys)
+    sys.setdefaultencoding('utf-8')
+
     webUrl = 'http://shajia3007.lofter.com/'
     singurl = 'http://shajia3007.lofter.com/post/2a928a_cd3b114'
     list = getweblist(webUrl)
-    # downImageViaMutiThread(list)
+    # q = Queue.Queue(len(list))
+    # queueLock = threading.Lock()
+    # worker = worker(q,queueLock)
+    # worker.start()
+    # queueLock.acquire()
+
+    num=1
     for page in list:
+        imagetitle=getfiletitle(page)
         imagelist=getfilelist(page)
-        downImageViaMutiThread(imagelist)
+
+        aaa = imagetitle.strip().encode('utf-8')
+        print(type(aaa))
+        path = os.path.join(basedir, 'uploads3\\')
+        filepath = path + aaa + "\\"
+        os.makedirs(filepath)
+        # yuanzu =(imagetitle,imagelist,num)
+        # q.put(yuanzu, block=True, timeout=None)  # 产生任务消息
+        # num += 1
+        break
+    # queueLock.release()
+    # print("***************leader:等待完成!")
+    # q.join()  # 等待所有任务完成
+    # print("***************leader:所有任务完成!")

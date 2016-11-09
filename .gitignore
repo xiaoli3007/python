@@ -2,6 +2,7 @@ microblog/flask
 microblog/app/static/ueditor/uploads
 microblog/uploads/*
 microblog/uploads2
+microblog/uploads3
 microblog/app/static/uploads
 microblog/tmp/
 microblog/app.db

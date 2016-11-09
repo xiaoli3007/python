@@ -54,6 +54,10 @@ def fliter_html(html):
     dd = dr.sub('',html)
     return  dd
 
+def fliter_n_r(html):
+    return  html.replace('\t','').replace('\n','').replace(' ','')
+
+
 '''
 if __name__=='__main__':
     s=file('169it.com_index.htm').read()
