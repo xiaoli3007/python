@@ -1,0 +1,35 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row  list-main">
+<div class="col-md-2 text-center"> <img src="{{user.get_avatar()}}"  width="100"></div>
+    <div class="col-md-10">
+            <h1>User: {{user.nickname}}</h1>
+            {% if user.about_me %}<p>{{user.about_me}}</p>{% endif %}
+            {% if user.last_seen %}<p><i>Last seen on: {{user.last_seen}}</i></p>{% endif %}
+            <p>{{user.followers.count()}} followers |
+                {% if not g.user.is_following(user) %}
+                <a href="{{url_for('member.follow', nickname = user.nickname)}}">Follow</a>
+                {% else %}
+                <a href="{{url_for('member.unfollow', nickname = user.nickname)}}">Unfollow</a>
+                {% endif %}
+            </p>
+
+</div>
+</div>
+<hr>
+
+{% for post in pagination.items %}
+
+{% include 'content/post_index.html' %}
+
+{% endfor %}
+
+{% from "page.html" import render_pagination with context %}
+
+{{ render_pagination(pagination, 'user',path) }}
+
+
+
+{% endblock %}

@@ -53,12 +53,13 @@
             <ul class="nav navbar-nav navbar-right">
 
               {% if g.user.is_authenticated %}
-              {{ nav_link('member_center', '个人中心') }}
-              {{ nav_link('logout', '退出') }}
+              {{ nav_link('member.index', '关注博文') }}
+              {{ nav_link('member.member_center', '个人中心') }}
+              {{ nav_link('member.logout', '退出') }}
               <li><a href="{{ url_for('user', nickname = g.user.nickname) }}">主页</a></li>
               {% else %}
-              {{ nav_link('login', '登录') }}
-              {{ nav_link('reg', '注册') }}
+              {{ nav_link('member.login', '登录') }}
+              {{ nav_link('member.reg', '注册') }}
               {% endif %}
 
 

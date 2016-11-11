@@ -16,8 +16,8 @@ OPENID_PROVIDERS = [
     { 'name': 'MyOpenID', 'url': 'https://www.myopenid.com' }]
 
 #SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
-#SQLALCHEMY_DATABASE_URI = 'mysql://root:123123@localhost/mircoblog'
-SQLALCHEMY_DATABASE_URI = 'mysql://root:123123@localhost/test2'
+SQLALCHEMY_DATABASE_URI = 'mysql://root:123123@localhost/mircoblog'
+#SQLALCHEMY_DATABASE_URI = 'mysql://root:123123@localhost/test2'
 SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
 
 

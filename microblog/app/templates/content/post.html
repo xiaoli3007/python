@@ -1,0 +1,8 @@
+
+    <tr valign="top">
+        <td>{{post.id}}</td>
+        <td><a href="{{ url_for('post_detail',id = post.id) }}" target="_blank">{{post.title}}</a> </td>
+        <td>{{post.timestamp}}</td>
+        <td><a href="{{ url_for('member.post_edit',id = post.id) }}">修改 </a> | <a href="{{ url_for('member.post_delete',id = post.id) }}">删除 </a> </td>
+    </tr>
+
