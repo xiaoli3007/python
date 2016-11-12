@@ -5,7 +5,7 @@ import urllib2
 import os
 from app import db
 from app.common.string import md5
-from app.models.models import PhotoData
+from app.models import PhotoData
 from config import basedir
 from pillow_image import IsValidImage
 

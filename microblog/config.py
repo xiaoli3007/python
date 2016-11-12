@@ -31,8 +31,8 @@ MAIL_SERVER = 'smtp.163.com'
 MAIL_PORT = 25
 #MAIL_USE_TLS = False
 #MAIL_USE_SSL = True
-MAIL_USERNAME = 'xiaoli3007'
-MAIL_PASSWORD = 'sunli83021726'
+MAIL_USERNAME = 'xiaoli'
+MAIL_PASSWORD = 'sunli'
 
 # administrator list
 ADMINS = ['xiaoli3007@163.com']

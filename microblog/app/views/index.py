@@ -35,6 +35,7 @@ def after_request(response):
     return response
 
 @app.route('/', methods=['GET', 'POST'])
+@app.route('/index', methods=['GET', 'POST'])
 @app.route('/index/<int:page>', methods = ['GET'])
 def index(page = 1):
     #pagination = g.user.followed_posts().paginate(page, POSTS_PER_PAGE, False)

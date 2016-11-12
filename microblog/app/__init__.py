@@ -33,8 +33,6 @@ if not app.debug:
 
 
 
-#from app.views import views
-
 from app.views import index
 from app.views import member
 app.register_blueprint(member.mod)
@@ -44,3 +42,4 @@ from app.models import user,photo
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
+    # app.run(host='192.168.1.103', port=5000, debug=True)

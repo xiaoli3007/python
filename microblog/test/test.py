@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 
 import os
 from app import app, db
-from app.models.models import User, Post
+from app.models import User, Post
 from config import basedir
 
 

@@ -16,3 +16,4 @@ class PhotoData(db.Model):
     thumb = db.Column(db.String(255))
     filepath = db.Column(db.String(255))
     photo_id = db.Column(db.Integer, db.ForeignKey('photo.id'))
+

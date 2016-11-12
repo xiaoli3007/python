@@ -5,7 +5,7 @@ import xml.dom.minidom
 
 from app import app, db
 from app.common.stringfiler import replaceCharEntity
-from app.models.models import Photo,PhotoData
+from app.models import Photo,PhotoData
 from pillow_image import IsValidImage
 
 

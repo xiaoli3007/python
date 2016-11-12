@@ -83,7 +83,7 @@ def reg():
                 'member/email_confirm.html',
                 confirm_url=confirm_url)
 
-        send_email(subject, '', [newuser.email], txt, html)
+        #send_email(subject, '', [newuser.email], txt, html)
 
         remember_me = False
         if 'remember_me' in session:

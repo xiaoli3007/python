@@ -5,7 +5,7 @@ import threading
 import time
 
 from app.common.string import sting_utf82
-from app.models.models import Photo,PhotoData
+from app.models import Photo,PhotoData
 from down_images import downimage
 
 exitFlag = 0
