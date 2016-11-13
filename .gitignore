@@ -4,6 +4,8 @@ microblog/uploads/*
 microblog/uploads2
 microblog/uploads3
 microblog/app/static/uploads
+microblog/app/static/uploads2
+microblog/app/static/uploads3
 microblog/tmp/
 microblog/app.db
 microblog/db_repository

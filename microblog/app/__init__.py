@@ -35,7 +35,9 @@ if not app.debug:
 
 from app.views import index
 from app.views import member
+from app.views import find
 app.register_blueprint(member.mod)
+app.register_blueprint(find.mod)
 
 
 from app.models import user,photo
