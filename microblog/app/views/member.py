@@ -42,8 +42,7 @@ def login():
 
     return render_template('member/login.html',
                            title = sting_utf8('登录'),
-                           form = form,
-                           providers = app.config['OPENID_PROVIDERS'])
+                           form = form)
 
 @mod.route('/reg', methods = ['GET', 'POST'])
 def reg():
@@ -95,8 +94,7 @@ def reg():
 
     return render_template('member/reg.html',
                            title = sting_utf8('注册'),
-                           form = form,
-                           providers = app.config['OPENID_PROVIDERS'])
+                           form = form)
 
 #邮箱确认
 @mod.route('/confirm/<token>')
