@@ -2,11 +2,11 @@
 import json
 from datetime import datetime
 from flask import render_template, flash, redirect, session, url_for, request, g, make_response ,send_from_directory
-from flask_login import login_user, logout_user, current_user, login_required
+from flask_login import  current_user
 from flask_sqlalchemy import get_debug_queries
 import os
 import re
-from app import app, db, lm, oid
+from app import app, db
 
 from app.forms import SearchForm
 from app.models import User, Post
@@ -52,9 +52,10 @@ def search():
 
 @app.route('/search_results/<query>', methods=['GET'])
 def search_results(query):
-    flash(query)
-    results = Post.query.whoosh_search(query, 50).all()
-    flash(results)
+    # flash(query)
+    #results = Post.query.whoosh_search(query, 50).all()
+    results = Post.query.filter(Post.title.like("%"+query+"%")).all()
+    # flash(results)
     return render_template('content/search_results.html',
                            query = query,
                            results = results)

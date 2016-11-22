@@ -13,7 +13,7 @@ Description     : 网站爬取图片
 import sys
 
 import requests
-from app.stringfiler import  fliter_n_r
+from app.common.stringfiler import  fliter_n_r
 from bs4 import BeautifulSoup
 
 import os
