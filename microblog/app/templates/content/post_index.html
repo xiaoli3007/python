@@ -1,0 +1,7 @@
+
+<div class="jumbotron">
+    <h1>{{post.title}}</h1>
+    <p class="div715">{{post.body | safe }}</p>
+    <p><a class="btn btn-primary btn-lg" href="{{ url_for('post_detail',id = post.id) }}" role="button">more</a></p>
+</div>
+

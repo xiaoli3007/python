@@ -1,17 +1,17 @@
 #coding=utf-8
-import os
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_openid import OpenID
-from config import basedir, ADMINS, MAIL_SERVER, MAIL_PORT, MAIL_USERNAME, MAIL_PASSWORD
+from flask_sqlalchemy import SQLAlchemy
+import os
+from config import basedir
 
 app = Flask(__name__)
 app.config.from_object('config')
 db = SQLAlchemy(app, use_native_unicode="utf8")
 lm = LoginManager()
 lm.init_app(app)
-lm.login_view = 'login'
+lm.login_view = 'member.login'
 oid = OpenID(app, os.path.join(basedir, 'tmp'))
 
 from flask_bcrypt import Bcrypt
@@ -31,7 +31,17 @@ if not app.debug:
     app.logger.addHandler(file_handler)
     app.logger.info('microblog startup')
 
-from app import views, models
+
+
+from app.views import index
+from app.views import member
+from app.views import find
+app.register_blueprint(member.mod)
+app.register_blueprint(find.mod)
+
+
+from app.models import user,photo
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
+    # app.run(host='192.168.1.103', port=5000, debug=True)

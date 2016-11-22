@@ -1,0 +1,49 @@
+<!-- extend base layout -->
+{% extends "member/member_center.html" %}
+
+{% block member_content %}
+
+
+<form action="" method="post" name="post"  role="form" enctype="multipart/form-data">
+    {{form.hidden_tag()}}
+
+
+    <div class="form-group">
+        <label >头像</label>
+        {{ form.avatar(class="form-control") }}
+
+        {% for error in form.errors.avatar %}
+        <span style="color: red;">[{{error}}]</span>
+        {% endfor %}<br>
+
+    </div>
+
+    <div class="form-group">
+        <label >昵称</label>
+        {{ form.nickname(class="form-control") }}
+
+        {% for error in form.errors.nickname %}
+        <span style="color: red;">[{{error}}]</span>
+        {% endfor %}<br>
+
+    </div>
+
+    <div class="form-group">
+        <label >简介</label>
+        {{ form.about_me(class="form-control") }}
+
+        {% for error in form.errors.about_me %}
+        <span style="color: red;">[{{error}}]</span>
+        {% endfor %}<br>
+
+    </div>
+
+
+
+
+    <p><input type="submit" value="发布" class="btn btn-success"></p>
+
+</form>
+
+
+{% endblock %}
