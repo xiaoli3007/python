@@ -8,12 +8,6 @@ SQLALCHEMY_TRACK_MODIFICATIONS = False
 SQLALCHEMY_RECORD_QUERIES = True #数据库性能分析
 # slow database query threshold (in seconds)
 DATABASE_QUERY_TIMEOUT = 0.5
-OPENID_PROVIDERS = [
-    { 'name': 'Google', 'url': 'https://www.google.com/accounts/o8/id' },
-    { 'name': 'Yahoo', 'url': 'https://me.yahoo.com' },
-    { 'name': 'AOL', 'url': 'http://openid.aol.com/<username>' },
-    { 'name': 'Flickr', 'url': 'http://www.flickr.com/<username>' },
-    { 'name': 'MyOpenID', 'url': 'https://www.myopenid.com' }]
 
 #SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
 SQLALCHEMY_DATABASE_URI = 'mysql://root:123123@localhost/mircoblog'
