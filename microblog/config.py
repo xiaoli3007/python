@@ -15,7 +15,7 @@ SQLALCHEMY_DATABASE_URI = 'mysql://root:123123@localhost/mircoblog'
 SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
 
 
-UPLOAD_FOLDER = os.path.join(basedir, 'uploads\/')
+UPLOAD_FOLDER = os.path.join(basedir, 'uploads/')
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 WHOOSH_BASE = os.path.join(basedir, 'search_db')
