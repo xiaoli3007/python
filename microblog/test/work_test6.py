@@ -7,13 +7,13 @@ import urllib2
 
 import os
 from app.common.string import md5
-from config import basedir
+from testconfig import UPLOAD_FOLDER
 from pillow_image import IsValidImage
 
 
 #队列的列子
 
-class worker(threading.Thread):
+class workers(threading.Thread):
 
     def __init__(self, queue,queueLock):
      threading.Thread.__init__(self)
@@ -30,11 +30,11 @@ class worker(threading.Thread):
                 self.thread_stop = True
                 break
             self.queuelock.acquire()
-            print("task recv:%s ,task No:%s" % (task[0], task[1]))
-            print("我在工作")
+            # print("task recv:%s ,task No:%s" % (task[0], task[1]))
+            print("task title:%s" % (task[0]))
+            print(" %s: 我在工作" % ( self.name))
             for url in task[1]:
-                path = os.path.join(basedir, 'uploads3\\')
-                filepath = path + str(task[2]) + "\\"
+                filepath = UPLOAD_FOLDER + str(task[2]) + "\\"
                 if os.path.exists(filepath) is False:
                     os.makedirs(filepath)
                 name = md5(url) + ".jpg"
