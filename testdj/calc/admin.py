@@ -4,19 +4,22 @@ from models import User,Blog,Photo,PhotoData
 # Register your models here.
 
 
+class BlogInline(admin.TabularInline):
+    model = Blog
+#
+class PhotoInline(admin.TabularInline):
+    model = Photo
+
 class UserAdmin(admin.ModelAdmin):
+    inlines = [BlogInline, PhotoInline]
     list_display = ('name','url','blognums')
 
-class UserInline(admin.TabularInline):
-    model = User
-
 class BlogAdmin(admin.ModelAdmin):
-    inlines = [UserInline]  # Inline
+    search_fields = ('title',)
     list_display = ('title',)
 
 class PhotoAdmin(admin.ModelAdmin):
     search_fields = ('title',)
-    inlines = [UserInline]  # Inline
     list_display = ('title',)
 
 class PhotoDataAdmin(admin.ModelAdmin):
@@ -24,6 +27,6 @@ class PhotoDataAdmin(admin.ModelAdmin):
 
 
 admin.site.register(User, UserAdmin)
-admin.site.register(Blog)
-admin.site.register(Photo)
-admin.site.register(PhotoData)
+admin.site.register(Blog, BlogAdmin)
+admin.site.register(Photo, PhotoAdmin)
+admin.site.register(PhotoData, PhotoDataAdmin)

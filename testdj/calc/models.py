@@ -24,7 +24,7 @@ class Blog(models.Model):
     body = models.TextField(u'内容')
     pub_date = models.DateTimeField('发表时间', auto_now_add=True, editable=True)
     update_time = models.DateField('更新时间', auto_now=True, null=True)
-    test_time = models.DateTimeField('测试时间', default=timezone.now())
+    test_time = models.DateTimeField('测试时间', default=timezone.now)
     user = models.ForeignKey(User)
     def __unicode__(self):
         # 在Python3中使用 def __str__(self)
@@ -40,5 +40,5 @@ class Photo(models.Model):
 
 class PhotoData(models.Model):
     thumb = models.CharField(u'缩略图网址', max_length=255)
-    filepath = models.CharField(u'缩略图网址', max_length=255)
-    photo =  models.ForeignKey(Photo)
+    filepath = models.CharField(u'缩略图网址', max_length=255,null=True)
+    photo = models.ForeignKey(Photo)
