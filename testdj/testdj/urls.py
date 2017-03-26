@@ -17,9 +17,17 @@ from django.conf.urls import url
 from django.contrib import admin
 from . import view
 from calc import views as calc_views
+from django.conf.urls.static import static
+from django.conf import settings
+import os
 urlpatterns = [
-    url(r'^add/$', calc_views.add, name='add'),
     url(r'^admin/', admin.site.urls),
-    url(r'^$', view.index),
 
+    url(r'^add/$', calc_views.add, name='add'),
+    url(r'^home/$', calc_views.home, name='home'),  # new
+    url(r'^get_pic/$', calc_views.get_pic, name='get-pic'),
+    url(r'^$', view.index),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

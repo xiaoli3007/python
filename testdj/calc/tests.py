@@ -7,7 +7,7 @@ from calc.models import Blog, User
 class TestDivision(TestCase):
     def test_insert(self):
 
-        user = User.objects.get(show=1)
+        user = Blog.objects.get(id=1)
         # 方法 1
         # Blog.objects.create(title="zhangsan", description="tuweizhong@163.com", user=user)
         #
