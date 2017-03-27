@@ -22,9 +22,11 @@ from django.conf import settings
 import os
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^home/(\d+)$', calc_views.home, name='home'),  # new
+    url(r'^photo/(\d+)$', calc_views.photo, name='photo'),  # new
 
     url(r'^add/$', calc_views.add, name='add'),
-    url(r'^home/$', calc_views.home, name='home'),  # new
+    url(r'^test2/$', calc_views.test2, name='test2'),  # new
     url(r'^get_pic/$', calc_views.get_pic, name='get-pic'),
     url(r'^$', view.index),
 ]

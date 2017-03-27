@@ -1,18 +1,22 @@
 {% extends "base.html" %}
 
 {% block title %}
-{{ user.name }}的个人空间
+{{ photo.title }}
 {% endblock title %}
 
 
 {% block content %}
-<p> {{ user.name }}的个人空间</p>
-栏目文章列表：
-<ul>
+
+<h1>文章标题： {{ photo.title }}</h1>
+<div id="main">
+
+
     {% for article in column %}
     <li>
-        <a href="{{ article.get_absolute_url }}">{{ article.title }}</a>
+        <img src="/media/photo/{{ user.name }}/{{ photo.id }}/{{ article.filepath }}">
     </li>
     {% endfor %}
-</ul>
+
+
+</div>
 {% endblock content %}

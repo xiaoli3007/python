@@ -11,7 +11,8 @@ class PhotoInline(admin.TabularInline):
     model = Photo
 
 class UserAdmin(admin.ModelAdmin):
-    inlines = [BlogInline, PhotoInline]
+    # inlines = [BlogInline, PhotoInline]
+    fields = ('name', 'url', 'blognums')
     list_display = ('name','url','blognums')
 
 class BlogAdmin(admin.ModelAdmin):

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'testdj',
     'calc',
+    'v9',
 ]
 
 MIDDLEWARE = [
