@@ -10,3 +10,4 @@ microblog/db_repository
 microblog/test/tmp/*
 microblog/test/uploads
 microblog/.idear
+testdj/media

@@ -9,10 +9,28 @@
 <p> {{ user.name }}的个人空间</p>
 栏目文章列表：
 <ul>
-    {% for article in column %}
+    {% for article in column.object_list %}
     <li>
-        <a href="{{ article.get_absolute_url }}">{{ article.title }}</a>
+        <a href="{{ article.get_absolute_url }}" target="_blank" >{{ article.title }}</a>
     </li>
     {% endfor %}
 </ul>
+
+
+{% if column.has_previous %}
+<a   href="{% url 'home' user.id column.previous_page_number %}" title="下一页">上一页</a>
+
+{% endif %}
+
+<span class="current">
+            Page {{ column.number }} of {{ column.paginator.num_pages }}.
+        </span>
+{% if column.has_next %}
+<a href="{% url 'home' user.id column.next_page_number %}" title="下一页">下一页</a>
+;
+{% endif %}
+<!-- 第 {{ userList.number }} 页 共 {{ userList.paginator.num_pages }} 页-->
+
+
+
 {% endblock content %}

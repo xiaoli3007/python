@@ -4,6 +4,7 @@ from django.http import HttpResponse
 import json,os
 from django.conf import settings
 from calc.models import User,PhotoData,Photo
+from django.core.paginator import Paginator,InvalidPage,EmptyPage,PageNotAnInteger
 
 BASE_DIR = settings.BASE_DIR  # 项目目录
 MEDIA_ROOT = settings.MEDIA_ROOT  # 媒体目录
@@ -11,10 +12,30 @@ MEDIA_ROOT = settings.MEDIA_ROOT  # 媒体目录
 
 
 #个人主页
-def home(request,id):
+def home(request,id,page=1):
     user = User.objects.get(id=id)
-    column = Photo.objects.filter(user=user)
-    return render(request, 'calc/home.html', {'column': column, 'user': user})
+    # column = Photo.objects.filter(user=user)
+    page = int(page)
+    pagesize = 30
+    # 以下是另一种方法 未实现
+    # offset = pagesize * (page - 1)
+    # endsize = offset + pagesize
+    # column = Photo.objects.filter(user=user).order_by('-id')[offset:endsize]
+    column = Photo.objects.filter(user=user).order_by('-id')
+    paginator = Paginator(column,pagesize)
+    try:
+        column = paginator.page(page)
+    except (EmptyPage, InvalidPage, PageNotAnInteger):
+        column = paginator.page(1)
+    after_range_num = 5
+    before_range_num = 4
+    # if page >= after_range_num:
+    #     page_range = paginator.page_range[page - after_range_num:page + before_range_num]
+    # else:
+    #     page_range = paginator.page_range[0:page + before_range_num]
+
+    return render(request, 'calc/home.html', {'column': column, 'user': user,  'page': page})
+
 
 #相册详情
 def photo(request,id):

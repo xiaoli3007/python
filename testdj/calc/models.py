@@ -19,7 +19,7 @@ class User(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('home', args=(self.id,))
+        return reverse('home', args=(self.id,1,))
 
     class Meta:
         verbose_name = '用户管理'

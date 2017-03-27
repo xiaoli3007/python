@@ -22,7 +22,7 @@ from django.conf import settings
 import os
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^home/(\d+)$', calc_views.home, name='home'),  # new
+    url(r'^home/(\d+)/([0-9]+)$', calc_views.home, name='home'),  # new
     url(r'^photo/(\d+)$', calc_views.photo, name='photo'),  # new
 
     url(r'^add/$', calc_views.add, name='add'),
