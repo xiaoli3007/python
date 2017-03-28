@@ -48,6 +48,42 @@ def photo(request,id):
 
 
 
+
+#个人主页
+def applist(request):
+    page = request.GET.get('page', 1)
+    pagesize = 30
+    # 以下是另一种方法 未实现
+    # offset = pagesize * (page - 1)
+    # endsize = offset + pagesize
+    # column = Photo.objects.filter(user=user).order_by('-id')[offset:endsize]
+    column = Photo.objects.filter().order_by('-id')
+    paginator = Paginator(column,pagesize)
+    try:
+        column = paginator.page(page)
+    except (EmptyPage, InvalidPage, PageNotAnInteger):
+        column = paginator.page(1)
+
+
+    result_dict_all = []
+
+    for item in column.object_list:
+        p_datas = PhotoData.objects.filter(photo=item).order_by('-id')
+        item_result = []
+        for item_data in p_datas:
+            item_result.append("/media/photo/%s/%d/%s" % (item.user.name, item.id,item_data.filepath) )
+
+        result_dict = dict()
+        result_dict['title'] = item.title.encode('utf-8')
+        result_dict['addtime'] = item.addtime
+        result_dict['item_result'] = item_result
+        result_dict_all.append(result_dict)
+
+    tinydict = {'name': 'john', 'code': 6734, 'dept': 'sales'}
+    return HttpResponse(json.dumps(result_dict_all))
+    # return HttpResponse( json.dumps(result_list), content_type='application/json')
+
+
 def test2(request):
 
     return render(request, 'calc/test2.html')
