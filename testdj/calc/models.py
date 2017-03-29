@@ -28,6 +28,8 @@ class User(models.Model):
 class Blog(models.Model):
     title = models.CharField(u'标题', max_length=255)
     description = models.CharField(u'描述', max_length=255)
+    files = models.FileField('文件上传',  upload_to='uploads/%Y/%m/%d/', default='')
+    imagefiles = models.ImageField('图片上传',  upload_to='uploads/%Y/%m/%d/', default='', height_field=None, width_field=None)
     body = models.TextField(u'内容')
     pub_date = models.DateTimeField('发表时间', auto_now_add=True, editable=True)
     update_time = models.DateField('更新时间', auto_now=True, null=True)
