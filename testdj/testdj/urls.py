@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^home/(\d+)/([0-9]+)$', calc_views.home, name='home'),  # new
     url(r'^photo/(\d+)$', calc_views.photo, name='photo'),  # new
     url(r'^applist/$', calc_views.applist, name='applist'),  # new
+    url(r'^app_photo_show/$', calc_views.app_photo_show, name='app_photo_show'),  # new
 
     url(r'^add/$', calc_views.add, name='add'),
     url(r'^test2/$', calc_views.test2, name='test2'),  # new

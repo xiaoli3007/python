@@ -52,7 +52,7 @@ def photo(request,id):
 #个人主页
 def applist(request):
     page = request.GET.get('page', 1)
-    pagesize = 30
+    pagesize = 5
     # 以下是另一种方法 未实现
     # offset = pagesize * (page - 1)
     # endsize = offset + pagesize
@@ -76,12 +76,52 @@ def applist(request):
         result_dict = dict()
         result_dict['title'] = item.title.encode('utf-8')
         result_dict['addtime'] = item.addtime
+        result_dict['id'] = item.id
         result_dict['item_result'] = item_result
         result_dict_all.append(result_dict)
 
     tinydict = {'name': 'john', 'code': 6734, 'dept': 'sales'}
-    return HttpResponse(json.dumps(result_dict_all))
+
+    callback = request.GET.get('callback', '')
+
+    # result = "%s(%s)" % (callback, json.dumps(result_dict_all))
+    result = "%s" % ( json.dumps(result_dict_all))
+
     # return HttpResponse( json.dumps(result_list), content_type='application/json')
+    # response = HttpResponse(json.dumps({"key": "value", "key2": "value"}))
+    # response["Access-Control-Allow-Origin"] = "*"
+    # response["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS"
+    # response["Access-Control-Max-Age"] = "1000"
+    # response["Access-Control-Allow-Headers"] = "*"
+
+    response = HttpResponse(result, content_type='application/json')
+    response["Access-Control-Allow-Origin"] = "*"
+    return response
+
+#个人主页
+def app_photo_show(request):
+
+    id = request.GET.get('id', 1)
+    photo = Photo.objects.get(id=id)
+    if(photo.id is None):
+        return False
+    p_datas = PhotoData.objects.filter(photo=photo).order_by('-id')
+    item_result = []
+    for item in p_datas:
+        if(item.filepath is  not None):
+            item_result.append("/media/photo/%s/%d/%s" % (photo.user.name, photo.id, item.filepath) )
+
+    result_dict = dict()
+    result_dict['title'] = photo.title.encode('utf-8')
+    result_dict['item_result'] = item_result
+
+    callback = request.GET.get('callback', '')
+    # result = "%s(%s)" % (callback, json.dumps(result_dict))
+    result = "%s" % ( json.dumps(result_dict))
+    response = HttpResponse(result, content_type='application/json')
+    response["Access-Control-Allow-Origin"] = "*"
+    return response
+
 
 
 def test2(request):
