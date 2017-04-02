@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'v9',
 ]
 
+#中间件
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -51,6 +53,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'testdj.middleware.BlockedIpMiddleware',
+    'testdj.middleware.UserBasedExceptionMiddleware',
+]
+
+
+BLOCKED_IPS = [
+    '192.168.1.101',
+
 ]
 
 ROOT_URLCONF = 'testdj.urls'
@@ -66,6 +76,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'testdj.context_processor.settings',
+                'testdj.context_processor.ip_address',
             ],
         },
     },
@@ -133,11 +146,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+# STATIC_URL = '/collected_static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static')
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "common_static"),
+)
+STATICFILES_FINDERS = (
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder"
 )
 
 # upload folder

@@ -19,6 +19,9 @@ from . import view
 from calc import views as calc_views
 from django.conf.urls.static import static
 from django.conf import settings
+
+from django.views.generic.base import RedirectView
+
 import os
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -31,6 +34,9 @@ urlpatterns = [
     url(r'^test2/$', calc_views.test2, name='test2'),  # new
     url(r'^get_pic/$', calc_views.get_pic, name='get-pic'),
     url(r'^$', view.index),
+
+    url(r'^go-to-django/$', RedirectView.as_view(url='http://djangoproject.com'), name='go-to-django'),
+    url(r'^go-to-ziqiangxuetang/$', RedirectView.as_view(url='http://www.ziqiangxuetang.com'), name='go-to-zqxt'),
 ]
 
 if settings.DEBUG:
