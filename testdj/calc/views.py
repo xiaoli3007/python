@@ -5,6 +5,7 @@ import json,os
 from django.conf import settings
 from calc.models import User,PhotoData,Photo
 from django.core.paginator import Paginator,InvalidPage,EmptyPage,PageNotAnInteger
+from django.core.exceptions import ObjectDoesNotExist
 
 BASE_DIR = settings.BASE_DIR  # 项目目录
 MEDIA_ROOT = settings.MEDIA_ROOT  # 媒体目录
@@ -40,7 +41,12 @@ def home(request,id,page=1):
 #相册详情
 def photo(request,id):
 
-    photo = Photo.objects.get(id=id)
+    try:
+        photo = Photo.objects.get(id=id)
+    except ObjectDoesNotExist:
+        return HttpResponse("Either the entry or blog doesn't exist.")
+
+    # return HttpResponse(photo);
     user = photo.user
     column = PhotoData.objects.filter(photo=photo)
     return render(request, 'calc/photo.html', {'column': column,'photo': photo,'user': user})
@@ -102,9 +108,12 @@ def applist(request):
 def app_photo_show(request):
 
     id = request.GET.get('id', 1)
-    photo = Photo.objects.get(id=id)
-    if(photo.id is None):
-        return False
+    # photo = Photo.objects.get(id=id)
+    try:
+        photo = Photo.objects.get(id=id)
+    except ObjectDoesNotExist:
+        return HttpResponse("Either the entry or blog doesn't exist.")
+
     p_datas = PhotoData.objects.filter(photo=photo).order_by('-id')
     item_result = []
     for item in p_datas:

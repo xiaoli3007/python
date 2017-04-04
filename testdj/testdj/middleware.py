@@ -24,28 +24,29 @@ class BlockedIpMiddleware(object):
         # the view (and later middleware) are called.
         # 调用 view 之前的代码
 
-        self.log_console_show_flag = 1
-        logger = logging.getLogger()
-        logger.setLevel(LOG_LEVEL_DICT['info'])
-        formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
-
-        file_log_handle = logging.FileHandler(log_file_path)
-        file_log_handle.setFormatter(formatter)
-        file_log_handle.setLevel(LOG_LEVEL_DICT['debug'])
-        logger.addHandler(file_log_handle)
-
-        if self.log_console_show_flag:
-            console_log_handle = logging.StreamHandler()
-            console_log_handle.setFormatter(formatter)
-            console_log_handle.setLevel(LOG_LEVEL_DICT['warning'])
-            logger.addHandler(console_log_handle)
-
-        self.logger_object = logger
+        # self.log_console_show_flag = 1
+        # logger = logging.getLogger()
+        # logger.setLevel(LOG_LEVEL_DICT['error'])
+        # formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
+        #
+        # file_log_handle = logging.FileHandler(log_file_path)
+        # file_log_handle.setFormatter(formatter)
+        # file_log_handle.setLevel(LOG_LEVEL_DICT['error'])
+        # logger.addHandler(file_log_handle)
+        #
+        # if self.log_console_show_flag:
+        #     console_log_handle = logging.StreamHandler()
+        #     console_log_handle.setFormatter(formatter)
+        #     console_log_handle.setLevel(LOG_LEVEL_DICT['error'])
+        #     logger.addHandler(console_log_handle)
+        #
+        # self.logger_object = logger
 
         response = self.get_response(request)
         # self.logger_object.info("信息： %s" % ( request.META ))
-        if request.META['REMOTE_ADDR'] in getattr(settings, "BLOCKED_IPS", []):
-            return http.HttpResponseForbidden('<h1>Forbidden</h1>')
+        # 设置黑名单
+        # if request.META['REMOTE_ADDR'] in getattr(settings, "BLOCKED_IPS", []):
+        #     return http.HttpResponseForbidden('<h1>Forbidden</h1>')
         # Code to be executed for each request/response after
         # the view is called.
         # 调用 view 之后的代码
