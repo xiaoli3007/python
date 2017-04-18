@@ -1,0 +1,36 @@
+2017-04-18 10:23:48,765 ERROR Error 1054: Unknown column 'dasd' in 'field list'
+Traceback (most recent call last):
+  File "E:/python_project/testscrapy/lofter/lofter/mysqlme.py", line 99, in get_db_data
+    self.cur.execute(sql)
+  File "C:\guanfu\server\python\lib\site-packages\MySQLdb\cursors.py", line 202, in execute
+    self.errorhandler(self, exc, value)
+  File "C:\guanfu\server\python\lib\site-packages\MySQLdb\connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+OperationalError: (1054, "Unknown column 'dasd' in 'field list'")
+2017-04-18 10:32:11,517 ERROR Error 1054: Unknown column 'aasfasfasf' in 'field list'
+Traceback (most recent call last):
+  File "E:/python_project/testscrapy/lofter/lofter/mysqlme.py", line 104, in get_db_data
+    self.cur.execute(sql)
+  File "C:\guanfu\server\python\lib\site-packages\MySQLdb\cursors.py", line 202, in execute
+    self.errorhandler(self, exc, value)
+  File "C:\guanfu\server\python\lib\site-packages\MySQLdb\connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+OperationalError: (1054, "Unknown column 'aasfasfasf' in 'field list'")
+2017-04-18 10:32:29,210 ERROR Error 1054: Unknown column 'aasfasfasf' in 'field list'
+Traceback (most recent call last):
+  File "E:/python_project/testscrapy/lofter/lofter/mysqlme.py", line 105, in get_db_data
+    self.cur.execute(sql)
+  File "C:\guanfu\server\python\lib\site-packages\MySQLdb\cursors.py", line 202, in execute
+    self.errorhandler(self, exc, value)
+  File "C:\guanfu\server\python\lib\site-packages\MySQLdb\connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+OperationalError: (1054, "Unknown column 'aasfasfasf' in 'field list'")
+2017-04-18 10:32:53,184 ERROR Error 1364: Field 'source_url' doesn't have a default value
+Traceback (most recent call last):
+  File "E:/python_project/testscrapy/lofter/lofter/mysqlme.py", line 105, in get_db_data
+    self.cur.execute(sql)
+  File "C:\guanfu\server\python\lib\site-packages\MySQLdb\cursors.py", line 202, in execute
+    self.errorhandler(self, exc, value)
+  File "C:\guanfu\server\python\lib\site-packages\MySQLdb\connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+OperationalError: (1364, "Field 'source_url' doesn't have a default value")
