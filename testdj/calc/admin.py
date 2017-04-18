@@ -1,6 +1,6 @@
 #coding:utf-8
 from django.contrib import admin
-from models import User,Blog,Photo,PhotoData
+from models import User,Blog,Photo,PhotoData,BlogPhoto
 # Register your models here.
 
 
@@ -26,8 +26,11 @@ class PhotoAdmin(admin.ModelAdmin):
 class PhotoDataAdmin(admin.ModelAdmin):
     list_display = ('thumb', 'filepath')
 
+class BlogPhotoAdmin(admin.ModelAdmin):
+    list_display = ('title', 'user', 'local_default_image')
 
 admin.site.register(User, UserAdmin)
 admin.site.register(Blog, BlogAdmin)
 admin.site.register(Photo, PhotoAdmin)
 admin.site.register(PhotoData, PhotoDataAdmin)
+admin.site.register(BlogPhoto,BlogPhotoAdmin)

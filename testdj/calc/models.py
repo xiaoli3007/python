@@ -66,3 +66,20 @@ class PhotoData(models.Model):
     class Meta:
         verbose_name = '照片管理'
         verbose_name_plural = '照片管理'
+
+class BlogPhoto(models.Model):
+    title = models.CharField(u'标题', max_length=255)
+    guid = models.CharField(u'guid', max_length=255, default='')
+    source_url = models.CharField(u'来源地址', max_length=255, default='')
+    local_default_image = models.CharField(u'默认图片本地', max_length=255, default='',null=True)
+    remote_default_image = models.CharField(u'默认图片远程', max_length=255, default='',null=True)
+    local_images_paths = models.TextField(u'本地图片路径汇总', default='',null=True)
+    remote_images_paths = models.TextField(u'远程图片路径汇总', default='',null=True)
+    addtime = models.IntegerField(u'发布时间', default=0,null=True)
+    user = models.ForeignKey(User)
+    def __unicode__(self):
+        # 在Python3中使用 def __str__(self)
+        return self.title
+    class Meta:
+        verbose_name = 'lofter相册'
+        verbose_name_plural = 'lofter相册'

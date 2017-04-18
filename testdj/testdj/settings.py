@@ -54,7 +54,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'testdj.middleware.BlockedIpMiddleware',
-    'testdj.middleware.UserBasedExceptionMiddleware',
 ]
 
 
