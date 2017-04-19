@@ -57,8 +57,8 @@ class MylofterSpider(CrawlSpider):
             #     local_images_paths.append("%s.%s" % (md5(itemimage).hexdigest(), os.path.basename(itemimage)))
             #
             # item['local_images_paths'] = local_images_paths
-
-            if len(item['remote_images_paths']) > 1:
+            item['remote_default_image'] = ''
+            if len(item['remote_images_paths']) > 0:
                 item['remote_default_image'] = item['remote_images_paths'][0]
                 # item['local_default_image'] = "%s.%s" % (md5(item['remote_default_image'][0]).hexdigest(), os.path.basename(item['remote_default_image']))
 

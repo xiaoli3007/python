@@ -66,10 +66,13 @@ ROBOTSTXT_OBEY = False
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
    # 'lofter.pipelines.LofterPipeline': 300,
-   #  'lofter.pipelines.JsonWriterPipeline': 1,
-    'lofter.pipelines.MyImagesPipeline': 2,
-    'lofter.pipelines.MySQLStorePipeline': 300,
+    'lofter.pipelines.JsonWriterPipeline': 1,
+    'lofter.pipelines.SportPipeline': 3,
+   #  'lofter.pipelines.MyImagesPipeline': 2,
+    # 'lofter.pipelines.MySQLStorePipeline': 300,
 }
+
+
 DOWNLOAD_DELAY = 0.25
 # 90天的图片失效期限
 IMAGES_EXPIRES = 90
@@ -82,7 +85,7 @@ MYSQL_DBNAME = 'testdj'
 MYSQL_USER = 'root'
 MYSQL_PASSWD = '123123'
 # LOG_FILE = 'lofter.log'
-# LOG_LEVEL ='ERROR'
+LOG_LEVEL ='ERROR'
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
 #AUTOTHROTTLE_ENABLED = True

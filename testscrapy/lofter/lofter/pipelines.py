@@ -15,6 +15,10 @@ from twisted.enterprise import adbapi
 import scrapy
 from scrapy.contrib.pipeline.images import ImagesPipeline
 from scrapy.exceptions import DropItem
+from function import *
+from utils.mysqldriver import MySQL
+
+
 
 class LofterPipeline(object):
     def process_item(self, item, spider):
@@ -37,7 +41,7 @@ class JsonWriterPipeline(object):
 class MyImagesPipeline(ImagesPipeline):
 
     def get_media_requests(self, item, info):
-        if len(item['remote_images_paths']) > 0:
+        # if len(item['remote_images_paths']) > 0:
            for image_url in item['remote_images_paths']:
                 yield scrapy.Request(image_url)
 
@@ -46,18 +50,48 @@ class MyImagesPipeline(ImagesPipeline):
         if not image_paths:
             raise DropItem("Item contains no images")
 
-        # print('============================')
-        # print(results)
-        # print(type(image_paths))
-        # print(image_paths)
-        # print(image_paths[0])
-        # print('============================')
+
         item['local_images_paths'] = image_paths
         if len(item['local_images_paths'])> 0:
             item['local_default_image'] = image_paths[0]
         else:
             item['local_default_image'] = ''
+
+        # print('============================')
+        # print(results)
+        # print(type(image_paths))
+        # print(image_paths)
+        # print(image_paths[0])
+        # print(item['local_default_image'])
+        # print('============================')
         return item
+
+
+class SportPipeline(object):
+
+    _db = None
+    def __init__(self):
+        dbconfig = {
+            'host':'localhost',
+            'port': 3306,
+            'user':'root',
+            'passwd':'123123',
+            'db':'testdj',
+            'charset':'utf8'
+        }
+
+        self._db = MySQL(dbconfig)
+
+    def process_item(self, item, spider):
+        insert_sql =  "INSERT INTO calc_blogphoto  (guid,title,source_url,user_id,remote_images_paths,local_images_paths,remote_default_image,local_default_image) VALUES ('%s','%s','%s',%d,'%s','%s','%s','%s')" % (
+            'aaaa', item['title'][0], item['source_url'], item['user_id'], '3', '33', '22', '13')
+
+        id = self._db.insert(insert_sql)
+        print('============================')
+        print(id)
+        print('============================')
+        return item
+
 
 
 class MySQLStorePipeline(object):
@@ -105,15 +139,18 @@ class MySQLStorePipeline(object):
 
         if ret:
 
-            upsql = "UPDATE  calc_blogphoto SET   title='%s', source_url='%s', remote_images_paths='%s', local_images_paths='%s', remote_default_image='%s', local_default_image='%s' WHERE guid='%s'" % (
-                item['title'][0], item['source_url'],  json.dumps(item['remote_images_paths']),  json.dumps(item['local_images_paths']),item['remote_default_image'],item['local_default_image'],guid
-            )
-            # print(upsql)
-            conn.execute(upsql)
-            # spider.log("Item updated in db: %s %r" % (guid, item))
+            # upsql = "UPDATE  calc_blogphoto SET   title='%s', source_url='%s', remote_images_paths='%s', local_images_paths='%s', remote_default_image='%s', local_default_image='%s' WHERE guid='%s'" % (
+            #     item['title'][0], item['source_url'],  json.dumps(item['remote_images_paths']),  json.dumps(item['local_images_paths']),item['remote_default_image'],item['local_default_image'],guid
+            # )
+            # conn.execute(upsql)
+            spider.log("Item updated in db: %s %r" % (guid, item))
         else:
 
-
+            # print('============================')
+            # print(item)
+            # print(item['title'][0].decode('utf8').encode('gbk'))
+            # print(type(item['title'][0].decode('utf8').encode('gbk')))
+            # print('============================')
             sql = "INSERT INTO calc_blogphoto  (guid,title,source_url,user_id,remote_images_paths,local_images_paths,remote_default_image,local_default_image) VALUES ('%s','%s','%s',%d,'%s','%s','%s','%s')" % (
             guid, item['title'][0], item['source_url'], item['user_id'], json.dumps(item['remote_images_paths']), json.dumps(item['local_images_paths']), item['remote_default_image'], item['local_default_image'])
 
