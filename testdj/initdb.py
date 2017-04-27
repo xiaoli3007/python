@@ -3,8 +3,8 @@
 from __future__ import unicode_literals
 import random
 from testdj.wsgi import *
-
-from calc.models import Blog,User,Photo,PhotoData
+import json
+from calc.models import Blog,User,Photo,PhotoData,BlogPhoto
 import os, sys, getopt
 
 author_name_list = ['WeizhongTu', 'twz915', 'dachui', 'zhe', 'zhen']
@@ -26,13 +26,38 @@ def create_authors():
 
 def update_photo_data():
 
-    user1 = User.objects.get(id=1)
+    user1 = User.objects.get(id=2)
+    user2 = User.objects.get(id=5)
     ppp = Photo.objects.filter(user=user1)
     # print(user1)
     for item in ppp:
-       item.title = "张三的博客 %d" % item.id
-       item.save()
-       print(item.id)
+       # item.title = "张三的博客 %d" % item.id
+       # item.save()
+       dataslist = PhotoData.objects.filter(photo=item)
+       print(item.title)
+       # print(dataslist)
+       local_images_paths = []
+       remote_images_paths = []
+       for dataitem in dataslist:
+           local_images_paths.append('uploads/2016/%d/%s' % (item.id, dataitem.filepath))
+           remote_images_paths.append(dataitem.thumb)
+
+       if len(remote_images_paths)>0:
+            remote_default_image = remote_images_paths[0]
+       else:
+            remote_default_image = ''
+
+       if len(local_images_paths) > 0:
+            local_default_image = local_images_paths[0]
+       else:
+            local_default_image = ''
+
+       # print(json.dumps(local_images_paths))
+       # print(json.dumps(remote_images_paths))
+       # print(remote_default_image)
+       # print(local_default_image)
+       # blogphoto = BlogPhoto(title=item.title,local_default_image=local_default_image,local_images_paths=json.dumps(local_images_paths), remote_default_image=remote_default_image,remote_images_paths=json.dumps(remote_images_paths),user=user2)
+       # blogphoto.save()
     # http: //127.0.0.1:8001/media/photo/zhangsan/1/51edbf498243b6c8da024d69ab3c1985.jpg
     return  True
 

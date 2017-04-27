@@ -80,6 +80,10 @@ class BlogPhoto(models.Model):
     def __unicode__(self):
         # 在Python3中使用 def __str__(self)
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('photo', args=(self.id,))
+
     class Meta:
         verbose_name = 'lofter相册'
         verbose_name_plural = 'lofter相册'

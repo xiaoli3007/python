@@ -4,17 +4,46 @@
 
 
 {% block content %}
-<ul>
-    {% for column in  columns %}
-        <li>
-            <a href="{{ column.get_absolute_url }}"> {{ column.name }}----- </a>
-        </li>
+
+
+
+<div class="row">
+
+
+    {% for article in columns %}
+
+    <div class="col-md-2 col-sm-4  col-xs-12">
+     <a href="javascript:;" data-toggle="modal" data-target="#myModal{{ article.id }}">   <img src="/media/{{ article.local_default_image }}" class="img-responsive" alt="Responsive image"></a>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal{{ article.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">详情</h4>
+                </div>
+                <div class="modal-body">
+                    {% for sub in article.local_images_paths %}
+
+                     <img src="/media/{{ sub }}" class="img-responsive" alt="Responsive image">
+
+                    {% endfor %}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     {% endfor %}
-</ul>
 
-DEBUG: {{ settings.DEBUG }}
+</div>
 
-ip: {{ ip_address }}
+
 
 {% endblock content %}
 

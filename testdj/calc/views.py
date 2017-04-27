@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import json,os
 from django.conf import settings
-from calc.models import User,PhotoData,Photo
+from calc.models import User,PhotoData,Photo,BlogPhoto
 from django.core.paginator import Paginator,InvalidPage,EmptyPage,PageNotAnInteger
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -11,6 +11,10 @@ BASE_DIR = settings.BASE_DIR  # 项目目录
 MEDIA_ROOT = settings.MEDIA_ROOT  # 媒体目录
 
 
+def blogauthor(request):
+    # return HttpResponse("nnnnrdd方法rrr")
+    columns = User.objects.all()
+    return render(request, 'calc/blogauthor.html', {'columns': columns})
 
 #个人主页
 def home(request,id,page=1):
@@ -22,12 +26,19 @@ def home(request,id,page=1):
     # offset = pagesize * (page - 1)
     # endsize = offset + pagesize
     # column = Photo.objects.filter(user=user).order_by('-id')[offset:endsize]
-    column = Photo.objects.filter(user=user).order_by('-id')
+    column = BlogPhoto.objects.filter(user=user).order_by('-id')
     paginator = Paginator(column,pagesize)
     try:
         column = paginator.page(page)
     except (EmptyPage, InvalidPage, PageNotAnInteger):
         column = paginator.page(1)
+
+    columns = []
+    for item in column.object_list:
+        item.local_images_paths = json.loads(item.local_images_paths)
+        columns.append(item)
+
+    column.object_list = columns
     after_range_num = 5
     before_range_num = 4
     # if page >= after_range_num:
@@ -42,13 +53,13 @@ def home(request,id,page=1):
 def photo(request,id):
 
     try:
-        photo = Photo.objects.get(id=id)
+        photo = BlogPhoto.objects.get(id=id)
     except ObjectDoesNotExist:
-        return HttpResponse("Either the entry or blog doesn't exist.")
+        return HttpResponse("找不到博客！")
 
     # return HttpResponse(photo);
     user = photo.user
-    column = PhotoData.objects.filter(photo=photo)
+    column = json.loads(photo.local_images_paths)
     return render(request, 'calc/photo.html', {'column': column,'photo': photo,'user': user})
 
 

@@ -66,10 +66,10 @@ ROBOTSTXT_OBEY = False
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
    # 'lofter.pipelines.LofterPipeline': 300,
-    'lofter.pipelines.JsonWriterPipeline': 1,
-    'lofter.pipelines.SportPipeline': 3,
-   #  'lofter.pipelines.MyImagesPipeline': 2,
-    # 'lofter.pipelines.MySQLStorePipeline': 300,
+   #  'lofter.pipelines.JsonWriterPipeline': 1,
+    # 'lofter.pipelines.SportPipeline': 3,
+    'lofter.pipelines.MyImagesPipeline': 2,
+    'lofter.pipelines.MySQLStorePipeline': 300,
 }
 
 

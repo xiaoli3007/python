@@ -84,7 +84,7 @@ class SportPipeline(object):
 
     def process_item(self, item, spider):
         insert_sql =  "INSERT INTO calc_blogphoto  (guid,title,source_url,user_id,remote_images_paths,local_images_paths,remote_default_image,local_default_image) VALUES ('%s','%s','%s',%d,'%s','%s','%s','%s')" % (
-            'aaaa', item['title'][0], item['source_url'], item['user_id'], '3', '33', '22', '13')
+            'aaaa', db_charset_to_utf8(item['title'][0]), item['source_url'], item['user_id'], '3', '33', '22', '13')
 
         id = self._db.insert(insert_sql)
         print('============================')

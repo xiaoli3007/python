@@ -95,24 +95,25 @@ class ErrorLogTask():
 
         try:
 
-
-            guid = 'aasfasfasf111'
-            title = '45345345'
-            source_url = '4534534ertert5'
-            user_id =33
-            remote_images_paths = [u'http://imglf2.nosdn.127.net/img/Uk5mNnhtelNqMTNtL1NyNU5ZZTBXMmdKdHdFU3AzYnZaWUN3WlFhNUdxb2t0cjIvMkNFYU1nPT0.jpg']
-            local_images_paths = [u'http://imglf2.nosdn.127.net/img/Uk5mNnhtelNqMTNtL1NyNU5ZZTBXMmdKdHdFU3AzYnZaWUN3WlFhNUdxb2t0cjIvMkNFYU1nPT0.jpg']
-
-            print(json.dumps(remote_images_paths))
-
-            sql = "INSERT INTO calc_blogphoto  (guid,title,source_url,user_id,remote_images_paths,local_images_paths,remote_default_image,local_default_image) VALUES ('%s','%s','%s',%d,'%s','%s','%s','%s')" % (
-                guid, title, source_url, user_id, json.dumps(remote_images_paths),
-                json.dumps(local_images_paths), 'aaaaa', 'bbbbbbbb')
+            for d in range(1, 3):
+                print(d)
+            # guid = 'aasfasfasf111'
+            # title = '45345345'
+            # source_url = '4534534ertert5'
+            # user_id =33
+            # remote_images_paths = [u'http://imglf2.nosdn.127.net/img/Uk5mNnhtelNqMTNtL1NyNU5ZZTBXMmdKdHdFU3AzYnZaWUN3WlFhNUdxb2t0cjIvMkNFYU1nPT0.jpg']
+            # local_images_paths = [u'http://imglf2.nosdn.127.net/img/Uk5mNnhtelNqMTNtL1NyNU5ZZTBXMmdKdHdFU3AzYnZaWUN3WlFhNUdxb2t0cjIvMkNFYU1nPT0.jpg']
+            #
+            # print(json.dumps(remote_images_paths))
+            #
+            # sql = "INSERT INTO calc_blogphoto  (guid,title,source_url,user_id,remote_images_paths,local_images_paths,remote_default_image,local_default_image) VALUES ('%s','%s','%s',%d,'%s','%s','%s','%s')" % (
+            #     guid, title, source_url, user_id, json.dumps(remote_images_paths),
+            #     json.dumps(local_images_paths), 'aaaaa', 'bbbbbbbb')
 
             # sql = "INSERT INTO calc_blogphoto  (guid,title,source_url,user_id) VALUES ('%s','%s','%s',%d)" % (guid,title, source_url,user_id)
 
 
-            self.cur.execute(sql)
+            # self.cur.execute(sql)
             # # 获取网站标题及域名
             # count=self.cur.execute('select media_dir,site_title,domain from v9_site where siteid=1')
             # result=self.cur.fetchone()
@@ -133,9 +134,9 @@ class ErrorLogTask():
             #     update_sql = "update v9_error_log set had_read=1 where id="+str(r[0]);
             #     self.cur.execute(update_sql)
 
-            self.cur.close()
-            self.conn.commit()
-            self.conn.close()
+            # self.cur.close()
+            # self.conn.commit()
+            # self.conn.close()
             return True
 
         except MySQLdb.Error,e:

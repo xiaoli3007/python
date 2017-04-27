@@ -31,6 +31,7 @@ urlpatterns = [
     url(r'^app_photo_show/$', calc_views.app_photo_show, name='app_photo_show'),  # new
 
     url(r'^add/$', calc_views.add, name='add'),
+    url(r'^blogauthor/$', calc_views.blogauthor, name='blogauthor'),
     url(r'^test2/$', calc_views.test2, name='test2'),  # new
     url(r'^get_pic/$', calc_views.get_pic, name='get-pic'),
     url(r'^$', view.index),

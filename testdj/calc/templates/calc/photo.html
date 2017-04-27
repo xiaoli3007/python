@@ -7,16 +7,11 @@
 
 {% block content %}
 
-<h1>文章标题： {{ photo.title }}</h1>
-<div id="main">
-
+<h1> {{ photo.title }}</h1>
+<div class="row">
 
     {% for article in column %}
-    <li>
-        <img src="/media/photo/{{ user.name }}/{{ photo.id }}/{{ article.filepath }}">
-    </li>
+        <img src="/media/{{ article }}" class="img-responsive" alt="Responsive image">
     {% endfor %}
-
-
 </div>
 {% endblock content %}
