@@ -87,3 +87,22 @@ class BlogPhoto(models.Model):
     class Meta:
         verbose_name = 'lofter相册'
         verbose_name_plural = 'lofter相册'
+
+class Video(models.Model):
+    title = models.CharField(u'标题', max_length=255)
+    guid = models.CharField(u'guid', max_length=255, default='')
+    filepath = models.CharField(u'视频路径', max_length=255, default='', null=True)
+    thumb = models.ImageField(u'视频图片',  upload_to='uploads/%Y/%m/%d/', default='', height_field=None, width_field=None, null=True)
+    update_time = models.DateField(u'更新时间', auto_now=True, null=True)
+    add_time = models.DateTimeField(u'发布时间', default=timezone.now)
+    user = models.ForeignKey(User)
+    def __unicode__(self):
+        # 在Python3中使用 def __str__(self)
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse('videoshow', args=(self.id,))
+
+    class Meta:
+        verbose_name = '视频'
+        verbose_name_plural = '视频'

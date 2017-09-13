@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %} 视频列表页 {% endblock title %}
+
+
+{% block content %}
+
+
+
+<div class="row">
+    {% load staticfiles %}
+
+    {% for article in columns %}
+
+    <div class="col-md-2 col-sm-4  col-xs-12">
+     <!--<a href="javascript:;" data-toggle="modal" data-target="#myModal{{ article.id }}">-->
+
+         <!--<img src="/media/{{ article.thumb }}" class="img-responsive" alt="Responsive image"></a>-->
+
+        <a href="{{ article.get_absolute_url }}" target="_blank">{{ article.title }} </a>
+    </div>
+
+
+    {% endfor %}
+
+</div>
+
+
+
+{% endblock content %}
+
+

@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import json,os
 from django.conf import settings
-from calc.models import User,PhotoData,Photo,BlogPhoto
+from calc.models import User,PhotoData,Photo,BlogPhoto, Video
 from django.core.paginator import Paginator,InvalidPage,EmptyPage,PageNotAnInteger
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -15,6 +15,38 @@ def blogauthor(request):
     # return HttpResponse("nnnnrdd方法rrr")
     columns = User.objects.all()
     return render(request, 'calc/blogauthor.html', {'columns': columns})
+
+def videolist(request):
+    getcolumns = Video.objects.filter().order_by('-id')[:20]
+    columns = []
+    for item in getcolumns:
+        # item.local_images_paths = json.loads(item.local_images_paths)
+        columns.append(item)
+    # return HttpResponse(columns)
+    return render(request, 'calc/videolist.html', {'columns': columns})
+
+#相册详情
+def videoshow(request,id):
+
+
+    try:
+        photo = Video.objects.get(id=id)
+        wenhao = photo.filepath.find(".")
+        if wenhao != -1:
+            ext = photo.filepath[wenhao:]
+        else:
+            ext = photo.filepath
+
+        ext = ext.replace(".", "")
+        # return HttpResponse(ext)
+
+    except ObjectDoesNotExist:
+        return HttpResponse("找不到视频！")
+
+
+    # return HttpResponse(photo);
+    return render(request, 'calc/videoshow.html', {'photo': photo,'ext': ext})
+
 
 #个人主页
 def home(request,id,page=1):

@@ -26,7 +26,8 @@ SECRET_KEY = '_^&20f@g8g#n-4vi+p&&0=2x*d^w@y)70g32i=^^*(vxz@dvz-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.100']
+# ALLOWED_HOSTS = ['192.168.1.100']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -151,6 +152,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static')
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "common_static"),
+    "G:/vdcilad",
 )
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
