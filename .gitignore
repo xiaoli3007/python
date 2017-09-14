@@ -13,3 +13,4 @@ microblog/.idear
 testdj/media
 testscrapy/lofter/lofter/images
 .idear
+*.pyc
