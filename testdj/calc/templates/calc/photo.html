@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ photo.title }}
+{% endblock title %}
+
+
+{% block content %}
+
+<h1> {{ photo.title }}</h1>
+<div class="row">
+
+    {% for article in column %}
+        <img src="/media/{{ article }}" class="img-responsive" alt="Responsive image">
+    {% endfor %}
+</div>
+{% endblock content %}

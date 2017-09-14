@@ -36,7 +36,7 @@ def downimage(urllist,dir):
           operate = opener.open(req)
           data = operate.read()
        except:
-          print('网络发生异常'+imgaefile)
+          print('网络发生异常'+url)
           continue
        else:
           f = open(imgaefile, 'wb')
