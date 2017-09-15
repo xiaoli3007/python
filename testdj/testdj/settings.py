@@ -152,7 +152,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static')
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "common_static"),
-    # "G:/vdcilad",
+    "G:/vdcilad",
     #"/data/media/",
 )
 STATICFILES_FINDERS = (
