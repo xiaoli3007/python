@@ -48,6 +48,10 @@ def videoshow(request,id):
     return render(request, 'calc/videoshow.html', {'photo': photo,'ext': ext})
 
 
+def mediafile(request,filepath):
+
+    return HttpResponse(filepath);
+
 #个人主页
 def home(request,id,page=1):
     user = User.objects.get(id=id)

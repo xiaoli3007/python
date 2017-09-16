@@ -103,6 +103,9 @@ class Video(models.Model):
     def get_absolute_url(self):
         return reverse('videoshow', args=(self.id,))
 
+    def get_filepath(self):
+        return reverse('mediafile', args=(self.filepath,))
+
     class Meta:
         verbose_name = '视频'
         verbose_name_plural = '视频'

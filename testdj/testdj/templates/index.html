@@ -26,11 +26,14 @@
                     <h4 class="modal-title" id="myModalLabel">详情</h4>
                 </div>
                 <div class="modal-body">
+
+                    {% if article.local_images_paths is not None %}
                     {% for sub in article.local_images_paths %}
 
                      <img src="/media/{{ sub }}" class="img-responsive" alt="Responsive image">
 
                     {% endfor %}
+                    {% endif %}
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
