@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'^photo/(\d+)$', calc_views.photo, name='photo'),  # new
 
     url(r'^videoshow/(\d+)$', calc_views.videoshow, name='videoshow'),  # new
+    url(r'^mediafile/(.+)$', calc_views.mediafile, name='mediafile'),  # new
 
     url(r'^applist/$', calc_views.applist, name='applist'),  # new
     url(r'^app_photo_show/$', calc_views.app_photo_show, name='app_photo_show'),  # new
