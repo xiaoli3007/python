@@ -596,7 +596,12 @@ def functhumb(input_filepath='', output_filepath=''):
 def main(input_filepath='', output_filepath=''):
     global process_path
 
-    config_file = "task.ini"
+
+    sysstr = platform.system()
+    if (sysstr == "Windows"):
+        config_file = "task.ini"
+    else:
+        config_file = "linux_task.ini"
 
     param_dict = {'backcolor': '0', 'size': '0', 'tnfmt': 1, 'mode': 'crop', 'end': '0x0', 'mediaformat': task.URL_TYPE_UNKNOW}
     query = ''
