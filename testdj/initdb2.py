@@ -9,6 +9,7 @@ import os, sys, getopt
 from django.utils import timezone
 from calc.models import Video,User
 from django.core.exceptions import ObjectDoesNotExist
+from django.utils.http import urlquote
 
 def sting_utf8(text):
     return text.decode('utf8')
@@ -37,8 +38,12 @@ def get_filename(photo,fuhao):
 
     return address
 
-def update_photo(file_dir):
-    print(file_dir)
+def update_photo(fstr):
+
+    filepath222 = "%s" % (urlquote(fstr))
+    print(urlquote(fstr))
+
+    return True
     g = os.walk(file_dir)
 
     user1 = User.objects.get(id=1)
@@ -61,8 +66,8 @@ def update_photo(file_dir):
                 except ObjectDoesNotExist:
                     print(name)
                     print(type(name))
-                    blogphoto = Video(title=sting_utf82(name), filepath=sting_utf82(filepath), guid=guid, add_time=timezone.now(), user=user1)
-                    blogphoto.save()
+                    # blogphoto = Video(title=sting_utf82(name), filepath=sting_utf82(filepath), guid=guid, add_time=timezone.now(), user=user1)
+                    # blogphoto.save()
                 # break
             # new_name =int(item.encode('utf-8'))+739
             # print(type(new_name))
@@ -76,7 +81,7 @@ def update_photo(file_dir):
 
 def main():
     # create_authors()
-    photo_dir = 'G:\\vdcilad'
+    photo_dir = ''
     photo_file = ''
     print("%s" % sys.argv[0])
     process_path = os.path.dirname(sys.argv[0])

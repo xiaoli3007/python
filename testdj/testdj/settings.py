@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
-
+import platform
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'testdj',
     'calc',
     'v9',
+    'testdj.templatetags',
 ]
 
 #中间件
@@ -152,7 +153,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static')
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "common_static"),
-    # "G:/vdcilad",
+    "G:/vdcilad/",
     "/data/media/",
 )
 STATICFILES_FINDERS = (
@@ -163,3 +164,11 @@ STATICFILES_FINDERS = (
 # upload folder
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+sysstr = platform.system()
+if (sysstr == "Windows"):
+    MEDIA_IMAGE_URL = "G:/vdcilad/"
+else:
+    MEDIA_IMAGE_URL = "/data/media/"
+
+# MEDIA_IMAGE_URL = "/data/media/"
