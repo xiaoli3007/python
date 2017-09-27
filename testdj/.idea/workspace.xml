@@ -61,11 +61,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="videoshow.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="videoshow.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/calc/templates/calc/videoshow.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5319662">
-              <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
+            <state vertical-scroll-proportion="-9.051724">
+              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -93,11 +93,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="guanfu_thumbnail.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="guanfu_thumbnail.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/guanfu_thumbnail.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="544" column="33" selection-start-line="544" selection-start-column="23" selection-end-line="544" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.46448705">
+              <caret line="599" column="30" selection-start-line="599" selection-start-column="30" selection-end-line="599" selection-end-column="30" />
               <folding>
                 <element signature="e#95#104#0" expanded="true" />
               </folding>
@@ -109,7 +109,7 @@
         <entry file="file://$PROJECT_DIR$/linux_task.ini">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="28" column="7" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="7" />
+              <caret line="36" column="10" selection-start-line="36" selection-start-column="10" selection-end-line="36" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -169,13 +169,13 @@
         <option value="$PROJECT_DIR$/testdj/urls.py" />
         <option value="$PROJECT_DIR$/testdj/templates/base.html" />
         <option value="$PROJECT_DIR$/calc/views.py" />
-        <option value="$PROJECT_DIR$/guanfu_thumbnail.py" />
         <option value="$PROJECT_DIR$/calc/templates/calc/blogauthor.html" />
         <option value="$PROJECT_DIR$/testdj/settings.py" />
         <option value="$PROJECT_DIR$/testdj/templates/index.html" />
         <option value="$PROJECT_DIR$/testdj/templatetags/mediafilepath.py" />
         <option value="$PROJECT_DIR$/calc/templates/calc/videolist.html" />
         <option value="$PROJECT_DIR$/calc/templates/calc/videoshow.html" />
+        <option value="$PROJECT_DIR$/guanfu_thumbnail.py" />
       </list>
     </option>
   </component>
@@ -248,42 +248,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="testdj" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="testdj" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="testdj" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="calc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="testdj" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="testdj" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="calc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="calc" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1046,12 +1010,12 @@
       <workItem from="1506217232205" duration="10228000" />
       <workItem from="1506301962467" duration="902000" />
       <workItem from="1506386893687" duration="20181000" />
-      <workItem from="1506475685744" duration="12070000" />
+      <workItem from="1506475685744" duration="13394000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="248002000" />
+    <option name="totallyTimeSpent" value="249326000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
@@ -1134,13 +1098,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/guanfu/server/python/Lib/site-packages/django/contrib/admin/options.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.81059754">
-          <caret line="2000" column="6" selection-start-line="2000" selection-start-column="6" selection-end-line="2000" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/v9/tests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.56820744">
@@ -1420,24 +1377,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/linux_task.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="7" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/guanfu_thumbnail.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="544" column="33" selection-start-line="544" selection-start-column="23" selection-end-line="544" selection-end-column="33" />
-          <folding>
-            <element signature="e#95#104#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/calc/templates/calc/blogauthor.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.36756125">
@@ -1518,9 +1457,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/calc/templates/calc/videoshow.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5319662">
-          <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
+        <state vertical-scroll-proportion="-9.051724">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/linux_task.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="36" column="10" selection-start-line="36" selection-start-column="10" selection-end-line="36" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/guanfu/server/python/Lib/site-packages/PIL-1.1.7-py2.7-win32.egg/Image.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.235625">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#2098#2114#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/guanfu_thumbnail.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46448705">
+          <caret line="599" column="30" selection-start-line="599" selection-start-column="30" selection-end-line="599" selection-end-column="30" />
+          <folding>
+            <element signature="e#95#104#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
