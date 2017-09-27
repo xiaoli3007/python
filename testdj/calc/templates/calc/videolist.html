@@ -5,25 +5,65 @@
 
 {% block content %}
 
+<div class="row">
+<form class="form-inline" method="get">
+    <div class="form-group">
+        <label for="exampleInputName2">关键字</label>
+        <input type="text" class="form-control" name="keyword" value="{{ keyword }}" id="exampleInputName2" placeholder="">
+    </div>
 
+    <button type="submit" class="btn btn-default">搜索</button>
+</form>
 
+</div>
+
+<br>
 <div class="row">
     {% load staticfiles %}
 
-    {% for article in columns %}
+    {% for article in column %}
 
     <div class="col-md-2 col-sm-4  col-xs-12">
      <!--<a href="javascript:;" data-toggle="modal" data-target="#myModal{{ article.id }}">-->
 
-         <!--<img src="/media/{{ article.thumb }}" class="img-responsive" alt="Responsive image"></a>-->
+         <img src="{% static article.filepath %}_tposter_180x135_0.jpg" width="180" height="135" class="img-responsive" alt="{{ article.title }}"></a>
 
-        <a href="{{ article.get_absolute_url }}" target="_blank">{{ article.title }} </a>
+        <a href="{{ article.get_absolute_url }}" target="_blank" style=" display:block;height: 50px; width: 180px; overflow: hidden; line-height: 20px;">{{ article.title }} </a>
     </div>
 
 
     {% endfor %}
 
 </div>
+
+
+
+
+<ul class="pagination">
+    {% if column.has_previous %}
+    <li><a href="?page={{ column.previous_page_number }}" class="prev">{{ previous_link_decorator|safe }}上一页</a></li>
+    {% else %}
+    <li class="paginate_button previous disabled"><span class="disabled prev">{{ previous_link_decorator|safe }}上一页</span></li>
+    {% endif %}
+
+
+    {% for page in column.paginator.page_range %}
+    {% if page %}
+    {% ifequal page column.number %}
+    <li class="active"><span class="current page">{{ page }}</span></li>
+    {% else %}
+    <li><a href="?page{{ page_suffix }}={{ page }}{{ getvars }}" class="page">{{ page }}</a></li>
+    {% endifequal %}
+    {% endif %}
+    {% endfor %}
+
+    {% if column.has_next %}
+    <li><a href="?page={{ column.next_page_number }}" class="next">下一页{{ next_link_decorator|safe }}</a></li>
+    {% else %}
+    <li class="paginate_button next disabled"><span class="disabled next">下一页{{ next_link_decorator|safe }}</span></li>
+    {% endif %}
+</ul>
+
 
 
 

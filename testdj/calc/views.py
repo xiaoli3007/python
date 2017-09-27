@@ -6,9 +6,13 @@ from django.conf import settings
 from calc.models import User,PhotoData,Photo,BlogPhoto, Video
 from django.core.paginator import Paginator,InvalidPage,EmptyPage,PageNotAnInteger
 from django.core.exceptions import ObjectDoesNotExist
+from urllib import unquote,quote
+import  sys
+from guanfu_thumbnail import *
 
 BASE_DIR = settings.BASE_DIR  # 项目目录
 MEDIA_ROOT = settings.MEDIA_ROOT  # 媒体目录
+MEDIA_IMAGE_URL = settings.MEDIA_IMAGE_URL  # 媒体目录
 
 
 def blogauthor(request):
@@ -17,13 +21,41 @@ def blogauthor(request):
     return render(request, 'calc/blogauthor.html', {'columns': columns})
 
 def videolist(request):
-    getcolumns = Video.objects.filter().order_by('-id')[:20]
+    # getcolumns = Video.objects.filter().order_by('-id')[:20]
+    # columns = []
+    # for item in getcolumns:
+    #     # item.local_images_paths = json.loads(item.local_images_paths)
+    #     s = '%s%s_poster.jpg' % (MEDIA_IMAGE_URL, item.filepath)
+    #     smfilepath = '%s%s' % (MEDIA_IMAGE_URL, item.filepath)
+    #     if not os.path.exists(s):
+    #         ret = functhumb(smfilepath, os.path.dirname(smfilepath))
+    #     columns.append(item)
+    # return HttpResponse(MEDIA_IMAGE_URL)
+    keyword = request.GET.get('keyword', '')
+    page = request.GET.get('page', 1)
+    pagesize = 18
+
+    if keyword is not None:
+        column = Video.objects.filter(title__contains=keyword).order_by('-id')
+    else:
+        column = Video.objects.filter().order_by('-id')
+
+    paginator = Paginator(column, pagesize)
+    try:
+        column = paginator.page(page)
+    except (EmptyPage, InvalidPage, PageNotAnInteger):
+        column = paginator.page(1)
+
     columns = []
-    for item in getcolumns:
-        # item.local_images_paths = json.loads(item.local_images_paths)
+    for item in column.object_list:
+        s = '%s%s_poster.jpg' % (MEDIA_IMAGE_URL, item.filepath)
+        smfilepath = '%s%s' % (MEDIA_IMAGE_URL, item.filepath)
+        if not os.path.exists(s):
+           ret = functhumb(smfilepath, os.path.dirname(smfilepath))
         columns.append(item)
-    # return HttpResponse(columns)
-    return render(request, 'calc/videolist.html', {'columns': columns})
+    column.object_list = columns
+
+    return render(request, 'calc/videolist.html', {'column': column,  'page': page,  'keyword': keyword})
 
 #相册详情
 def videoshow(request,id):
@@ -38,14 +70,28 @@ def videoshow(request,id):
             ext = photo.filepath
 
         ext = ext.replace(".", "")
-        # return HttpResponse(ext)
+        s = '%s%s_poster.jpg' % (MEDIA_IMAGE_URL, photo.filepath)
+        smfilepath = '%s%s' % (MEDIA_IMAGE_URL, photo.filepath)
+        if not os.path.exists(s):
+            ret = functhumb(smfilepath, os.path.dirname(smfilepath))
+            # return HttpResponse(ret)
+
+        # if os.path.exists(s):
+        #     return HttpResponse(s)
+        # else:
+        #     ret = functhumb(smfilepath, os.path.dirname(smfilepath))
+        #     return HttpResponse(ret)
+        # astr = unquote(vvv)
+        # astr = astr.decode('utf-8').encode('gbk')
+        # astr = quote(s.decode(sys.stdin.encoding).encode('utf8'))
+        # return HttpResponse(astr)
 
     except ObjectDoesNotExist:
         return HttpResponse("找不到视频！")
 
 
     # return HttpResponse(photo);
-    return render(request, 'calc/videoshow.html', {'photo': photo,'ext': ext})
+    return render(request, 'calc/videoshow.html', {'photo': photo,'ext': ext, 's': s})
 
 
 def mediafile(request,filepath):
