@@ -96,8 +96,8 @@
       <file leaf-file-name="guanfu_thumbnail.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/guanfu_thumbnail.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.46448705">
-              <caret line="599" column="30" selection-start-line="599" selection-start-column="30" selection-end-line="599" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.6629087">
+              <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
               <folding>
                 <element signature="e#95#104#0" expanded="true" />
               </folding>
@@ -1010,12 +1010,12 @@
       <workItem from="1506217232205" duration="10228000" />
       <workItem from="1506301962467" duration="902000" />
       <workItem from="1506386893687" duration="20181000" />
-      <workItem from="1506475685744" duration="13394000" />
+      <workItem from="1506475685744" duration="13831000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="249326000" />
+    <option name="totallyTimeSpent" value="249763000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
@@ -1483,8 +1483,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/guanfu_thumbnail.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46448705">
-          <caret line="599" column="30" selection-start-line="599" selection-start-column="30" selection-end-line="599" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.6629087">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
           <folding>
             <element signature="e#95#104#0" expanded="true" />
           </folding>

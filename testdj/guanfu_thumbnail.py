@@ -17,9 +17,9 @@ from datetime import datetime
 import logging
 import subprocess
 import urlparse
-import Image
-import ImageChops
-import ImageOps
+import PIL.Image as Image
+import PIL.ImageChops as ImageChops
+import PIL.ImageOps as ImageOps
 import shutil
 import glob
 import platform
