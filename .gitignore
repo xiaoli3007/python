@@ -14,3 +14,4 @@ testdj/media
 testscrapy/lofter/lofter/images
 .idear
 *.pyc
+testdj/log/*
