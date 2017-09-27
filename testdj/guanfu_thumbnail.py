@@ -574,8 +574,9 @@ def functhumb(input_filepath='', output_filepath=''):
     if not my_task.init(config_file, param_dict):
         return -2
 
-    # param_dict['input'] = task.file_charset_to_utf8(param_dict['input'])
-    # param_dict['output'] = task.file_charset_to_utf8(param_dict['output'])
+    if (sysstr != "Windows"):
+        param_dict['input'] = task.file_charset_to_utf8(param_dict['input'])
+        param_dict['output'] = task.file_charset_to_utf8(param_dict['output'])
 
     param_dict['mediaformat'] = task.get_media_format_import(param_dict['input'])
     if param_dict['mediaformat'] not in [task.URL_TYPE_VIDEO, task.URL_TYPE_ISO, task.URL_TYPE_DOCUMENT, task.URL_TYPE_IMAGE]:
