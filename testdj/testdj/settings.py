@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'testdj',
     'calc',
     'v9',
+    'testdj.templatetags',
 ]
 
 #中间件

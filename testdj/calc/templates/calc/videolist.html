@@ -5,6 +5,13 @@
 
 {% block content %}
 
+
+
+{% load mediafilepath %}
+
+
+
+
 <div class="row">
 <form class="form-inline" method="get">
     <div class="form-group">
@@ -26,7 +33,7 @@
     <div class="col-md-2 col-sm-4  col-xs-12">
      <!--<a href="javascript:;" data-toggle="modal" data-target="#myModal{{ article.id }}">-->
 
-         <img src="{% static article.filepath %}_tposter_180x135_0.jpg" width="180" height="135" class="img-responsive" alt="{{ article.title }}"></a>
+         <img src="{%  urlfilepath article.filepath '180x135' 1 %}" width="180" height="135" class="img-responsive" alt="{{ article.title }}"></a>
 
         <a href="{{ article.get_absolute_url }}" target="_blank" style=" display:block;height: 50px; width: 180px; overflow: hidden; line-height: 20px;">{{ article.title }} </a>
     </div>
