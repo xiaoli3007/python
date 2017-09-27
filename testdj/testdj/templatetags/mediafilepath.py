@@ -3,8 +3,10 @@ from django import template
 from django.utils.html import format_html
 import platform
 register = template.Library()
-# from django.conf import settings
-# MEDIA_IMAGE_URL = settings.MEDIA_IMAGE_URL  # 媒体目录
+from django.conf import settings
+MEDIA_IMAGE_URL = settings.MEDIA_IMAGE_URL  # 媒体目录
+import os
+
 @register.filter
 def myupper(value):
     return value.upper()
@@ -36,6 +38,12 @@ def urlfilepath(filepath, size, filetype):
 
     if filetype ==0:
         ext = ''
+
+    jpg = '%s%s%s' % (MEDIA_IMAGE_URL, filepath, ext)
+    if not os.path.exists(jpg):
+        ext = '_tposter_0x0_0.png'
+
+
 
     if (sysstr == "Windows"):
         returnpath = "/static/%s%s" % (filepath, ext)
