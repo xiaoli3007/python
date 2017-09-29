@@ -9,7 +9,7 @@
 
 {% load mediafilepath %}
 
-<h1> {{ photo.title }}</h1>
+<h3> {{ photo.title }}</h3>
 <div class="row">
 
 
@@ -30,6 +30,24 @@
 
 
 <script>
+//如果你不需要某项设置，可以直接删除，注意var flashvars的最后一个值后面不能有逗号
+function loadedHandler(){
+        if(CKobject.getObjectById('ckplayer_a1').getType()){//说明使用html5播放器
+                console.log('播放器已加载，调用的是HTML5播放模块');
+        }
+        else{
+                console.log('播放器已加载，调用的是Flash播放模块');
+        }
+}
+var _nn=0;
+function ckplayer_status(str){
+        _nn+=1;
+        if(_nn>100){
+                _nn=0;
+                document.getElementById('statusvalue').value='';
+        }
+        document.getElementById('statusvalue').value=str+'\n'+document.getElementById('statusvalue').value;
+}
 
 var flashvars={
 f:'{%  urlfilepath photo.filepath 0 0 %}',//视频地址
@@ -38,13 +56,13 @@ s:'0',//调用方式，0=普通方法（f=视频地址），1=网址形式,2=xml
 c:'0',//是否读取文本配置,0不是，1是
 x:'',//调用配置文件路径，只有在c=1时使用。默认为空调用的是ckplayer.xml
 i:"{%  urlfilepath photo.filepath '0' 1 %}",//初始图片地址
-d:'http://www.ckplayer.com/down/pause6.1_1.swf|http://www.ckplayer.com/down/pause6.1_2.swf',//暂停时播放的广告，swf/图片,多个用竖线隔开，图片要加链接地址，没有的时候留空就行
+d:'',//暂停时播放的广告，swf/图片,多个用竖线隔开，图片要加链接地址，没有的时候留空就行
 u:'',//暂停时如果是图片的话，加个链接地址
-l:'http://www.ckplayer.com/down/adv6.1_1.swf|http://www.ckplayer.com/down/adv6.1_2.swf',//前置广告，swf/图片/视频，多个用竖线隔开，图片和视频要加链接地址
+l:'',//前置广告，swf/图片/视频，多个用竖线隔开，图片和视频要加链接地址
 r:'',//前置广告的链接地址，多个用竖线隔开，没有的留空
-t:'10|10',//视频开始前播放swf/图片时的时间，多个用竖线隔开
+t:'',//视频开始前播放swf/图片时的时间，多个用竖线隔开
 y:'',//这里是使用网址形式调用广告地址时使用，前提是要设置l的值为空
-z:'http://www.ckplayer.com/down/buffer.swf',//缓冲广告，只能放一个，swf格式
+z:'',//缓冲广告，只能放一个，swf格式
 e:'8',//视频结束后的动作，0是调用js函数，1是循环播放，2是暂停播放并且不调用广告，3是调用视频推荐列表的插件，4是清除视频流并调用js功能和1差不多，5是暂停播放并且调用暂停广告
 v:'80',//默认音量，0-100之间
 p:'0',//视频默认0是暂停，1是播放，2是不加载视频
@@ -68,7 +86,23 @@ my_url:encodeURIComponent(window.location.href)//本页面地址
 };
 var params={bgcolor:'#FFF',allowFullScreen:true,allowScriptAccess:'always'};//这里定义播放器的其它参数如背景色（跟flashvars中的b不同），是否支持全屏，是否支持交互
 var video=['{%  urlfilepath photo.filepath 0 0 %}->video/{{ ext }}'];
-CKobject.embed('ckplayer/ckplayer.swf','a1','ckplayer_a1','100%','100%',false,flashvars,video,params);
+CKobject.embed('/static/ckplayer/ckplayer.swf','a1','ckplayer_a1','100%','600',false,flashvars,video,params);
+
+
+//var flashvars={
+//        f:'{%  urlfilepath photo.filepath 0 0 %}',//视频地址
+//        c:0,
+//        b:1,
+//        i:"{%  urlfilepath photo.filepath '0' 1 %}",//初始图片地址
+//};
+//
+//var params={bgcolor:'#FFF',allowFullScreen:true,allowScriptAccess:'always',wmode:'transparent'};
+//CKobject.embedSWF('/static/ckplayer/ckplayer.swf','a1','ckplayer_a1','600','400',flashvars,params);
+//
+//var support=['iPad','iPhone','ios','android+false','msie10+false'];
+//CKobject.embedHTML5('a1','ckplayer_a1',600,400,video,flashvars,support);
+
+
 /*
 以上代码演示的兼容flash和html5环境的。如果只调用flash播放器或只调用html5请看其它示例
 */
