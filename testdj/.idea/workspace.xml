@@ -59,11 +59,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="videoshow.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="videoshow.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/calc/templates/calc/videoshow.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.9827585">
-              <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
+            <state vertical-scroll-proportion="0.6079614">
+              <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -81,11 +81,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="videolist.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="videolist.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/calc/templates/calc/videolist.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6126021">
-              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+            <state vertical-scroll-proportion="-25.2">
+              <caret line="36" column="45" selection-start-line="36" selection-start-column="45" selection-end-line="36" selection-end-column="45" />
               <folding>
                 <element signature="n#style#0;n#a#0;n#div#0;n#div#1;n#!!top" expanded="true" />
               </folding>
@@ -185,9 +185,9 @@
         <option value="$PROJECT_DIR$/testdj/templatetags/mediafilepath.py" />
         <option value="$PROJECT_DIR$/calc/templates/calc/home.html" />
         <option value="$PROJECT_DIR$/common_static/ckplayer/ckplayer.js" />
-        <option value="$PROJECT_DIR$/calc/templates/calc/videoshow.html" />
         <option value="$PROJECT_DIR$/testdj/templates/base.html" />
         <option value="$PROJECT_DIR$/calc/templates/calc/videolist.html" />
+        <option value="$PROJECT_DIR$/calc/templates/calc/videoshow.html" />
       </list>
     </option>
   </component>
@@ -1042,12 +1042,12 @@
       <workItem from="1506386893687" duration="20181000" />
       <workItem from="1506475685744" duration="17708000" />
       <workItem from="1506561130330" duration="6088000" />
-      <workItem from="1506648787466" duration="5182000" />
+      <workItem from="1506648787466" duration="6233000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="264910000" />
+    <option name="totallyTimeSpent" value="265961000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
@@ -1474,14 +1474,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/calc/templates/calc/videoshow.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.9827585">
-          <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/testdj/templatetags/mediafilepath.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.17136414">
@@ -1518,11 +1510,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/calc/templates/calc/videolist.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6126021">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+        <state vertical-scroll-proportion="-25.2">
+          <caret line="36" column="45" selection-start-line="36" selection-start-column="45" selection-end-line="36" selection-end-column="45" />
           <folding>
             <element signature="n#style#0;n#a#0;n#div#0;n#div#1;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/calc/templates/calc/videoshow.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6079614">
+          <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
