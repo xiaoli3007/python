@@ -62,8 +62,8 @@
       <file leaf-file-name="videoshow.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/calc/templates/calc/videoshow.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6079614">
-              <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.63329315">
+              <caret line="91" column="17" selection-start-line="91" selection-start-column="17" selection-end-line="91" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -1042,12 +1042,12 @@
       <workItem from="1506386893687" duration="20181000" />
       <workItem from="1506475685744" duration="17708000" />
       <workItem from="1506561130330" duration="6088000" />
-      <workItem from="1506648787466" duration="6233000" />
+      <workItem from="1506648787466" duration="6426000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="265961000" />
+    <option name="totallyTimeSpent" value="266154000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
@@ -1520,8 +1520,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/calc/templates/calc/videoshow.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6079614">
-          <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.63329315">
+          <caret line="91" column="17" selection-start-line="91" selection-start-column="17" selection-end-line="91" selection-end-column="17" />
           <folding />
         </state>
       </provider>

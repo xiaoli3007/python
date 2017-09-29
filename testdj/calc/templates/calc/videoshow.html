@@ -86,8 +86,8 @@ my_url:encodeURIComponent(window.location.href)//本页面地址
 };
 var params={bgcolor:'#FFF',allowFullScreen:true,allowScriptAccess:'always'};//这里定义播放器的其它参数如背景色（跟flashvars中的b不同），是否支持全屏，是否支持交互
 var video=['{%  urlfilepath photo.filepath 0 0 %}->video/{{ ext }}'];
-//CKobject.embed('/static/ckplayer/ckplayer.swf','a1','ckplayer_a1','100%','600',false,flashvars,video,params);
-CKobject.embedSWF('/static/ckplayer/ckplayer.swf','a1','ckplayer_a1','100%','400',flashvars,params);
+CKobject.embed('/static/ckplayer/ckplayer.swf','a1','ckplayer_a1','100%','600',false,flashvars,video,params);
+//CKobject.embedSWF('/static/ckplayer/ckplayer.swf','a1','ckplayer_a1','100%','400',flashvars,params);
 
 //var flashvars={
 //        f:'{%  urlfilepath photo.filepath 0 0 %}',//视频地址
