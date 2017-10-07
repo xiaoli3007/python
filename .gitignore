@@ -16,3 +16,4 @@ testscrapy/lofter/lofter/images
 *.pyc
 testdj/log/*
 testdj/collected_static
+.idea
