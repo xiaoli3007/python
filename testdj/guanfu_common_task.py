@@ -291,15 +291,6 @@ def safe_getone(r):
     return row
 
 
-def get_tablename(catid):
-    mod_obj = get_model_obj(catid)
-    if not mod_obj:
-        return None
-    else:
-        tablename = 'v9_' + mod_obj.tablename
-        print "model tablename=%s, catid=%d" % (tablename, catid)
-        return tablename
-
 
 def read_file_by_chunks(filename, chunksize=1024 * 1024):
     file_object = open(filename, 'rb')

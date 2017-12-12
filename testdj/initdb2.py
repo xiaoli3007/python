@@ -10,6 +10,7 @@ from django.utils import timezone
 from calc.models import Video,User
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils.http import urlquote
+import shutil
 
 def sting_utf8(text):
     return text.decode('utf8')
@@ -37,6 +38,14 @@ def get_filename(photo,fuhao):
         address = photo
 
     return address
+
+def get_FileSize(filePath):
+
+    # filePath = unicode(filePath, 'utf8')
+    fsize = os.path.getsize(filePath)
+    fsize = fsize/float(1024*1024)
+
+    return round(fsize, 2)
 
 def update_photo(fstr):
 
@@ -78,10 +87,57 @@ def update_photo(fstr):
 
     return True
 
+def remove_files(file_dir):
+    # filepath222 = "%s" % (urlquote(file_dir))
+    # print(urlquote(file_dir))
+
+    g = os.walk(file_dir)
+    for path, d, filelist in g:
+        # print path
+        for item in d:
+
+            dir_name = os.path.join(path, item)
+            dirs = os.listdir(dir_name)
+            for file in dirs:
+                name = get_filename(file, ".")
+                filepath = "%s\%s" % (dir_name, file)
+                mudidir = "G:\\vdcilad\\20171211\\%s" % ( file)
+                mudiflvdir = "G:\\vdcilad\\flv\\%s" % ( file)
+
+                mudi100flvdir = "G:\\vdcilad\\100flv\\%s" % ( file)
+                mudi100mp4dir = "G:\\vdcilad\\100mp4\\%s" % ( file)
+
+                # splitext = os.path.splitext(file)
+                filesize = get_FileSize(filepath)
+                # print (splitext[1])
+
+                # file_path = os.path.split(filepath)  # 分割出目录与文件
+                # lists = file_path[1].split('.')  # 分割出文件与文件扩展名
+                # file_ext = lists[-1]  # 取出后缀名(列表切片操作)
+                # img_ext = ['mp4', 'flv', 'avi', 'MP4']
+                # img_ext2 = ['bmp', 'jpeg', 'gif', 'psd', 'png', 'jpg']
+                # img_ext3 = ['mp4', 'avi', 'MP4']
+                # img_ext4 = ['flv']
+                # if file_ext in img_ext3:
+                #     if filesize < 100:
+                #         print ("%s-->%f" % (filepath, filesize))
+                #         shutil.move(filepath, mudi100mp4dir)
+                #     else:
+                #         print ("%s-->%f" % (filepath, filesize))
+                    # os.remove(filepath)
+                    # shutil.move(filepath, mudiflvdir)
+
+                # try:
+                #     is_exit = Video.objects.get(guid=guid)
+                # except ObjectDoesNotExist:
+                #     print(name)
+                #     print(type(name))
+
+    return True
 
 def main():
     # create_authors()
-    photo_dir = ''
+    photo_dir = 'G:\\vdcilad'
     photo_file = ''
     print("%s" % sys.argv[0])
     process_path = os.path.dirname(sys.argv[0])
@@ -100,7 +156,7 @@ def main():
         elif o in ("-d", "--dir"):
             photo_dir = a
 
-    update_photo(photo_dir)
+    remove_files(photo_dir)
 
 if __name__ == '__main__':
     main()
