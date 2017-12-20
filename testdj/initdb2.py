@@ -47,12 +47,12 @@ def get_FileSize(filePath):
 
     return round(fsize, 2)
 
-def update_photo(fstr):
+def update_photo(file_dir):
 
-    filepath222 = "%s" % (urlquote(fstr))
-    print(urlquote(fstr))
-
-    return True
+    # filepath222 = "%s" % (urlquote(fstr))
+    # print(urlquote(fstr))
+    #
+    # return True
     g = os.walk(file_dir)
 
     user1 = User.objects.get(id=1)
@@ -66,17 +66,18 @@ def update_photo(fstr):
             for file in dirs:
                 name = get_filename(file, ".")
                 filepath = "%s\%s" % (dir_name, file)
+                xiangduifilepath = "%s/%s" % (item, file)
                 # print (type(filepath))
                 guid  = md5s(sting_utf82(filepath))
                 # print (guid)
-
                 try:
                     is_exit = Video.objects.get(guid=guid)
                 except ObjectDoesNotExist:
-                    print(name)
-                    print(type(name))
-                    # blogphoto = Video(title=sting_utf82(name), filepath=sting_utf82(filepath), guid=guid, add_time=timezone.now(), user=user1)
-                    # blogphoto.save()
+                    print(xiangduifilepath)
+                    # print(filepath)
+                    # print(type(name))
+                    blogphoto = Video(title=sting_utf82(name), filepath=sting_utf82(xiangduifilepath), guid=guid, add_time=timezone.now(), user=user1)
+                    blogphoto.save()
                 # break
             # new_name =int(item.encode('utf-8'))+739
             # print(type(new_name))
@@ -101,29 +102,52 @@ def remove_files(file_dir):
             for file in dirs:
                 name = get_filename(file, ".")
                 filepath = "%s\%s" % (dir_name, file)
-                mudidir = "G:\\vdcilad\\20171211\\%s" % ( file)
-                mudiflvdir = "G:\\vdcilad\\flv\\%s" % ( file)
+                mudidir = "%s\\20171211\\%s" % (file_dir, file)
+                mudiflvdir = "%s\\flv\\%s" % (file_dir, file)
 
-                mudi100flvdir = "G:\\vdcilad\\100flv\\%s" % ( file)
-                mudi100mp4dir = "G:\\vdcilad\\100mp4\\%s" % ( file)
+                mudi100flvdir = "%s\\100flv\\%s" % (file_dir, file)
+                mudi100mp4dir = "%s\\100mp4\\%s" % (file_dir, file)
 
                 # splitext = os.path.splitext(file)
                 filesize = get_FileSize(filepath)
-                # print (splitext[1])
+                # print (mudidir)
 
-                # file_path = os.path.split(filepath)  # 分割出目录与文件
-                # lists = file_path[1].split('.')  # 分割出文件与文件扩展名
-                # file_ext = lists[-1]  # 取出后缀名(列表切片操作)
+                file_path = os.path.split(filepath)  # 分割出目录与文件
+                lists = file_path[1].split('.')  # 分割出文件与文件扩展名
+                file_ext = lists[-1]  # 取出后缀名(列表切片操作)
                 # img_ext = ['mp4', 'flv', 'avi', 'MP4']
-                # img_ext2 = ['bmp', 'jpeg', 'gif', 'psd', 'png', 'jpg']
-                # img_ext3 = ['mp4', 'avi', 'MP4']
-                # img_ext4 = ['flv']
+                img_ext2 = ['bmp', 'jpeg', 'gif', 'psd', 'png', 'jpg']
+                img_ext3 = ['mp4', 'avi', 'MP4']
+                img_ext4 = ['flv']
+                img_ext5 = ['mp4']
+
+                if file_ext in img_ext2:
+                    print ("%s-->%f" % (filepath, filesize))
+                    # os.remove(filepath)
+
+                # if file_ext in img_ext5:
+                #     print ("%s-->%f" % (filepath, filesize))
+                #     shutil.move(filepath, mudidir)
+                # else:
+                #     print ("%s-->%f" % (filepath, filesize))
+                #     shutil.move(filepath, mudiflvdir)
+
                 # if file_ext in img_ext3:
                 #     if filesize < 100:
                 #         print ("%s-->%f" % (filepath, filesize))
                 #         shutil.move(filepath, mudi100mp4dir)
                 #     else:
                 #         print ("%s-->%f" % (filepath, filesize))
+                #         shutil.move(filepath, mudidir)
+                #
+                # if file_ext in img_ext4:
+                #     if filesize < 100:
+                #         print ("%s-->%f" % (filepath, filesize))
+                #         shutil.move(filepath, mudi100flvdir)
+                #     else:
+                #         print ("%s-->%f" % (filepath, filesize))
+                #         shutil.move(filepath, mudiflvdir)
+
                     # os.remove(filepath)
                     # shutil.move(filepath, mudiflvdir)
 
@@ -157,6 +181,7 @@ def main():
             photo_dir = a
 
     remove_files(photo_dir)
+    # update_photo(photo_dir)
 
 if __name__ == '__main__':
     main()
