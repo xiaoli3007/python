@@ -46,7 +46,7 @@ def urlfilepath(filepath, size, filetype):
     png = '%s%s_tposter_0x0_0.png' % (MEDIA_IMAGE_URL, filepath)
 
     if not os.path.exists(jpg) and not os.path.exists(png):
-        return "/static/red_11.png"
+        return "/static/pics/red_11.png"
 
     if (sysstr == "Windows"):
         returnpath = "/static/%s%s" % (filepath, ext)
