@@ -102,15 +102,15 @@ class myThread (threading.Thread):   #继承父类threading.Thread
                 task = self.q.get()
                 queueLock.release()
                 print "%d===> %s 干的活-->视频路径：%s  图片路径：%s -->exitFlag:%d" % (task[2], self.name, task[0], task[1],exitFlag)
-                make_file_thumb(task[0], task[1])
+                # make_file_thumb(task[0], task[1])
                 # time.sleep(4)
                 self.q.task_done()
                 # logger_object.info(" %s 干的活-->视频路径：%s  图片路径：%s" % (name, task[0], task[1]))
 
             else:
                 queueLock.release()
-            
-            time.sleep(20)
+
+            # time.sleep(20)
 
     def stop(self):
         self.thread_stop = True
@@ -161,9 +161,12 @@ def make_file_dir(file_dir, outimagedir):
                 lists = file_path[1].split('.')  # 分割出文件与文件扩展名
                 file_ext = lists[-1]  # 取出后缀名(列表切片操作)
                 img_ext5 = ['mp4']
+                jpg = '%s_poster.jpg' % (filepath)
+                png = '%s_tposter_0x0_0.png' % (filepath)
 
                 if file_ext in img_ext5:
-                    phtots.append(filepath)
+                    if not os.path.exists(jpg) and not os.path.exists(png):
+                        phtots.append(filepath)
                 # ret = functhumb(file, file_dir)
     # print(phtots)
 
