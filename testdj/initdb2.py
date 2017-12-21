@@ -12,6 +12,10 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.utils.http import urlquote
 import shutil
 
+import sys
+reload(sys)
+sys.setdefaultencoding("utf-8")
+
 def sting_utf8(text):
     return text.decode('utf8')
 

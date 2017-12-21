@@ -32,8 +32,8 @@
       <file leaf-file-name="initdb2.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/initdb2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6739974">
-              <caret line="183" column="16" selection-start-line="183" selection-start-column="7" selection-end-line="183" selection-end-column="16" />
+            <state vertical-scroll-proportion="0.461837">
+              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding>
                 <element signature="e#14#53#0" expanded="true" />
               </folding>
@@ -45,10 +45,8 @@
         <entry file="file://$PROJECT_DIR$/guanfu_video_thumbnail.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="391" column="0" selection-start-line="391" selection-start-column="0" selection-end-line="391" selection-end-column="0" />
-              <folding>
-                <element signature="e#95#104#0" expanded="true" />
-              </folding>
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="10" selection-end-column="31" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -57,7 +55,7 @@
         <entry file="file://$PROJECT_DIR$/makethumb.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="251" column="4" selection-start-line="251" selection-start-column="4" selection-end-line="252" selection-end-column="20" />
+              <caret line="152" column="46" selection-start-line="152" selection-start-column="42" selection-end-line="152" selection-end-column="46" />
               <folding>
                 <element signature="e#14#53#0" expanded="true" />
               </folding>
@@ -1037,12 +1035,12 @@
       <workItem from="1513731406257" duration="862000" />
       <workItem from="1513767299492" duration="3982000" />
       <workItem from="1513771309062" duration="2551000" />
-      <workItem from="1513828115508" duration="4710000" />
+      <workItem from="1513828115508" duration="4824000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="336026000" />
+    <option name="totallyTimeSpent" value="336140000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
@@ -1109,13 +1107,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/initdb2.py</url>
-          <line>1</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
@@ -1427,16 +1418,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/guanfu_video_thumbnail.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="391" column="0" selection-start-line="391" selection-start-column="0" selection-end-line="391" selection-end-column="0" />
-          <folding>
-            <element signature="e#95#104#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.027166883">
@@ -1492,17 +1473,25 @@
     <entry file="file://$PROJECT_DIR$/makethumb.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="251" column="4" selection-start-line="251" selection-start-column="4" selection-end-line="252" selection-end-column="20" />
+          <caret line="152" column="46" selection-start-line="152" selection-start-column="42" selection-end-line="152" selection-end-column="46" />
           <folding>
             <element signature="e#14#53#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/guanfu_video_thumbnail.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="10" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/initdb2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6739974">
-          <caret line="183" column="16" selection-start-line="183" selection-start-column="7" selection-end-line="183" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.461837">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding>
             <element signature="e#14#53#0" expanded="true" />
           </folding>
