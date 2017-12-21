@@ -100,7 +100,7 @@ def remove_files(file_dir):
             dir_name = os.path.join(path, item)
             dirs = os.listdir(dir_name)
             for file in dirs:
-                name = get_filename(file, ".")
+                # name = get_filename(file, ".")
                 # filepath = "%s\%s" % (dir_name, file)
                 filepath = "%s/%s" % (dir_name, file)
                 mudidir = "%s\\20171211\\%s" % (file_dir, file)
