@@ -150,7 +150,7 @@ def make_file_dir(file_dir, outimagedir):
             dir_name = os.path.join(path, item)
             dirs = os.listdir(dir_name)
             for file in dirs:
-                filepath = "%s\%s" % (dir_name, file)
+                filepath = "%s/%s" % (dir_name, file)
                 # fileimage_dir = os.path.dirname(filepath)
                 # print (filepath)
                 # print (fileimage_dir)
@@ -180,7 +180,7 @@ def make_file_dir(file_dir, outimagedir):
     wnums = 0
     for item in phtots:
         if outimagedir != '':
-            outimage = "%s\\%s" % (outimagedir, os.path.basename(item))
+            outimage = "%s/%s" % (outimagedir, os.path.basename(item))
         else:
             outimage = item
         workQueue.put([item, outimage, wnums])
