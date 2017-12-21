@@ -53,8 +53,8 @@ def videolist(request):
         png = '%s%s_tposter_0x0_0.png' % (MEDIA_IMAGE_URL, item.filepath)
         smfilepath = '%s%s' % (MEDIA_IMAGE_URL, item.filepath)
 
-        if not os.path.exists(jpg) and not os.path.exists(png):
-           ret = functhumb(smfilepath, os.path.dirname(smfilepath))
+        # if not os.path.exists(jpg) and not os.path.exists(png):
+        #    ret = functhumb(smfilepath, os.path.dirname(smfilepath))
         columns.append(item)
     column.object_list = columns
 
@@ -77,6 +77,7 @@ def videoshow(request,id):
         smfilepath = '%s%s' % (MEDIA_IMAGE_URL, photo.filepath)
         if not os.path.exists(s):
             ret = functhumb(smfilepath, os.path.dirname(smfilepath))
+
             # return HttpResponse(ret)
 
         # if os.path.exists(s):
