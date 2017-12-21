@@ -29,10 +29,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="initdb2.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="initdb2.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/initdb2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.73350585">
+            <state vertical-scroll-proportion="0.0">
               <caret line="135" column="17" selection-start-line="135" selection-start-column="17" selection-end-line="135" selection-end-column="17" />
               <folding>
                 <element signature="e#14#53#0" expanded="true" />
@@ -51,11 +51,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="makethumb.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="makethumb.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/makethumb.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="152" column="46" selection-start-line="152" selection-start-column="42" selection-end-line="152" selection-end-column="46" />
+            <state vertical-scroll-proportion="0.70633894">
+              <caret line="112" column="19" selection-start-line="112" selection-start-column="19" selection-end-line="112" selection-end-column="19" />
               <folding>
                 <element signature="e#14#53#0" expanded="true" />
               </folding>
@@ -157,10 +157,10 @@
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/guanfu_video_thumbnail.py" />
         <option value="$PROJECT_DIR$/log/thumbnail.log" />
-        <option value="$PROJECT_DIR$/makethumb.py" />
         <option value="$PROJECT_DIR$/calc/views.py" />
         <option value="$PROJECT_DIR$/testdj/templatetags/mediafilepath.py" />
         <option value="$PROJECT_DIR$/initdb2.py" />
+        <option value="$PROJECT_DIR$/makethumb.py" />
       </list>
     </option>
   </component>
@@ -1035,12 +1035,12 @@
       <workItem from="1513731406257" duration="862000" />
       <workItem from="1513767299492" duration="3982000" />
       <workItem from="1513771309062" duration="2551000" />
-      <workItem from="1513828115508" duration="5146000" />
+      <workItem from="1513828115508" duration="5352000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="336462000" />
+    <option name="totallyTimeSpent" value="336668000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
@@ -1470,10 +1470,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/makethumb.py">
+    <entry file="file://$PROJECT_DIR$/initdb2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="152" column="46" selection-start-line="152" selection-start-column="42" selection-end-line="152" selection-end-column="46" />
+          <caret line="135" column="17" selection-start-line="135" selection-start-column="17" selection-end-line="135" selection-end-column="17" />
           <folding>
             <element signature="e#14#53#0" expanded="true" />
           </folding>
@@ -1488,10 +1488,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/initdb2.py">
+    <entry file="file://$PROJECT_DIR$/makethumb.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.73350585">
-          <caret line="135" column="17" selection-start-line="135" selection-start-column="17" selection-end-line="135" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.70633894">
+          <caret line="112" column="19" selection-start-line="112" selection-start-column="19" selection-end-line="112" selection-end-column="19" />
           <folding>
             <element signature="e#14#53#0" expanded="true" />
           </folding>

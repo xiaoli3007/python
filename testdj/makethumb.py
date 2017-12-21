@@ -108,7 +108,7 @@ class myThread (threading.Thread):   #继承父类threading.Thread
             # else:
             #     self.stop()
             queueLock.release()
-            time.sleep(4)
+            time.sleep(20)
 
     def stop(self):
         self.thread_stop = True
