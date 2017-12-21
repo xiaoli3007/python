@@ -29,11 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="initdb2.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="initdb2.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/initdb2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="78" column="72" selection-start-line="78" selection-start-column="72" selection-end-line="78" selection-end-column="83" />
+            <state vertical-scroll-proportion="0.86934024">
+              <caret line="109" column="19" selection-start-line="109" selection-start-column="19" selection-end-line="109" selection-end-column="19" />
               <folding>
                 <element signature="e#14#53#0" expanded="true" />
               </folding>
@@ -77,11 +77,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mediafilepath.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="mediafilepath.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/testdj/templatetags/mediafilepath.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.64683056">
-              <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -157,12 +157,12 @@
         <option value="$PROJECT_DIR$/guanfu_thumbnail.py" />
         <option value="$PROJECT_DIR$/log/testdj.log" />
         <option value="$PROJECT_DIR$/test.py" />
-        <option value="$PROJECT_DIR$/initdb2.py" />
         <option value="$PROJECT_DIR$/guanfu_video_thumbnail.py" />
         <option value="$PROJECT_DIR$/log/thumbnail.log" />
         <option value="$PROJECT_DIR$/makethumb.py" />
         <option value="$PROJECT_DIR$/calc/views.py" />
         <option value="$PROJECT_DIR$/testdj/templatetags/mediafilepath.py" />
+        <option value="$PROJECT_DIR$/initdb2.py" />
       </list>
     </option>
   </component>
@@ -1037,12 +1037,12 @@
       <workItem from="1513731406257" duration="862000" />
       <workItem from="1513767299492" duration="3982000" />
       <workItem from="1513771309062" duration="2551000" />
-      <workItem from="1513828115508" duration="4290000" />
+      <workItem from="1513828115508" duration="4492000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="335606000" />
+    <option name="totallyTimeSpent" value="335808000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
@@ -1417,16 +1417,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/initdb2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="78" column="72" selection-start-line="78" selection-start-column="72" selection-end-line="78" selection-end-column="83" />
-          <folding>
-            <element signature="e#14#53#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/guanfu_common_task.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1503,9 +1493,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/testdj/templatetags/mediafilepath.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.64683056">
-          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/initdb2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.86934024">
+          <caret line="109" column="19" selection-start-line="109" selection-start-column="19" selection-end-line="109" selection-end-column="19" />
+          <folding>
+            <element signature="e#14#53#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
