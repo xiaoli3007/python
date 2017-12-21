@@ -55,7 +55,7 @@
         <entry file="file://$PROJECT_DIR$/makethumb.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.6155581">
-              <caret line="112" column="28" selection-start-line="112" selection-start-column="28" selection-end-line="112" selection-end-column="28" />
+              <caret line="112" column="26" selection-start-line="112" selection-start-column="26" selection-end-line="112" selection-end-column="26" />
               <folding>
                 <element signature="e#14#53#0" expanded="true" />
               </folding>
@@ -1069,12 +1069,12 @@
       <workItem from="1513731406257" duration="862000" />
       <workItem from="1513767299492" duration="3982000" />
       <workItem from="1513771309062" duration="2551000" />
-      <workItem from="1513828115508" duration="7272000" />
+      <workItem from="1513828115508" duration="7412000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="338588000" />
+    <option name="totallyTimeSpent" value="338728000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
@@ -1526,7 +1526,7 @@
     <entry file="file://$PROJECT_DIR$/makethumb.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6155581">
-          <caret line="112" column="28" selection-start-line="112" selection-start-column="28" selection-end-line="112" selection-end-column="28" />
+          <caret line="112" column="26" selection-start-line="112" selection-start-column="26" selection-end-line="112" selection-end-column="26" />
           <folding>
             <element signature="e#14#53#0" expanded="true" />
           </folding>

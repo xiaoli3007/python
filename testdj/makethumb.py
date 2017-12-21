@@ -102,7 +102,7 @@ class myThread (threading.Thread):   #继承父类threading.Thread
                 task = self.q.get()
                 queueLock.release()
                 print "%d===> %s 干的活-->视频路径：%s  图片路径：%s -->exitFlag:%d" % (task[2], self.name, task[0], task[1],exitFlag)
-                # make_file_thumb(task[0], task[1])
+                make_file_thumb(task[0], task[1])
                 # time.sleep(4)
                 self.q.task_done()
                 # logger_object.info(" %s 干的活-->视频路径：%s  图片路径：%s" % (name, task[0], task[1]))
@@ -110,7 +110,7 @@ class myThread (threading.Thread):   #继承父类threading.Thread
             else:
                 queueLock.release()
 
-            # time.sleep(20)
+            time.sleep(30)
 
     def stop(self):
         self.thread_stop = True
