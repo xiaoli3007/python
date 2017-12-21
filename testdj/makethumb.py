@@ -15,6 +15,10 @@ from guanfu_video_thumbnail import *
 import Queue
 import threading
 import time
+import sys
+reload(sys)
+sys.setdefaultencoding("utf-8")
+
 
 LOG_LEVEL_DICT = {'debug': logging.DEBUG,
                   'info': logging.INFO,
@@ -36,6 +40,10 @@ def gbkutf8(text):
     _str = unquote(text)
     _str = _str.decode('gbk').encode('utf-8')
     return _str
+
+def file_charset_to_utf8(fstr):
+    """本地字符集到utf8"""
+    return fstr.decode('gbk', 'ignore').encode('utf-8', 'ignore')
 
 def make_file_thumb(file,file_dir):
 
@@ -217,10 +225,12 @@ def make_file_dir(file_dir, outimagedir):
 
 def main():
     # create_authors()
-    photo_dir = 'G:\\vdcilad'
-    photo_outdirimage = 'G:\\vdcilad\\imagedir'
+
     photo_file = 'G:\\vdcilad\\hanju\\韩国三级禁止想象【公众号：资源菌】.mp4'
     photo_dirimagefile = 'G:\\vdcilad\\imagedir\\韩国三级禁止想象【公众号：资源菌】.mp4'
+
+    photo_dir = ''
+    photo_outdirimage = ''
 
     print("%s" % sys.argv[0])
     process_path = os.path.dirname(sys.argv[0])
@@ -229,7 +239,7 @@ def main():
     os.chdir(process_path)
 
     try:
-        opts, args = getopt.getopt(sys.argv[1:], "f:d:n:", ["file=", 'dir='])
+        opts, args = getopt.getopt(sys.argv[1:], "f:d:n:o:", ["file=", 'dir=', 'outdir='])
     except getopt.GetoptError, err:
         print 'getopt except %s' % err
         sys.exit(1)
@@ -238,10 +248,15 @@ def main():
             photo_file = a
         elif o in ("-d", "--dir"):
             photo_dir = a
+        elif o in ("-n", "--outdir"):
+            photo_outdirimage = a
 
     if photo_dir == '':
         sys.exit(-1)
-    make_file_dir(photo_dir, photo_outdirimage)
+
+    # print(photo_dir)
+    # print(photo_outdirimage)
+    make_file_dir(file_charset_to_utf8(photo_dir), file_charset_to_utf8(photo_outdirimage))
     # make_file_thumb(photo_file, photo_dirimagefile)
 
 
