@@ -128,7 +128,7 @@ def remove_files(file_dir):
 
                 if file_ext in img_ext2:
                     print ("%s-->%f" % (filepath, filesize))
-                    # os.remove(filepath)
+                    os.remove(filepath)
 
                 # if file_ext in img_ext5:
                 #     print ("%s-->%f" % (filepath, filesize))
