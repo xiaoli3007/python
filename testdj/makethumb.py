@@ -169,8 +169,8 @@ def make_file_dir(file_dir, outimagedir):
 
     workQueue = Queue.Queue(len(phtots))
     threads = []
-    # size = len(phtots) / 100
-    size = 20
+    size = len(phtots) / 100
+    # size = 20
     # print(size)
     # return phtots;
 
