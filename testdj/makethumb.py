@@ -15,9 +15,7 @@ from guanfu_video_thumbnail import *
 import Queue
 import threading
 import time
-import sys
-reload(sys)
-sys.setdefaultencoding("utf-8")
+
 
 
 LOG_LEVEL_DICT = {'debug': logging.DEBUG,
@@ -103,7 +101,7 @@ class myThread (threading.Thread):   #继承父类threading.Thread
                 print("队列的大小 %d" % self.q.qsize())
                 task = self.q.get()
                 print "%d===> %s 干的活-->视频路径：%s  图片路径：%s -->exitFlag:%d" % (task[2], self.name, task[0], task[1],exitFlag)
-                make_file_thumb(task[0], task[1])
+                # make_file_thumb(task[0], task[1])
                 # time.sleep(4)
                 self.q.task_done()
                 # logger_object.info(" %s 干的活-->视频路径：%s  图片路径：%s" % (name, task[0], task[1]))
@@ -256,7 +254,7 @@ def main():
 
     # print(photo_dir)
     # print(photo_outdirimage)
-    make_file_dir(file_charset_to_utf8(photo_dir), file_charset_to_utf8(photo_outdirimage))
+    make_file_dir(photo_dir, photo_outdirimage)
     # make_file_thumb(photo_file, photo_dirimagefile)
 
 
