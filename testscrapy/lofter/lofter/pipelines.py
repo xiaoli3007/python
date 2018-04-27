@@ -4,7 +4,9 @@
 #
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
-
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 import codecs
 import json
 from datetime import datetime
@@ -146,13 +148,14 @@ class MySQLStorePipeline(object):
             spider.log("Item updated in db: %s %r" % (guid, item))
         else:
 
-            # print('============================')
-            # print(item)
+            print('============================')
+            print(item['source_url'])
+            # print(item['title'])
             # print(item['title'][0].decode('utf8').encode('gbk'))
             # print(type(item['title'][0].decode('utf8').encode('gbk')))
-            # print('============================')
+            print('============================')
             sql = "INSERT INTO calc_blogphoto  (guid,title,source_url,user_id,remote_images_paths,local_images_paths,remote_default_image,local_default_image) VALUES ('%s','%s','%s',%d,'%s','%s','%s','%s')" % (
-            guid, item['title'][0], item['source_url'], item['user_id'], json.dumps(item['remote_images_paths']), json.dumps(item['local_images_paths']), item['remote_default_image'], item['local_default_image'])
+            guid, item['title'], item['source_url'], item['user_id'], json.dumps(item['remote_images_paths']), json.dumps(item['local_images_paths']), item['remote_default_image'], item['local_default_image'])
 
             # print(sql)
             conn.execute(sql)

@@ -29,7 +29,7 @@
         <entry file="file://$PROJECT_DIR$/lofter/settings.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+              <caret line="75" column="21" selection-start-line="75" selection-start-column="21" selection-end-line="75" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -38,20 +38,39 @@
       <file leaf-file-name="pipelines.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lofter/pipelines.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5264938">
-              <caret line="154" column="209" selection-start-line="154" selection-start-column="209" selection-end-line="154" selection-end-column="209" />
+            <state vertical-scroll-proportion="0.96330273">
+              <caret line="47" column="28" selection-start-line="47" selection-start-column="22" selection-end-line="47" selection-end-column="28" />
               <folding>
-                <element signature="e#193#206#0" expanded="true" />
-                <marker date="1492657791735" expanded="true" signature="2266:2452" placeholder="INSERT INTO calc_blogphoto... " />
-                <marker date="1492657791735" expanded="true" signature="4151:4232" placeholder="SELECT EXIST... " />
-                <marker date="1492657791735" expanded="true" signature="4178:4220" placeholder="SELECT 1 FRO... calc_blogphoto" />
-                <marker date="1492657791735" expanded="true" signature="4321:4347" placeholder="UPDATE calc_... " />
-                <marker date="1492657791735" expanded="true" signature="4321:4349" placeholder="INSERT INTO calc_blogphoto... " />
-                <marker date="1492657791735" expanded="true" signature="4321:4357" placeholder="UPDATE calc_... " />
-                <marker date="1492657791735" expanded="true" signature="4321:4360" placeholder="UPDATE calc_... " />
-                <marker date="1492657791735" expanded="true" signature="4321:4497" placeholder="UPDATE calc_... " />
-                <marker date="1492657791735" expanded="true" signature="5124:5310" placeholder="INSERT INTO calc_blogphoto... " />
+                <marker date="1524293604842" expanded="true" signature="2320:2506" placeholder="INSERT INTO calc_blogphoto... " />
+                <marker date="1524293604842" expanded="true" signature="4205:4286" placeholder="SELECT EXIST... " />
+                <marker date="1524293604842" expanded="true" signature="4232:4274" placeholder="SELECT 1 FRO... calc_blogphoto" />
+                <marker date="1524293604842" expanded="true" signature="4375:4401" placeholder="UPDATE calc_... " />
+                <marker date="1524293604842" expanded="true" signature="4375:4403" placeholder="INSERT INTO calc_blogphoto... " />
+                <marker date="1524293604842" expanded="true" signature="4375:4411" placeholder="UPDATE calc_... " />
+                <marker date="1524293604842" expanded="true" signature="4375:4414" placeholder="UPDATE calc_... " />
+                <marker date="1524293604842" expanded="true" signature="4375:4551" placeholder="UPDATE calc_... " />
+                <marker date="1524293604842" expanded="true" signature="5221:5407" placeholder="INSERT INTO calc_blogphoto... " />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="nvshenlofter.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lofter/spiders/nvshenlofter.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="52" column="33" selection-start-line="52" selection-start-column="28" selection-end-line="52" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mysql.log" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lofter/log/mysql.log">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -69,16 +88,17 @@
         <option value="$PROJECT_DIR$/lofter.log" />
         <option value="$PROJECT_DIR$/mysqlme.py" />
         <option value="$PROJECT_DIR$/lofter/items.py" />
-        <option value="$PROJECT_DIR$/lofter/spiders/nvshenlofter.py" />
         <option value="$PROJECT_DIR$/lofter/function.py" />
         <option value="$PROJECT_DIR$/lofter/spiders/mylofter.py" />
         <option value="$PROJECT_DIR$/lofter/utils/mysqldriver.py" />
         <option value="$PROJECT_DIR$/lofter/spiders/bianma.py" />
-        <option value="$PROJECT_DIR$/lofter/pipelines.py" />
         <option value="$PROJECT_DIR$/lofter/mysqlme.py" />
         <option value="$PROJECT_DIR$/lofter.json" />
         <option value="$PROJECT_DIR$/lofter/settings.py" />
         <option value="$PROJECT_DIR$/lofter/spiders/dongbeire.py" />
+        <option value="$PROJECT_DIR$/lofter/log/mysql.log" />
+        <option value="$PROJECT_DIR$/lofter/spiders/nvshenlofter.py" />
+        <option value="$PROJECT_DIR$/lofter/pipelines.py" />
       </list>
     </option>
   </component>
@@ -93,8 +113,7 @@
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1696" />
+    <option name="width" value="1692" />
     <option name="height" value="1026" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -122,9 +141,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -157,18 +175,37 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lofter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lofter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lofter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spiders" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="options.lastSelected" value="com.advancedtools.cpp.CppSupportSettings" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
@@ -838,25 +875,29 @@
       <workItem from="1504751526683" duration="615000" />
       <workItem from="1505213168958" duration="1027000" />
       <workItem from="1505718809835" duration="53000" />
+      <workItem from="1520821328890" duration="957000" />
+      <workItem from="1522135761130" duration="15000" />
+      <workItem from="1524223704170" duration="3446000" />
+      <workItem from="1524272800262" duration="11354000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60460000" />
+    <option name="totallyTimeSpent" value="76232000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1696" height="1026" extended-state="7" />
+    <frame x="-8" y="0" width="1692" height="1026" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969433" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13537118" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" x="-8" y="331" width="1692" height="341" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24821429" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2124105" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -912,13 +953,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lofter/spiders/nvshenlofter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="18" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lofter/spiders/dongbeire.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -938,16 +972,15 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#193#206#0" expanded="true" />
-            <marker date="1492657791735" expanded="true" signature="2266:2452" placeholder="INSERT INTO calc_blogphoto... " />
-            <marker date="1492657791735" expanded="true" signature="4151:4232" placeholder="SELECT EXIST... " />
-            <marker date="1492657791735" expanded="true" signature="4178:4220" placeholder="SELECT 1 FRO... calc_blogphoto" />
-            <marker date="1492657791735" expanded="true" signature="4321:4347" placeholder="UPDATE calc_... " />
-            <marker date="1492657791735" expanded="true" signature="4321:4349" placeholder="INSERT INTO calc_blogphoto... " />
-            <marker date="1492657791735" expanded="true" signature="4321:4357" placeholder="UPDATE calc_... " />
-            <marker date="1492657791735" expanded="true" signature="4321:4360" placeholder="UPDATE calc_... " />
-            <marker date="1492657791735" expanded="true" signature="4321:4497" placeholder="UPDATE calc_... " />
-            <marker date="1492657791735" expanded="true" signature="5124:5310" placeholder="INSERT INTO calc_blogphoto... " />
+            <marker date="1524293604842" expanded="true" signature="2320:2506" placeholder="INSERT INTO calc_blogphoto... " />
+            <marker date="1524293604842" expanded="true" signature="4205:4286" placeholder="SELECT EXIST... " />
+            <marker date="1524293604842" expanded="true" signature="4232:4274" placeholder="SELECT 1 FRO... calc_blogphoto" />
+            <marker date="1524293604842" expanded="true" signature="4375:4401" placeholder="UPDATE calc_... " />
+            <marker date="1524293604842" expanded="true" signature="4375:4403" placeholder="INSERT INTO calc_blogphoto... " />
+            <marker date="1524293604842" expanded="true" signature="4375:4411" placeholder="UPDATE calc_... " />
+            <marker date="1524293604842" expanded="true" signature="4375:4414" placeholder="UPDATE calc_... " />
+            <marker date="1524293604842" expanded="true" signature="4375:4551" placeholder="UPDATE calc_... " />
+            <marker date="1524293604842" expanded="true" signature="5221:5407" placeholder="INSERT INTO calc_blogphoto... " />
           </folding>
         </state>
       </provider>
@@ -956,9 +989,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="60" column="15" selection-start-line="60" selection-start-column="15" selection-end-line="60" selection-end-column="15" />
-          <folding>
-            <element signature="e#227#241#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1010,16 +1040,15 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="82" column="34" selection-start-line="82" selection-start-column="34" selection-end-line="82" selection-end-column="34" />
           <folding>
-            <element signature="e#193#206#0" expanded="true" />
-            <marker date="1492657791735" expanded="true" signature="2266:2452" placeholder="INSERT INTO calc_blogphoto... " />
-            <marker date="1492657791735" expanded="true" signature="4151:4232" placeholder="SELECT EXIST... " />
-            <marker date="1492657791735" expanded="true" signature="4178:4220" placeholder="SELECT 1 FRO... calc_blogphoto" />
-            <marker date="1492657791735" expanded="true" signature="4321:4347" placeholder="UPDATE calc_... " />
-            <marker date="1492657791735" expanded="true" signature="4321:4349" placeholder="INSERT INTO calc_blogphoto... " />
-            <marker date="1492657791735" expanded="true" signature="4321:4357" placeholder="UPDATE calc_... " />
-            <marker date="1492657791735" expanded="true" signature="4321:4360" placeholder="UPDATE calc_... " />
-            <marker date="1492657791735" expanded="true" signature="4321:4497" placeholder="UPDATE calc_... " />
-            <marker date="1492657791735" expanded="true" signature="5124:5310" placeholder="INSERT INTO calc_blogphoto... " />
+            <marker date="1524293604842" expanded="true" signature="2320:2506" placeholder="INSERT INTO calc_blogphoto... " />
+            <marker date="1524293604842" expanded="true" signature="4205:4286" placeholder="SELECT EXIST... " />
+            <marker date="1524293604842" expanded="true" signature="4232:4274" placeholder="SELECT 1 FRO... calc_blogphoto" />
+            <marker date="1524293604842" expanded="true" signature="4375:4401" placeholder="UPDATE calc_... " />
+            <marker date="1524293604842" expanded="true" signature="4375:4403" placeholder="INSERT INTO calc_blogphoto... " />
+            <marker date="1524293604842" expanded="true" signature="4375:4411" placeholder="UPDATE calc_... " />
+            <marker date="1524293604842" expanded="true" signature="4375:4414" placeholder="UPDATE calc_... " />
+            <marker date="1524293604842" expanded="true" signature="4375:4551" placeholder="UPDATE calc_... " />
+            <marker date="1524293604842" expanded="true" signature="5221:5407" placeholder="INSERT INTO calc_blogphoto... " />
           </folding>
         </state>
       </provider>
@@ -1028,9 +1057,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="60" column="15" selection-start-line="60" selection-start-column="15" selection-end-line="60" selection-end-column="15" />
-          <folding>
-            <element signature="e#227#241#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1060,7 +1086,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="52" column="4" selection-start-line="52" selection-start-column="4" selection-end-line="52" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1083,16 +1108,15 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="88" column="25" selection-start-line="88" selection-start-column="25" selection-end-line="88" selection-end-column="25" />
           <folding>
-            <element signature="e#193#206#0" expanded="true" />
-            <marker date="1492657791735" expanded="true" signature="2266:2452" placeholder="INSERT INTO calc_blogphoto... " />
-            <marker date="1492657791735" expanded="true" signature="4151:4232" placeholder="SELECT EXIST... " />
-            <marker date="1492657791735" expanded="true" signature="4178:4220" placeholder="SELECT 1 FRO... calc_blogphoto" />
-            <marker date="1492657791735" expanded="true" signature="4321:4347" placeholder="UPDATE calc_... " />
-            <marker date="1492657791735" expanded="true" signature="4321:4349" placeholder="INSERT INTO calc_blogphoto... " />
-            <marker date="1492657791735" expanded="true" signature="4321:4357" placeholder="UPDATE calc_... " />
-            <marker date="1492657791735" expanded="true" signature="4321:4360" placeholder="UPDATE calc_... " />
-            <marker date="1492657791735" expanded="true" signature="4321:4497" placeholder="UPDATE calc_... " />
-            <marker date="1492657791735" expanded="true" signature="5124:5310" placeholder="INSERT INTO calc_blogphoto... " />
+            <marker date="1524293604842" expanded="true" signature="2320:2506" placeholder="INSERT INTO calc_blogphoto... " />
+            <marker date="1524293604842" expanded="true" signature="4205:4286" placeholder="SELECT EXIST... " />
+            <marker date="1524293604842" expanded="true" signature="4232:4274" placeholder="SELECT 1 FRO... calc_blogphoto" />
+            <marker date="1524293604842" expanded="true" signature="4375:4401" placeholder="UPDATE calc_... " />
+            <marker date="1524293604842" expanded="true" signature="4375:4403" placeholder="INSERT INTO calc_blogphoto... " />
+            <marker date="1524293604842" expanded="true" signature="4375:4411" placeholder="UPDATE calc_... " />
+            <marker date="1524293604842" expanded="true" signature="4375:4414" placeholder="UPDATE calc_... " />
+            <marker date="1524293604842" expanded="true" signature="4375:4551" placeholder="UPDATE calc_... " />
+            <marker date="1524293604842" expanded="true" signature="5221:5407" placeholder="INSERT INTO calc_blogphoto... " />
           </folding>
         </state>
       </provider>
@@ -1101,9 +1125,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#227#241#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1134,16 +1155,15 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="52" column="31" selection-start-line="52" selection-start-column="31" selection-end-line="52" selection-end-column="31" />
           <folding>
-            <element signature="e#193#206#0" expanded="true" />
-            <marker date="1492657791735" expanded="true" signature="2266:2452" placeholder="INSERT INTO calc_blogphoto... " />
-            <marker date="1492657791735" expanded="true" signature="4151:4232" placeholder="SELECT EXIST... " />
-            <marker date="1492657791735" expanded="true" signature="4178:4220" placeholder="SELECT 1 FRO... calc_blogphoto" />
-            <marker date="1492657791735" expanded="true" signature="4321:4347" placeholder="UPDATE calc_... " />
-            <marker date="1492657791735" expanded="true" signature="4321:4349" placeholder="INSERT INTO calc_blogphoto... " />
-            <marker date="1492657791735" expanded="true" signature="4321:4357" placeholder="UPDATE calc_... " />
-            <marker date="1492657791735" expanded="true" signature="4321:4360" placeholder="UPDATE calc_... " />
-            <marker date="1492657791735" expanded="true" signature="4321:4497" placeholder="UPDATE calc_... " />
-            <marker date="1492657791735" expanded="true" signature="5124:5310" placeholder="INSERT INTO calc_blogphoto... " />
+            <marker date="1524293604842" expanded="true" signature="2320:2506" placeholder="INSERT INTO calc_blogphoto... " />
+            <marker date="1524293604842" expanded="true" signature="4205:4286" placeholder="SELECT EXIST... " />
+            <marker date="1524293604842" expanded="true" signature="4232:4274" placeholder="SELECT 1 FRO... calc_blogphoto" />
+            <marker date="1524293604842" expanded="true" signature="4375:4401" placeholder="UPDATE calc_... " />
+            <marker date="1524293604842" expanded="true" signature="4375:4403" placeholder="INSERT INTO calc_blogphoto... " />
+            <marker date="1524293604842" expanded="true" signature="4375:4411" placeholder="UPDATE calc_... " />
+            <marker date="1524293604842" expanded="true" signature="4375:4414" placeholder="UPDATE calc_... " />
+            <marker date="1524293604842" expanded="true" signature="4375:4551" placeholder="UPDATE calc_... " />
+            <marker date="1524293604842" expanded="true" signature="5221:5407" placeholder="INSERT INTO calc_blogphoto... " />
           </folding>
         </state>
       </provider>
@@ -1189,16 +1209,15 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#193#206#0" expanded="true" />
-            <marker date="1492657791735" expanded="true" signature="2266:2452" placeholder="INSERT INTO calc_blogphoto... " />
-            <marker date="1492657791735" expanded="true" signature="4151:4232" placeholder="SELECT EXIST... " />
-            <marker date="1492657791735" expanded="true" signature="4178:4220" placeholder="SELECT 1 FRO... calc_blogphoto" />
-            <marker date="1492657791735" expanded="true" signature="4321:4347" placeholder="UPDATE calc_... " />
-            <marker date="1492657791735" expanded="true" signature="4321:4349" placeholder="INSERT INTO calc_blogphoto... " />
-            <marker date="1492657791735" expanded="true" signature="4321:4357" placeholder="UPDATE calc_... " />
-            <marker date="1492657791735" expanded="true" signature="4321:4360" placeholder="UPDATE calc_... " />
-            <marker date="1492657791735" expanded="true" signature="4321:4497" placeholder="UPDATE calc_... " />
-            <marker date="1492657791735" expanded="true" signature="5124:5310" placeholder="INSERT INTO calc_blogphoto... " />
+            <marker date="1524293604842" expanded="true" signature="2320:2506" placeholder="INSERT INTO calc_blogphoto... " />
+            <marker date="1524293604842" expanded="true" signature="4205:4286" placeholder="SELECT EXIST... " />
+            <marker date="1524293604842" expanded="true" signature="4232:4274" placeholder="SELECT 1 FRO... calc_blogphoto" />
+            <marker date="1524293604842" expanded="true" signature="4375:4401" placeholder="UPDATE calc_... " />
+            <marker date="1524293604842" expanded="true" signature="4375:4403" placeholder="INSERT INTO calc_blogphoto... " />
+            <marker date="1524293604842" expanded="true" signature="4375:4411" placeholder="UPDATE calc_... " />
+            <marker date="1524293604842" expanded="true" signature="4375:4414" placeholder="UPDATE calc_... " />
+            <marker date="1524293604842" expanded="true" signature="4375:4551" placeholder="UPDATE calc_... " />
+            <marker date="1524293604842" expanded="true" signature="5221:5407" placeholder="INSERT INTO calc_blogphoto... " />
           </folding>
         </state>
       </provider>
@@ -1238,20 +1257,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lofter/log/mysql.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lofter/spiders/mylofter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lofter/utils/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1263,7 +1268,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="61" column="4" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1288,20 +1292,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lofter/utils/mysqldriver.py">
+    <entry file="file://$PROJECT_DIR$/lofter/items.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="60" column="15" selection-start-line="60" selection-start-column="15" selection-end-line="60" selection-end-column="15" />
-          <folding>
-            <element signature="e#227#241#0" expanded="true" />
-          </folding>
+          <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lofter.log">
+    <entry file="file://$PROJECT_DIR$/lofter/spiders/dongbeire.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="-0.065388955">
+          <caret line="3" column="71" selection-start-line="3" selection-start-column="68" selection-end-line="3" selection-end-column="71" />
         </state>
       </provider>
     </entry>
@@ -1312,50 +1313,75 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lofter/spiders/dongbeire.py">
+    <entry file="file://$PROJECT_DIR$/lofter/utils/mysqldriver.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.02367531">
-          <caret line="3" column="71" selection-start-line="3" selection-start-column="68" selection-end-line="3" selection-end-column="71" />
+        <state vertical-scroll-proportion="1.3968433">
+          <caret line="60" column="15" selection-start-line="60" selection-start-column="15" selection-end-line="60" selection-end-column="15" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lofter/spiders/nvshenlofter.py">
+    <entry file="file://$PROJECT_DIR$/lofter/spiders/mylofter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.02367531">
-          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="18" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lofter/items.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="14" />
+        <state vertical-scroll-proportion="0.2604284">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lofter/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+          <caret line="75" column="21" selection-start-line="75" selection-start-column="21" selection-end-line="75" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrapy.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lofter.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lofter/log/mysql.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lofter/spiders/nvshenlofter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="52" column="33" selection-start-line="52" selection-start-column="28" selection-end-line="52" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lofter/pipelines.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5264938">
-          <caret line="154" column="209" selection-start-line="154" selection-start-column="209" selection-end-line="154" selection-end-column="209" />
+        <state vertical-scroll-proportion="0.96330273">
+          <caret line="47" column="28" selection-start-line="47" selection-start-column="22" selection-end-line="47" selection-end-column="28" />
           <folding>
-            <element signature="e#193#206#0" expanded="true" />
-            <marker date="1492657791735" expanded="true" signature="2266:2452" placeholder="INSERT INTO calc_blogphoto... " />
-            <marker date="1492657791735" expanded="true" signature="4151:4232" placeholder="SELECT EXIST... " />
-            <marker date="1492657791735" expanded="true" signature="4178:4220" placeholder="SELECT 1 FRO... calc_blogphoto" />
-            <marker date="1492657791735" expanded="true" signature="4321:4347" placeholder="UPDATE calc_... " />
-            <marker date="1492657791735" expanded="true" signature="4321:4349" placeholder="INSERT INTO calc_blogphoto... " />
-            <marker date="1492657791735" expanded="true" signature="4321:4357" placeholder="UPDATE calc_... " />
-            <marker date="1492657791735" expanded="true" signature="4321:4360" placeholder="UPDATE calc_... " />
-            <marker date="1492657791735" expanded="true" signature="4321:4497" placeholder="UPDATE calc_... " />
-            <marker date="1492657791735" expanded="true" signature="5124:5310" placeholder="INSERT INTO calc_blogphoto... " />
+            <marker date="1524293604842" expanded="true" signature="2320:2506" placeholder="INSERT INTO calc_blogphoto... " />
+            <marker date="1524293604842" expanded="true" signature="4205:4286" placeholder="SELECT EXIST... " />
+            <marker date="1524293604842" expanded="true" signature="4232:4274" placeholder="SELECT 1 FRO... calc_blogphoto" />
+            <marker date="1524293604842" expanded="true" signature="4375:4401" placeholder="UPDATE calc_... " />
+            <marker date="1524293604842" expanded="true" signature="4375:4403" placeholder="INSERT INTO calc_blogphoto... " />
+            <marker date="1524293604842" expanded="true" signature="4375:4411" placeholder="UPDATE calc_... " />
+            <marker date="1524293604842" expanded="true" signature="4375:4414" placeholder="UPDATE calc_... " />
+            <marker date="1524293604842" expanded="true" signature="4375:4551" placeholder="UPDATE calc_... " />
+            <marker date="1524293604842" expanded="true" signature="5221:5407" placeholder="INSERT INTO calc_blogphoto... " />
           </folding>
         </state>
       </provider>
