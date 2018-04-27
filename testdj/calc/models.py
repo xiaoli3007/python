@@ -109,3 +109,15 @@ class Video(models.Model):
     class Meta:
         verbose_name = '视频'
         verbose_name_plural = '视频'
+
+class Book(models.Model):
+    title = models.CharField(u'标题', max_length=255)
+    guid = models.CharField(u'guid', max_length=255, default='')
+    filepath = models.CharField(u'书路径', max_length=255, default='', null=True)
+    def __unicode__(self):
+        # 在Python3中使用 def __str__(self)
+        return self.title
+
+    class Meta:
+        verbose_name = '电子书'
+        verbose_name_plural = '电子书'

@@ -1,6 +1,6 @@
 #coding:utf-8
 from django.contrib import admin
-from models import User,Blog,Photo,PhotoData,BlogPhoto,Video
+from models import User, Blog, Photo, PhotoData, BlogPhoto, Video, Book
 # Register your models here.
 
 
@@ -32,9 +32,14 @@ class BlogPhotoAdmin(admin.ModelAdmin):
 class VideoAdmin(admin.ModelAdmin):
     list_display = ('title', 'user', 'filepath', 'thumb', 'add_time')
 
+class BookAdmin(admin.ModelAdmin):
+    list_display = ('title', 'filepath')
+    search_fields = ('title',)
+
 admin.site.register(User, UserAdmin)
 admin.site.register(Blog, BlogAdmin)
 admin.site.register(Photo, PhotoAdmin)
 admin.site.register(PhotoData, PhotoDataAdmin)
-admin.site.register(BlogPhoto,BlogPhotoAdmin)
-admin.site.register(Video,VideoAdmin)
+admin.site.register(BlogPhoto, BlogPhotoAdmin)
+admin.site.register(Video, VideoAdmin)
+admin.site.register(Book, BookAdmin)

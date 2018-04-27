@@ -166,7 +166,7 @@ def remove_files(file_dir):
 
 def main():
     # create_authors()
-    photo_dir = ''
+    photo_dir = 'G:/vdcilad/'
     photo_file = ''
     print("%s" % sys.argv[0])
     process_path = os.path.dirname(sys.argv[0])
@@ -187,8 +187,8 @@ def main():
 
     if photo_dir == '':
         sys.exit(-1)
-    remove_files(photo_dir)
-    # update_photo(photo_dir)
+    # remove_files(photo_dir)
+    update_photo(photo_dir)
 
 if __name__ == '__main__':
     main()
