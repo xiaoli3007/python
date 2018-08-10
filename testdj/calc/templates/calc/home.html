@@ -4,14 +4,7 @@
 {{ user.name }}的个人空间
 {% endblock title %}
 
-{% block css %}
-<link rel="stylesheet" type="text/css" href="/static/showimage/css/default.css">
-<link href="/static/showimage/dist/css/lightgallery.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="/static/showimage/css/show.css">
-<style type="text/css">
 
-</style>
-{% endblock css %}
 
 {% block content %}
 <p> {{ user.name }}的个人空间</p>
@@ -24,37 +17,20 @@
     <!--{% endfor %}-->
 <!--</ul>-->
 
-<div class="row">
+<div class="row" >
 
 
     {% for article in column.object_list %}
 
-    <!--<div class="col-md-3 col-sm-4  col-xs-12">-->
-        <!--<a href="{{ article.get_absolute_url }}" target="_blank" >   <img src="/media/{{ article.local_default_image }}" class="img-responsive" alt="Responsive image"></a>-->
-    <!--</div>-->
+
+        <a href="{{ article.get_absolute_url }}"  >   <img src="/media/{{ article.local_default_image }}"  alt="Responsive image"  style="float: left; width: 150px; height: 150px;"></a>
+
 
     {% endfor %}
 
-    <div class="demo-gallery">
-        <ul id="lightgallery" class="list-unstyled row">
-            {% for article in column.object_list %}
-            <li class="col-xs-6 col-sm-4 col-md-3" data-download-url="{{ article.get_absolute_url }}" data-responsive="" data-src="/media/{{ article.local_default_image }}" data-sub-html="<h4>Fading Light</h4><p>Classic </p>">
-                <a href="{{ article.get_absolute_url }}" >
-                    <img class="img-responsive" src="/media/{{ article.local_default_image }}">
-                    <div class="demo-gallery-poster">
-                        <img src="/static/showimage/img/zoom.png">
-                    </div>
-                </a>
-
-            </li>
-
-            {% endfor %}
-        </ul>
-    </div>
-
 </div>
 
-
+<br style="clear: both;">
 
 
 <ul class="pagination">
@@ -109,3 +85,7 @@
 {% endblock content %}
 
 
+{% block footjs %}
+
+
+{% endblock footjs %}

@@ -107,7 +107,7 @@ def home(request,id,page=1):
     user = User.objects.get(id=id)
     # column = Photo.objects.filter(user=user)
     page = int(page)
-    pagesize = 10
+    pagesize = 14
     # 以下是另一种方法 未实现
     # offset = pagesize * (page - 1)
     # endsize = offset + pagesize

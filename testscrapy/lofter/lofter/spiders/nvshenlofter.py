@@ -14,7 +14,7 @@ import re,os
 class NvshenlofterSpider(CrawlSpider):
     name = "nvshenlofter"
     allowed_domains = ["shajia3007.lofter.com"]
-    start_urls = [u'http://shajia3007.lofter.com/?page=%d' % d for d in range(1, 30)]
+    start_urls = [u'http://shajia3007.lofter.com/?page=%d' % d for d in range(1, 50)]
     # start_urls = [u'http://ada86t.lofter.com/?page=2']
 
     rules = [
