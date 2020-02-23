@@ -19,14 +19,15 @@ class MysqlDBPipeline(object):
     def process_item(self, item, spider):
         """ 判断item的类型，并作相应的处理，再入数据库 """
         if isinstance(item, imomoe_videoItem):
-            self.insert_item(self.Tweets, item)
+            self.insert_item(self.Tweets, item,'imomoe_video')
         elif isinstance(item, imomoe_video_dataItem):
-            self.insert_item(self.Tweets, item)
-        elif isinstance(item, imomoe_video_data_jsItem):
-            self.insert_item(self.Tweets, item)
+            self.insert_item(self.Tweets, item,'imomoe_video_data')
+        # elif isinstance(item, imomoe_video_data_jsItem):
+        #     self.insert_item(self.Tweets, item,'imomoe_video_data_js')
         return item
 
     @staticmethod
-    def insert_item(collection, item):
-        print(dict(item))
+    def insert_item(collection, item,table_name):
+        # print(dict(item))
+        collection.insert(table_name, dict(item))
         # collection.insert(dict(item))

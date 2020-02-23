@@ -98,12 +98,12 @@ class ImomoeSpider(scrapy.Spider):
         # print(video_item)
         yield video_item
 
-    def parse_video_item_js(self, response):
-        # print(response.xpath('//title').get())
-        video_item = response.meta['video_item']
-        item = imomoe_video_data_jsItem()
-        item['jsurl'] = response.url
-        item['url'] = video_item['url']
-        item['source_text'] = response.text
-        # print(item)
-        return item
+    # def parse_video_item_js(self, response):
+    #     # print(response.xpath('//title').get())
+    #     video_item = response.meta['video_item']
+    #     item = imomoe_video_data_jsItem()
+    #     item['jsurl'] = response.url
+    #     item['url'] = video_item['url']
+    #     item['source_text'] = response.text
+    #     # print(item)
+    #     return item
