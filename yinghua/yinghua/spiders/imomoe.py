@@ -29,6 +29,8 @@ class ImomoeSpider(scrapy.Spider):
 
     def start_requests(self):
 
+        # yield scrapy.Request(url='http://www.imomoe.in/playdata/27/7707.js?65551.92', callback=self.parse_video_item_js)
+
         for uid in range(1, 2):
             yield scrapy.Request(url='http://www.imomoe.in/so.asp?page=%d&pl=hit&dq=%%C8%%D5%%B1%%BE' % uid, callback=self.parse_cat)
 
@@ -40,15 +42,6 @@ class ImomoeSpider(scrapy.Spider):
         for it in liurls:
             # print(it)
             yield scrapy.Request(self.base_url + it,callback=self.parse_item)
-        # for title in response.xpath('//title').getall():
-        #     yield YinghuaItem(title=title)
-
-        # yield Request(self.base_url + '/u/{}'.format(information_item['_id']),
-        #               callback=self.parse_further_information,
-        #               meta=request_meta, dont_filter=True, priority=1)
-
-        # for href in response.xpath('//a/@href').getall():
-        #     yield scrapy.Request(response.urljoin(href), self.parse)
 
     def parse_item(self, response):
         # print(response.xpath('//title').get())
@@ -56,6 +49,7 @@ class ImomoeSpider(scrapy.Spider):
         catitem = imomoe_videoItem()
         catitem['title'] = response.xpath('//div[@class="area title"]/h1/span[@class="names"]/text()').get()
         catitem['url'] = response.url
+        catitem['guid'] = md5(response.url.encode("utf8")).hexdigest()
         # print(item)
         video_liurls1 = response.xpath('//div[@id="play_0"]/ul/li/a/@href').getall()
         # print(len(video_liurls1))
@@ -89,21 +83,50 @@ class ImomoeSpider(scrapy.Spider):
         video_item['videourl'] = catitem['url']
         video_item['title'] = response.xpath('//div[@class="ptitle l"]/h1/a/text()').get()+response.xpath('//div[@class="ptitle l"]/h1/span/text()').get()
         video_item['url'] = response.url
+        video_item['guid'] = md5(response.url.encode("utf8")).hexdigest()
         video_item['source_js'] = self.base_url + response.xpath('//div[@class="player"]/script/@src')[0].get()
         # source_js = response.xpath('//div[@class="player"]/script')[1].get()
         # print(self.base_url + item['source_js'])
         request_meta = response.meta
         request_meta['video_item'] = video_item
-        # yield scrapy.Request( video_item['source_js'], callback=self.parse_video_item_js,meta=request_meta)
-        # print(video_item)
         yield video_item
+        yield scrapy.Request( video_item['source_js'], callback=self.parse_video_item_js,meta=request_meta)
+        # print(video_item)
 
-    # def parse_video_item_js(self, response):
-    #     # print(response.xpath('//title').get())
-    #     video_item = response.meta['video_item']
-    #     item = imomoe_video_data_jsItem()
-    #     item['jsurl'] = response.url
-    #     item['url'] = video_item['url']
-    #     item['source_text'] = response.text
-    #     # print(item)
-    #     return item
+
+    def parse_video_item_js(self, response):
+        # print(response.xpath('//title').get())
+        video_item = response.meta['video_item']
+        item = imomoe_video_data_jsItem()
+        item['guid'] = md5(response.url.encode("utf8")).hexdigest()
+        item['jsurl'] = response.url
+        item['url'] = video_item['url']
+        # item['source_text'] = '%s' % response.text.encode("utf8")
+        item['source_text'] = response.text
+        item['source_text'] = item['source_text'].replace("'", "\\\'")
+        item['source_text'] = item['source_text'].replace('"', '\\\"')
+
+
+        # t = response.text.decode('utf8')
+        # print(type(t))
+        # item['source_text'] = '%s' % t
+
+        # params = dict(item)
+        # key = []
+        # value = []
+        # for tmpkey, tmpvalue in params.items():
+        #     key.append(tmpkey)
+        #     if isinstance(tmpvalue, str):
+        #         value.append("\'" + tmpvalue + "\'")
+        #     else:
+        #         value.append(tmpvalue)
+        #
+        #
+        # # attrs_sql = '(' + ','.join(key) + ')'
+        # values_sql = ' values(' + ','.join(value) + ')'
+        # print(values_sql)
+        # sql = 'insert into %s' % tablename
+        # sql = sql + attrs_sql + values_sql
+
+        # print(item)
+        return item

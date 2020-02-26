@@ -140,11 +140,13 @@ class MysqldbHelper(object): # 继承object类所有方法
                 value.append("\'" + tmpvalue + "\'")
             else:
                 value.append(tmpvalue)
+
+        print(value)
         attrs_sql = '('+','.join(key)+')'
         values_sql = ' values('+','.join(value)+')'
         sql = 'insert into %s'%tablename
         sql = sql + attrs_sql + values_sql
-        print('_insert:'+sql)
+        # print('_insert:'+sql)
         self.executeCommit(sql)
 
     def select(self, tablename, cond_dict='', order='', fields='*'):
@@ -175,7 +177,7 @@ class MysqldbHelper(object): # 继承object类所有方法
             else:
                 print("fields input error, please input list fields.")
         sql = sql + consql + order
-        print('select:' + sql)
+        # print('select:' + sql)
         return self.executeSql(sql)
 
     def insertMany(self,table, attrs, values):
@@ -320,13 +322,20 @@ if __name__ == "__main__":
     TABLE_NAME = 'test_user'
     # print(mydb.select(TABLE_NAME, fields=["id", "name"]))
     print("========= 单条数据插入 ===========")
+
+    # isixet = mydb.select(collection, cond_dict={'guid': 'eabbab05054b86cbaa4797a2cd27674b'}, fields=["id,title"])
+    # print(isixet)
+
     params = {}
-    for i in range(5):
-        params.update({"name":"testuser"+str(i),"title":"title"+str(i)}) # 生成字典数据，循环插入
-        print(params)
-        mydb.insert(TABLE_NAME, params)
-        print("")
-    #
+    params.update({"name": "testuser", "title": "title"})  # 生成字典数据，循环插入
+    print(params)
+    mydb.insert(TABLE_NAME, params)
+    # for i in range(5):
+    #     params.update({"name":"testuser"+str(i),"title":"title"+str(i)}) # 生成字典数据，循环插入
+    #     print(params)
+    #     mydb.insert(TABLE_NAME, params)
+    #     print("")
+    # #
     # # 创建数据库
     # DB_NAME = 'test_db'
     # # mydb.createDataBase(DB_NAME)

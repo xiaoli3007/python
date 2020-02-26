@@ -21,6 +21,7 @@ class imomoe_videoItem(scrapy.Item):
     leixing = scrapy.Field()
     niandai = scrapy.Field()
     tag = scrapy.Field()
+    guid = scrapy.Field()
 
 class imomoe_video_dataItem(scrapy.Item):
     # define the fields for your item here like:
@@ -32,12 +33,14 @@ class imomoe_video_dataItem(scrapy.Item):
     source_text = scrapy.Field()
     video_play_url1 = scrapy.Field()
     video_play_url2 = scrapy.Field()
+    guid = scrapy.Field()
 
 class imomoe_video_data_jsItem(scrapy.Item):
     # define the fields for your item here like:
     jsurl = scrapy.Field()
     url = scrapy.Field()
     source_text = scrapy.Field()
+    guid = scrapy.Field()
 
 
 
